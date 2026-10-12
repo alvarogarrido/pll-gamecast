@@ -57,7 +57,21 @@ Rules that define the project:
 - CSS variables are `--pll-<path>`; `theme.css` aliases them to Tailwind namespaces 1:1, e.g. `color.text.secondary` -> `text-text-secondary`,
   `color.surface.page` -> `bg-surface-page`, `text.teamName` -> `text-team-name`. Tailwind's default palette and radii are disabled.
 
+## Scenario Lab (tooling, not product)
+
+The Lab (`apps/lab` + `packages/scenarios`, see `apps/lab/README.md`) shows `apps/web` in an iframe and fakes `/api/v1/*.json` with a
+service worker (served at `/lab-sw.js`), so designers can view start of season, pregame, any live moment, final, offline, slow or
+failing API and missing data.
+
+- It is **detached**: no lab, scenario or "demo mode" code in `apps/web`, `packages/ui`, `packages/tokens` or `packages/data`'s product
+  surface, and never an import of `@pll/lab` / `@pll/scenarios` from them. The app must keep behaving correctly against any HTTP response
+  (that is what the Lab exploits). If something truly cannot be simulated from outside, raise it instead of adding a hook to the app.
+- Add a scenario in `packages/scenarios/src/presets.ts` (with a test); how-to in `apps/lab/README.md`.
+- `npm run dev:lab` (next dev :3000 + Lab :5173, open `/lab/`), `npm run build:site` (prototype + `/lab/` + `/lab-sw.js` + `/storybook/`
+  into `site/`, deployed by the root `vercel.json`), `npm run preview:site` (serve `site/` locally on :4173).
+- Only nested iframes are faked; opening `/ncaa/game/<id>/` in a normal tab always shows the plain prototype.
+
 ## Commands
 
-`npm run dev | build | storybook | build-storybook | tokens | typecheck` from the root (see README).
+`npm run dev | build | storybook | build-storybook | tokens | typecheck | test` from the root, plus `dev:lab | build:site | preview:site` for the Lab (see README).
 Before finishing a change: `npm run typecheck`, and for UI work `npm run build-storybook`.

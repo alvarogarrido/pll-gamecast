@@ -9,3 +9,8 @@ storybook-static/
 *.tsbuildinfo
 # generated static API (rebuilt from packages/data)
 apps/web/public/api/
+
+# assembled deployable site (npm run build:site) and the Lab's service worker bundle
+site/
+apps/lab/dist-sw/
+apps/web/AGENTS.md

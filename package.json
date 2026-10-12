@@ -16,6 +16,9 @@
     "build-storybook": "npm run build-storybook -w @pll/ui",
     "tokens": "npm run build -w @pll/tokens",
     "data:build": "npm run build -w @pll/data",
+    "build:site": "node scripts/build-site.mjs",
+    "preview:site": "node scripts/preview-site.mjs",
+    "dev:lab": "node scripts/dev-lab.mjs",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run test --workspaces --if-present"
   }
