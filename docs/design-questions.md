@@ -17,3 +17,10 @@ Collected from the component batches. Answer inline; resolved items move to `doc
 10. Unchanged rank/RPI after a final shows "=". Hide unchanged values instead?
 11. The minimized header score is 32px (`score` token); the Figma collapsed card uses 24px. Add a `score.sm` 24px token?
 12. Tab label "Plays" vs the PRD/Figma "Play-by-Play"?
+
+---
+**Status 2026-10-13:** batch questions resolved as D7–D18 in `docs/design-decisions.md`. Still open for Alvaro:
+- Weather icons (sun/cloud/rain/snow/wind/indoor) are drawn privately in VenueInfo. Should they be designed in Figma?
+- Insight cards could show the player's avatar (the data has playerId). Wanted?
+- Goal markers on the win-probability line?
+- The desktop Header Bar is sparse at 1200px width. Redesign for desktop, or constrain its width?
