@@ -46,7 +46,7 @@ export const WithPanels: Story = {
         <Tabs {...args} idBase="demo" fullWidth value={value} onValueChange={setValue} />
         {sections.map((s) => (
           <div key={s.value} hidden={s.value !== value} {...tabPanelProps('demo', s.value)}>
-            <p className="text-body text-text-secondary">Panel: {s.label}</p>
+            <p className="text-callout text-text-secondary">Panel: {s.label}</p>
           </div>
         ))}
       </div>

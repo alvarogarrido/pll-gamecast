@@ -1,51 +1,105 @@
 {
   "font": {
     "family": {
+      "$type": "fontFamily",
       "sans": {
-        "$type": "fontFamily",
-        "$value": "Roboto, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+        "$value": ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Helvetica", "Arial", "sans-serif"],
+        "$description": "UI text (D4)",
+        "$extensions": { "com.pll": { "hostVar": "--font-inter" } }
+      },
+      "display": {
+        "$value": ["Barlow Condensed", "Arial Narrow", "ui-sans-serif", "system-ui", "sans-serif"],
+        "$description": "Scores, the clock and big numerals (D4)",
+        "$extensions": { "com.pll": { "hostVar": "--font-barlow-condensed" } }
       }
     }
   },
   "text": {
-    "$description": "Type scale. Each style: size / weight / leading / optional tracking. Provisional (PLL gamecast).",
+    "$description": "Type scale. Every style has fontFamily, fontSize, lineHeight, fontWeight, letterSpacing. Spec: docs/design-decisions.md.",
+    "scoreHero": {
+      "$description": "score.hero",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },
+      "fontSize": { "$type": "dimension", "$value": "48px" },
+      "lineHeight": { "$type": "dimension", "$value": "48px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 800 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
+    },
     "score": {
-      "size": { "$type": "dimension", "$value": "30px" },
-      "weight": { "$type": "fontWeight", "$value": 700 },
-      "leading": { "$type": "dimension", "$value": "36px" }
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },
+      "fontSize": { "$type": "dimension", "$value": "32px" },
+      "lineHeight": { "$type": "dimension", "$value": "32px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 800 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
     },
-    "h2": {
-      "size": { "$type": "dimension", "$value": "20px" },
-      "weight": { "$type": "fontWeight", "$value": 700 },
-      "leading": { "$type": "dimension", "$value": "28px" },
-      "tracking": { "$type": "dimension", "$value": "0.15px" }
+    "clock": {
+      "$description": "Tabular numerals (tabular-nums is applied by the generated utility).",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },
+      "fontSize": { "$type": "dimension", "$value": "13px" },
+      "lineHeight": { "$type": "dimension", "$value": "16px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 600 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" },
+      "fontVariantNumeric": { "$type": "string", "$value": "tabular-nums" }
     },
-    "teamName": {
-      "size": { "$type": "dimension", "$value": "20px" },
-      "weight": { "$type": "fontWeight", "$value": 800 },
-      "leading": { "$type": "dimension", "$value": "24px" }
+    "title1": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "28px" },
+      "lineHeight": { "$type": "dimension", "$value": "34px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 600 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
     },
-    "body": {
-      "size": { "$type": "dimension", "$value": "16px" },
-      "weight": { "$type": "fontWeight", "$value": 400 },
-      "leading": { "$type": "dimension", "$value": "24px" }
+    "title3": {
+      "$description": "Section headers (apply the `uppercase` utility).",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "20px" },
+      "lineHeight": { "$type": "dimension", "$value": "25px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 700 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
     },
-    "statLabel": {
-      "size": { "$type": "dimension", "$value": "17px" },
-      "weight": { "$type": "fontWeight", "$value": 500 },
-      "leading": { "$type": "dimension", "$value": "24px" }
+    "headline": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "17px" },
+      "lineHeight": { "$type": "dimension", "$value": "22px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 600 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
     },
-    "chip": {
-      "size": { "$type": "dimension", "$value": "13px" },
-      "weight": { "$type": "fontWeight", "$value": 500 },
-      "leading": { "$type": "dimension", "$value": "16px" }
+    "callout": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "16px" },
+      "lineHeight": { "$type": "dimension", "$value": "21px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 400 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
     },
-    "nav": {
-      "$description": "Always rendered uppercase (apply the `uppercase` utility).",
-      "size": { "$type": "dimension", "$value": "14px" },
-      "weight": { "$type": "fontWeight", "$value": 500 },
-      "leading": { "$type": "dimension", "$value": "20px" },
-      "tracking": { "$type": "dimension", "$value": "0.68px" }
+    "subhead": {
+      "$description": "Regular 400 by default; the 600 variant is fontWeightStrong (use font-semibold).",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "15px" },
+      "lineHeight": { "$type": "dimension", "$value": "20px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 400 },
+      "fontWeightStrong": { "$type": "fontWeight", "$value": 600 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
+    },
+    "footnote": {
+      "$description": "Regular 400 by default; the 600 variant is fontWeightStrong (use font-semibold).",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "13px" },
+      "lineHeight": { "$type": "dimension", "$value": "18px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 400 },
+      "fontWeightStrong": { "$type": "fontWeight", "$value": 600 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
+    },
+    "caption": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "12px" },
+      "lineHeight": { "$type": "dimension", "$value": "16px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 500 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
+    },
+    "caption2": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.sans}" },
+      "fontSize": { "$type": "dimension", "$value": "11px" },
+      "lineHeight": { "$type": "dimension", "$value": "13px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 500 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
     }
   }
 }

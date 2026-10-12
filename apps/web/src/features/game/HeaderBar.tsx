@@ -22,7 +22,7 @@ export function HeaderBar({ gameId }: { gameId: string }) {
 
 function HeaderBarSkeleton() {
   return (
-    <Card tone="scoreboard" bordered aria-busy="true" aria-label="Loading game">
+    <Card aria-busy="true" aria-label="Loading game">
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
         {[0, 1].map((i) => (
           <div key={i} className={i === 0 ? 'order-1' : 'order-3'}>
@@ -33,7 +33,7 @@ function HeaderBarSkeleton() {
             </div>
           </div>
         ))}
-        <Skeleton className="order-2 h-6 w-16 rounded-full" />
+        <Skeleton className="order-2 h-6 w-16 rounded-pill" />
       </div>
     </Card>
   );
@@ -45,7 +45,7 @@ function HeaderBarContent({ game }: { game: Game }) {
   const countdown = game.status === 'scheduled' ? formatCountdown(game.startTime, serverNow) : null;
 
   return (
-    <Card tone="scoreboard" bordered padding="lg">
+    <Card padding="lg">
       <h1 className="sr-only">
         {game.away.team.school} at {game.home.team.school}
       </h1>
@@ -55,11 +55,11 @@ function HeaderBarContent({ game }: { game: Game }) {
           <StatusPill {...pill} />
           {game.status === 'scheduled' && (
             <>
-              <p className="text-chip text-text-secondary">{formatStartTime(game.startTime)}</p>
-              {countdown && <p className="text-chip text-text-tertiary">{countdown}</p>}
+              <p className="text-caption text-text-secondary">{formatStartTime(game.startTime)}</p>
+              {countdown && <p className="text-caption text-text-tertiary">{countdown}</p>}
             </>
           )}
-          <p className="max-w-32 text-chip text-text-tertiary">{game.venue.name}</p>
+          <p className="max-w-32 text-caption text-text-tertiary">{game.venue.name}</p>
         </div>
         <TeamBlock side={game.home} />
       </div>
@@ -76,8 +76,8 @@ function TeamBlock({ side }: { side: Game['home'] }) {
       <div className="flex h-4 items-center">
         <RankBadge rank={side.rank} change={side.rankChange} />
       </div>
-      <p className="max-w-full truncate text-team-name">{team.school}</p>
-      <p className="text-chip text-text-secondary">
+      <p className="max-w-full truncate text-title3">{team.school}</p>
+      <p className="text-caption text-text-secondary">
         {side.record.wins}-{side.record.losses} · {side.conferenceShortName}
       </p>
       <p className="text-score tabular-nums" aria-label={`Score ${side.score ?? 'not started'}`}>

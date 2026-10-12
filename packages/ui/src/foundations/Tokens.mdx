@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  ColorSwatches,
+  PaletteSwatches,
+  FontFamilies,
+  TypeScale,
+  Radii,
+  Spacing,
+  Elevation,
+} from './TokenDocs';
+
+<Meta title="Foundations/Tokens" />
+
+# Tokens
+
+Everything on this page is rendered from `@pll/tokens` (`dist/tokens.ts`, generated from the DTCG JSON in
+`packages/tokens/src`). It cannot drift: change a token, run `npm run tokens`, and it updates here. The approved
+values and the reasoning live in `docs/design-decisions.md`; naming and usage in `packages/tokens/README.md`.
+
+Two layers: **primitives** (`palette.*`, raw values, never used directly in components) and **semantic** tokens
+(`color.*`, aliases of primitives, exposed as Tailwind utilities).
+
+## Semantic colors
+
+<ColorSwatches />
+
+## Palette (primitives)
+
+<PaletteSwatches />
+
+## Type
+
+Inter for UI text, Barlow Condensed for scores, the clock and big numerals. Each text style is one utility
+(`text-footnote`); `subhead` and `footnote` also have a 600 variant (add `font-semibold`).
+
+<FontFamilies />
+
+<br />
+
+<TypeScale />
+
+## Radius
+
+<Radii />
+
+## Spacing
+
+Tailwind's 4px multiplier is kept, so a scale step is its pixel value divided by 4: `10px` is `2.5`.
+
+<Spacing />
+
+## Elevation
+
+Cards stay flat with a 1px `border-border-default`. Shadows are only for sticky bars and overlays.
+
+<Elevation />

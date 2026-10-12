@@ -1,0 +1,26 @@
+{
+  "palette": {
+    "$description": "Layer 1: raw values. Components never use these directly; they go through the semantic layer (semantic.json).",
+    "$type": "color",
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000", "$description": "Shadows only" },
+    "coal": { "$value": "#111111", "$description": "brand/coal (absorbs #121212)" },
+    "gray": {
+      "$description": "Gray ramp from the PLL Library. Only steps with an approved value exist; 50/100/200/500 are intentionally absent until the Library defines them.",
+      "300": { "$value": "#B4B4B9" },
+      "400": { "$value": "#98989D" },
+      "600": { "$value": "#595959" },
+      "700": { "$value": "#3D3D3D", "$description": "Library gray/700" },
+      "800": { "$value": "#313131", "$description": "Library gray/800" },
+      "850": { "$value": "#262626", "$description": "Between gray/900 and gray/800" },
+      "900": { "$value": "#1F1F1F", "$description": "Library gray/900" },
+      "950": { "$value": "{palette.coal}", "$description": "Alias of brand/coal" }
+    },
+    "gold": { "$value": "#FFCB06", "$description": "Absorbs #FFCC06, #FFC906, #FFCE00, #FFD200" },
+    "goldSubtle": { "$value": "#282310" },
+    "green": { "$value": "#00CB83", "$description": "Absorbs #00C364; mint #20F4CA not adopted" },
+    "red": { "$value": "#FA5050" },
+    "blue": { "$value": "#3BA9F6" },
+    "border": { "$value": "#3A3E40" }
+  }
+}

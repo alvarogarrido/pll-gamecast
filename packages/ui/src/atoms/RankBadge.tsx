@@ -28,12 +28,12 @@ export function RankBadge({ rank, kind = 'rank', change = null, className }: Ran
   const moved = change !== null && change !== 0;
 
   return (
-    <span className={cn('inline-flex items-center gap-1 text-chip', className)}>
+    <span className={cn('inline-flex items-center gap-1 text-caption', className)}>
       <span
         aria-label={spoken}
         className={cn(
-          'font-bold tabular-nums',
-          kind === 'rank' ? 'text-brand-primary' : 'text-text-secondary',
+          'font-semibold tabular-nums',
+          kind === 'rank' ? 'text-accent-gold' : 'text-text-secondary',
         )}
       >
         {text}
@@ -42,7 +42,7 @@ export function RankBadge({ rank, kind = 'rank', change = null, className }: Ran
         <span
           className={cn(
             'inline-flex items-center gap-0.5 font-medium tabular-nums',
-            change > 0 ? 'text-positive' : 'text-negative',
+            change > 0 ? 'text-status-positive' : 'text-status-negative',
           )}
         >
           <Arrow up={change > 0} />

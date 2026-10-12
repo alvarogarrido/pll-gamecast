@@ -1,9 +1,10 @@
 {
   "radius": {
     "$type": "dimension",
-    "sm": { "$value": "4px" },
-    "md": { "$value": "8px" },
-    "lg": { "$value": "10px" },
-    "full": { "$value": "9999px" }
+    "xs": { "$value": "4px" },
+    "sm": { "$value": "8px" },
+    "md": { "$value": "10px", "$description": "Cards" },
+    "lg": { "$value": "20px" },
+    "pill": { "$value": "999px" }
   }
 }

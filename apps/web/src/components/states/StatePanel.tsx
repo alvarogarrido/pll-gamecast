@@ -19,12 +19,11 @@ export function StatePanel({
 }) {
   return (
     <Card
-      tone="row"
       role={role}
       className={cn('flex flex-col items-center gap-2 py-8 text-center', className)}
     >
-      <p className={cn('text-stat-label', tone === 'error' ? 'text-negative' : 'text-text-primary')}>{title}</p>
-      {message && <p className="max-w-prose text-body text-text-secondary">{message}</p>}
+      <p className={cn('text-headline', tone === 'error' ? 'text-status-negative' : 'text-text-primary')}>{title}</p>
+      {message && <p className="max-w-prose text-callout text-text-secondary">{message}</p>}
       {action && <div className="mt-2">{action}</div>}
     </Card>
   );
@@ -42,7 +41,7 @@ export function ActionButton({
   disabled?: boolean;
 }) {
   const className =
-    'inline-flex min-h-11 items-center justify-center rounded-full bg-brand-primary px-5 text-nav uppercase text-text-on-brand disabled:cursor-not-allowed disabled:opacity-40';
+    'inline-flex min-h-11 items-center justify-center rounded-pill bg-accent-gold px-5 text-footnote font-semibold uppercase text-text-on-accent disabled:cursor-not-allowed disabled:opacity-40';
   if (href) {
     return (
       <a href={href} className={className}>

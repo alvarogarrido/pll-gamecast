@@ -23,10 +23,10 @@ export function ModulePlaceholder<T>({
   summarize: (data: T) => ReactNode;
 }) {
   return (
-    <Card as="section" aria-label={name} bordered className="flex flex-col gap-3">
+    <Card as="section" aria-label={name} className="flex flex-col gap-3">
       <header className="flex items-baseline justify-between gap-2">
-        <h2 className="text-h2">{name}</h2>
-        <code className="text-chip text-text-tertiary">{endpoint}</code>
+        <h2 className="text-title3 uppercase">{name}</h2>
+        <code className="text-caption text-text-tertiary">{endpoint}</code>
       </header>
       <QueryBoundary
         query={query}
@@ -39,7 +39,7 @@ export function ModulePlaceholder<T>({
           </div>
         }
       >
-        {(data) => <p className="text-body text-text-secondary">{summarize(data)}</p>}
+        {(data) => <p className="text-callout text-text-secondary">{summarize(data)}</p>}
       </QueryBoundary>
     </Card>
   );

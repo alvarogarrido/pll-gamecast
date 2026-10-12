@@ -1,6 +1,6 @@
 # PLL Gamecast
 
-Redesign of the Inside Lacrosse NCAA Gamecast page with Premier Lacrosse League branding: dark theme, Roboto, mobile-first.
+Redesign of the Inside Lacrosse NCAA Gamecast page with Premier Lacrosse League branding: dark theme, Inter + Barlow Condensed, mobile-first.
 
 ## What's in the repo
 

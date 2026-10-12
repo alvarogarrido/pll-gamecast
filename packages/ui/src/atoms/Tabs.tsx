@@ -103,7 +103,7 @@ export function Tabs<T extends string = string>({
       aria-orientation="horizontal"
       onKeyDown={onKeyDown}
       className={cn(
-        'flex gap-1 overflow-x-auto rounded-full bg-surface-track p-1 [scrollbar-width:none]',
+        'flex gap-1 overflow-x-auto rounded-pill bg-surface-track p-1 [scrollbar-width:none]',
         fullWidth ? 'w-full' : 'w-fit max-w-full',
         className,
       )}
@@ -126,12 +126,12 @@ export function Tabs<T extends string = string>({
             disabled={item.disabled}
             onClick={() => onValueChange(item.value)}
             className={cn(
-              'inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap rounded-full text-chip uppercase transition-colors sm:text-nav',
+              'inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap rounded-pill text-footnote font-semibold uppercase transition-colors sm:text-subhead',
               'disabled:cursor-not-allowed disabled:opacity-40',
               sizes[size],
               fullWidth && 'flex-1',
               selected
-                ? 'bg-surface-tab-active text-text-primary'
+                ? 'bg-surface-selected text-text-primary'
                 : 'text-text-secondary hover:text-text-primary',
             )}
           >

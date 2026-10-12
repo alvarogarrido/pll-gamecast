@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { cn } from '../lib/cn';
 
-export type ChipTone = 'neutral' | 'outline' | 'brand' | 'positive' | 'negative' | 'link';
+export type ChipTone = 'neutral' | 'outline' | 'accent' | 'gold' | 'live' | 'positive' | 'negative' | 'link';
 export type ChipSize = 'sm' | 'md';
 
 export interface ChipProps extends ComponentPropsWithoutRef<'span'> {
@@ -12,12 +12,14 @@ export interface ChipProps extends ComponentPropsWithoutRef<'span'> {
 }
 
 const tones: Record<ChipTone, string> = {
-  neutral: 'bg-surface-row-default text-text-secondary',
+  neutral: 'bg-surface-chip text-text-secondary',
   outline: 'border border-border-default text-text-secondary',
-  brand: 'bg-brand-primary text-text-on-brand',
-  positive: 'bg-positive/15 text-positive',
-  negative: 'bg-negative/15 text-negative',
-  link: 'bg-link/15 text-link',
+  accent: 'bg-accent-gold text-text-on-accent',
+  gold: 'bg-gold-tint text-accent-gold',
+  live: 'bg-live-tint text-status-live',
+  positive: 'bg-live-tint text-status-positive',
+  negative: 'bg-negative-tint text-status-negative',
+  link: 'bg-link/10 text-link',
 };
 
 const sizes: Record<ChipSize, string> = {
@@ -29,7 +31,7 @@ export function Chip({ tone = 'neutral', size = 'md', leading, className, childr
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full text-chip',
+        'inline-flex items-center gap-1 whitespace-nowrap rounded-pill text-caption',
         tones[tone],
         sizes[size],
         className,

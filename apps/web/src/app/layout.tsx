@@ -1,15 +1,24 @@
 import type { Metadata, Viewport } from 'next';
-import { Roboto } from 'next/font/google';
+import { Barlow_Condensed, Inter } from 'next/font/google';
 import { tokens } from '@pll/tokens';
 import { OfflineBanner } from '@/components/states/OfflineBanner';
 import { AppProviders } from '@/providers/app-providers';
 import './globals.css';
 
-const roboto = Roboto({
+// Fonts (design decision D4). The CSS variable names are what the font tokens look for:
+// font.family.sans -> var(--font-inter), font.family.display -> var(--font-barlow-condensed).
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-roboto',
+  variable: '--font-inter',
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin'],
+  weight: ['600', '800'],
+  display: 'swap',
+  variable: '--font-barlow-condensed',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +35,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={roboto.variable}>
+    <html lang="en" className={`${inter.variable} ${barlowCondensed.variable}`}>
       <body>
         <AppProviders>
           <OfflineBanner />

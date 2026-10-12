@@ -6,8 +6,7 @@
 
 @layer base {
   body {
-    /* --font-roboto is set by next/font in layout.tsx; falls back to the token stack. */
-    font-family: var(--font-roboto), var(--font-sans);
+    /* Fonts: next/font (layout.tsx) sets --font-inter / --font-barlow-condensed, which the font tokens read. */
     min-height: 100dvh;
   }
 }

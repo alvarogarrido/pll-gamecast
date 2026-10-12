@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { cn } from '../lib/cn';
 
 export type TeamLogoSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -13,7 +13,10 @@ export interface TeamLogoProps {
   /** Short code for the fallback monogram, e.g. "DUKE". Falls back to the name's initials. */
   abbreviation?: string;
   size?: TeamLogoSize;
-  /** Team color, shown as the monogram's ring. */
+  /**
+   * Team color (e.g. `team.colors.primary`), shown as the monogram's ring. Set as the `--team-primary` runtime
+   * variable on the element, so it reads through the `border-team-primary` utility.
+   */
   color?: string;
   /** Hide from assistive tech when the team name is already written next to the logo. */
   decorative?: boolean;
@@ -29,10 +32,10 @@ const boxes: Record<TeamLogoSize, string> = {
 };
 
 const monogramText: Record<TeamLogoSize, string> = {
-  xs: 'text-[8px] leading-none',
-  sm: 'text-[10px] leading-none',
-  md: 'text-chip',
-  lg: 'text-h2',
+  xs: 'text-caption2 font-semibold',
+  sm: 'text-caption2 font-semibold',
+  md: 'text-caption font-semibold',
+  lg: 'text-title3',
   xl: 'text-score',
 };
 
@@ -84,10 +87,10 @@ export function TeamLogo({
       role={decorative ? undefined : 'img'}
       aria-label={decorative ? undefined : name}
       {...a11y}
-      style={color ? { borderColor: color } : undefined}
+      style={color ? ({ '--team-primary': color } as CSSProperties) : undefined}
       className={cn(
-        'inline-flex shrink-0 select-none items-center justify-center rounded-full border-2 bg-surface-row-raised font-bold tracking-tight text-text-primary',
-        color ? '' : 'border-border-default',
+        'inline-flex shrink-0 select-none items-center justify-center rounded-full border-2 bg-surface-raised tracking-tight text-text-primary',
+        color ? 'border-team-primary' : 'border-border-default',
         boxes[size],
         monogramText[size],
         className,

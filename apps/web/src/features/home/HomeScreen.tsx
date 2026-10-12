@@ -11,8 +11,8 @@ export function HomeScreen() {
   const query = useScoreboard();
   return (
     <main className="mx-auto w-full max-w-page px-4 py-8 md:px-6">
-      <h1 className="mb-1 text-h2">NCAA Gamecast</h1>
-      <p className="mb-6 text-body text-text-secondary">Pick a game to open its gamecast.</p>
+      <h1 className="mb-1 text-title1">NCAA Gamecast</h1>
+      <p className="mb-6 text-callout text-text-secondary">Pick a game to open its gamecast.</p>
       <QueryBoundary
         query={query}
         isEmpty={({ data }) => data.games.length === 0}
@@ -30,9 +30,9 @@ export function HomeScreen() {
             {data.games.map((game) => (
               <li key={game.id}>
                 <Link href={`/ncaa/game/${encodeURIComponent(game.id)}/`} className="block">
-                  <Card tone="card" bordered padding="sm" className="flex items-center gap-3 hover:border-border-default">
+                  <Card padding="sm" className="flex items-center gap-3 hover:bg-surface-raised">
                     <TeamLogo src={game.away.team.logoUrl} name={game.away.team.school} abbreviation={game.away.team.abbreviation} size="sm" decorative />
-                    <span className="flex-1 truncate text-stat-label">
+                    <span className="flex-1 truncate text-headline">
                       {game.away.team.school} at {game.home.team.school}
                     </span>
                     <TeamLogo src={game.home.team.logoUrl} name={game.home.team.school} abbreviation={game.home.team.abbreviation} size="sm" decorative />

@@ -1,0 +1,26 @@
+{
+  "name": "@pll/icons",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Gamecast icon set and broadcast network logos, exported from the PLL Figma library and generated into typed React components.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "optimize": "npx svgo -f src/svg -r --config svgo.config.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "peerDependencies": { "react": "^19" },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.4"
+  }
+}

@@ -9,7 +9,7 @@ export function OfflineBanner() {
   return (
     <div
       role="status"
-      className="sticky top-0 z-50 bg-brand-primary px-4 py-2 text-center text-chip text-text-on-brand"
+      className="sticky top-0 z-50 bg-accent-gold px-4 py-2 text-center text-footnote font-semibold text-text-on-accent"
     >
       You&apos;re offline. Showing the last loaded data; updates resume when you reconnect.
     </div>

@@ -41,8 +41,9 @@ Rules that define the project:
 - Atomic design: `src/atoms` -> `src/molecules` -> `src/organisms`. Compose upward only; export everything from `src/index.ts`.
 - **Plain props only.** No data fetching, no `next/*` imports, no app imports. Data comes in as props (types from `@pll/data/api` are fine).
   Components that need hooks start with `'use client'`; that is the only framework-specific line allowed.
-- Style with Tailwind utilities that resolve to **tokens** (`bg-surface-card`, `text-text-secondary`, `rounded-md`, `text-team-name`).
-  No raw hex values or arbitrary colors. Need something new? Add it to `packages/tokens/src/*.json` and run `npm run tokens`.
+- Style with Tailwind utilities that resolve to **tokens** (`bg-surface-card`, `text-text-secondary`, `border-border-default`, `rounded-md`,
+  `text-footnote`, `font-display`, `gap-2.5`). No raw hex values or arbitrary colors. Spacing uses only the approved scale (see Tokens).
+  Need something new? Add it to `packages/tokens/src/*.json` and run `npm run tokens`.
 - Write complete class strings (variant maps), never build class names by concatenation, so Tailwind can see them. Join with `cn()`.
 - Accessibility is part of done: semantic elements, visible focus (global `:focus-visible` ring), roles and keyboard support
   (see `Tabs`), `motion-safe:` for animation, decorative elements `aria-hidden`.
@@ -52,10 +53,15 @@ Rules that define the project:
 
 ## Tokens (`packages/tokens`)
 
-- Source of truth: DTCG JSON in `src/`. Provisional values from the PLL web gamecast until the Figma audit replaces them.
-- `npm run tokens` regenerates `dist/` (committed on purpose). Never edit `dist/` by hand.
-- CSS variables are `--pll-<path>`; `theme.css` aliases them to Tailwind namespaces 1:1, e.g. `color.text.secondary` -> `text-text-secondary`,
-  `color.surface.page` -> `bg-surface-page`, `text.teamName` -> `text-team-name`. Tailwind's default palette and radii are disabled.
+- Source of truth: the approved decisions in `docs/design-decisions.md`, encoded as DTCG JSON in `src/`: `primitives.json` (`palette.*`, raw
+  values) and `semantic.json` (`color.*`, aliases of primitives), plus type, radius, spacing, elevation and layout. Components use semantic tokens only.
+- `npm run tokens` regenerates `dist/` (committed on purpose). Never edit `dist/` by hand. Naming, the Tailwind mapping, spacing and the team-color
+  pattern are documented in `packages/tokens/README.md`; the Storybook page `Foundations/Tokens` renders every token from `dist/tokens.ts`.
+- CSS variables are `--pll-<path>`; `theme.css` maps them to Tailwind namespaces, e.g. `color.text.secondary` -> `text-text-secondary`,
+  `color.surface.page` -> `bg-surface-page`, `text.footnote` -> `text-footnote`, `radius.md` -> `rounded-md`. Tailwind's default palette, type scale,
+  radii, shadows and font families are disabled.
+- Fonts: Inter (UI) and Barlow Condensed (scores, clock, big numerals). `apps/web` loads them with `next/font/google`; Storybook via `preview-head.html`.
+- Team colors are runtime data: set `style={{ '--team-primary': team.colors.primary }}` on a team scope and use `bg-team-primary` / `text-team-secondary`.
 
 ## Scenario Lab (tooling, not product)
 

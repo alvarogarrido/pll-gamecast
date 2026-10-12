@@ -17,7 +17,7 @@ export const Circle: Story = { args: { variant: 'circle' } };
 
 export const ScoreboardPlaceholder: Story = {
   render: () => (
-    <Card tone="scoreboard" bordered aria-busy="true" aria-label="Loading game">
+    <Card aria-busy="true" aria-label="Loading game">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Skeleton variant="circle" className="size-14" />

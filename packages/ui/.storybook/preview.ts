@@ -12,15 +12,15 @@ const preview: Preview = {
     backgrounds: {
       options: {
         page: { name: 'Page', value: tokens.color.surface.page },
-        nav: { name: 'Nav', value: tokens.color.surface.nav },
         card: { name: 'Card', value: tokens.color.surface.card },
+        raised: { name: 'Raised', value: tokens.color.surface.raised },
       },
     },
     docs: { theme: themes.dark },
     controls: { matchers: { color: /(background|color)$/i } },
     options: {
-      // Story title convention: Atoms/…, Molecules/…, Organisms/…
-      storySort: { order: ['Atoms', 'Molecules', 'Organisms'] },
+      // Story title convention: Foundations/…, Atoms/…, Molecules/…, Organisms/…
+      storySort: { order: ['Foundations', 'Atoms', 'Molecules', 'Organisms'] },
     },
   },
 };

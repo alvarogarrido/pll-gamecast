@@ -14,7 +14,7 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "peerDependencies": { "react": "^19", "react-dom": "^19" },
-  "dependencies": { "clsx": "^2.1.1", "@pll/tokens": "*" },
+  "dependencies": { "clsx": "^2.1.1", "@pll/tokens": "*", "@pll/icons": "*" },
   "devDependencies": {
     "@pll/data": "*",
     "@storybook/addon-a11y": "^10.6.1",

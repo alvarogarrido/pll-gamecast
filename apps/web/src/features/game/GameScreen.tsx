@@ -18,7 +18,7 @@ export function GameScreen({ gameId }: { gameId: string }) {
   return (
     <div className="flex min-h-dvh flex-col">
       <OtherGamesBar currentGameId={gameId} />
-      <main className="mx-auto w-full max-w-page flex-1 px-4 pt-4 pb-12 md:px-6">
+      <main className="mx-auto w-full max-w-page flex-1 px-4 pt-4 pb-10 md:px-6">
         <HeaderBar gameId={gameId} />
         <SectionSelector tab={tab} onTabChange={setTab} />
         <div {...tabPanelProps(SECTION_ID_BASE, tab)} className="outline-offset-4">

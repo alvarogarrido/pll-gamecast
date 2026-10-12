@@ -1,0 +1,13 @@
+{
+  "elevation": {
+    "$type": "shadow",
+    "$description": "Cards stay flat with a 1px border.default. Shadows are only for sticky bars and overlays.",
+    "1": {
+      "$value": { "color": "{palette.black}", "offsetX": "0px", "offsetY": "0px", "blur": "12px", "spread": "0px" }
+    },
+    "2": {
+      "$value": { "color": "#000000CC", "offsetX": "0px", "offsetY": "2px", "blur": "12px", "spread": "0px" },
+      "$description": "rgba(0,0,0,.8)"
+    }
+  }
+}

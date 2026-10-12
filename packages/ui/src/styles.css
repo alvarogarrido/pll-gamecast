@@ -2,7 +2,8 @@
  * Entry stylesheet for @pll/ui. Import once per app (Next layout, Storybook preview).
  *   - Tailwind v4
  *   - design tokens: CSS variables (:root) + the @theme mapping onto Tailwind namespaces
- * Fonts are NOT loaded here: the app loads Roboto with next/font, Storybook via preview-head.html.
+ * Fonts are NOT loaded here: the app loads Inter + Barlow Condensed with next/font (which sets --font-inter and
+ * --font-barlow-condensed), Storybook via preview-head.html. The font tokens pick those variables up when present.
  */
 @import "tailwindcss";
 @import "@pll/tokens/tokens.css";
@@ -36,12 +37,12 @@
     background-color: var(--color-surface-page);
     color: var(--color-text-primary);
     font-family: var(--font-sans);
-    font-size: var(--text-body);
-    line-height: var(--text-body--line-height);
+    font-size: var(--text-callout);
+    line-height: var(--text-callout--line-height);
     -webkit-font-smoothing: antialiased;
   }
   :focus-visible {
-    outline: 2px solid var(--color-brand-primary);
+    outline: 2px solid var(--color-accent-gold);
     outline-offset: 2px;
   }
 }

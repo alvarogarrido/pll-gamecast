@@ -55,7 +55,7 @@ export function QueryBoundary<T>({
   return (
     <>
       {isError && (
-        <p role="status" className="mb-2 text-chip text-text-tertiary">
+        <p role="status" className="mb-2 text-caption text-text-tertiary">
           Couldn&apos;t refresh. Showing the last update.
         </p>
       )}

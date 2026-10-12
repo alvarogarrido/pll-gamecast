@@ -9,8 +9,8 @@ export interface SkeletonProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 const variants: Record<SkeletonVariant, string> = {
-  text: 'h-4 w-full rounded-sm',
-  rect: 'rounded-md',
+  text: 'h-4 w-full rounded-xs',
+  rect: 'rounded-sm',
   circle: 'size-10 rounded-full',
 };
 
@@ -19,7 +19,7 @@ export function Skeleton({ variant = 'text', className, ...rest }: SkeletonProps
   return (
     <div
       aria-hidden="true"
-      className={cn('bg-surface-row-default motion-safe:animate-pulse', variants[variant], className)}
+      className={cn('bg-surface-raised motion-safe:animate-pulse', variants[variant], className)}
       {...rest}
     />
   );

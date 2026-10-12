@@ -13,9 +13,9 @@ export interface StatusPillProps {
 
 const defaults: Record<GameStatusKind, { label: string; tone: ChipTone }> = {
   scheduled: { label: 'Scheduled', tone: 'outline' },
-  live: { label: 'Live', tone: 'positive' },
+  live: { label: 'Live', tone: 'live' },
   final: { label: 'Final', tone: 'neutral' },
-  halftime: { label: 'Halftime', tone: 'brand' },
+  halftime: { label: 'Halftime', tone: 'gold' },
 };
 
 export function StatusPill({ status, label, size, className }: StatusPillProps) {
@@ -28,7 +28,7 @@ export function StatusPill({ status, label, size, className }: StatusPillProps) 
       data-status={status}
       leading={
         status === 'live' ? (
-          <span aria-hidden="true" className="size-2 rounded-full bg-live motion-safe:animate-live-pulse" />
+          <span aria-hidden="true" className="size-2 rounded-full bg-status-live motion-safe:animate-live-pulse" />
         ) : undefined
       }
     >

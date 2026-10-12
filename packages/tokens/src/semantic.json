@@ -1,0 +1,72 @@
+{
+  "color": {
+    "$description": "Layer 2: semantic colors. Exactly the names approved in docs/design-decisions.md. Each aliases a primitive.",
+    "$type": "color",
+    "surface": {
+      "page": { "$value": "{palette.coal}", "$description": "Page background (D1)" },
+      "card": { "$value": "{palette.gray.900}", "$description": "Card surface (D2)" },
+      "track": { "$value": "{palette.gray.850}", "$description": "Segmented control track, progress track" },
+      "raised": { "$value": "{palette.gray.800}" },
+      "chip": { "$value": "{palette.gray.700}" },
+      "selected": { "$value": "{palette.gray.600}", "$description": "Active segment pill" }
+    },
+    "border": {
+      "default": { "$value": "{palette.border}" },
+      "hairline": {
+        "$value": "{palette.white}",
+        "$description": "White at 8%",
+        "$extensions": { "com.pll": { "alpha": 0.08 } }
+      }
+    },
+    "text": {
+      "primary": { "$value": "{palette.white}" },
+      "secondary": { "$value": "{palette.gray.300}" },
+      "tertiary": { "$value": "{palette.gray.400}" },
+      "disabled": { "$value": "{palette.gray.600}" },
+      "onAccent": { "$value": "{palette.coal}", "$description": "Text on gold" }
+    },
+    "accent": {
+      "gold": { "$value": "{palette.gold}", "$description": "PLL gold (D6)" },
+      "goldSubtle": { "$value": "{palette.goldSubtle}" }
+    },
+    "status": {
+      "live": { "$value": "{palette.green}", "$description": "Live indicator (D3)" },
+      "positive": { "$value": "{palette.green}" },
+      "negative": { "$value": "{palette.red}" },
+      "info": { "$value": "{palette.blue}" }
+    },
+    "link": { "$value": "{palette.blue}" },
+    "live": {
+      "tint": {
+        "$value": "{color.status.live}",
+        "$description": "status.live at 10%",
+        "$extensions": { "com.pll": { "alpha": 0.1 } }
+      }
+    },
+    "gold": {
+      "tint": {
+        "$value": "{color.accent.gold}",
+        "$description": "accent.gold at 10%",
+        "$extensions": { "com.pll": { "alpha": 0.1 } }
+      }
+    },
+    "negative": {
+      "tint": {
+        "$value": "{color.status.negative}",
+        "$description": "status.negative at 10%",
+        "$extensions": { "com.pll": { "alpha": 0.1 } }
+      }
+    },
+    "team": {
+      "$description": "Team colors come from API data at runtime. The value here is only the neutral fallback; a team scope overrides it with style={{'--team-primary': ...}}.",
+      "primary": {
+        "$value": "{palette.gray.600}",
+        "$extensions": { "com.pll": { "runtimeVar": "--team-primary" } }
+      },
+      "secondary": {
+        "$value": "{palette.gray.700}",
+        "$extensions": { "com.pll": { "runtimeVar": "--team-secondary" } }
+      }
+    }
+  }
+}
