@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { Insight } from '@pll/data/api';
-import { insightIcon, sortInsights, splitInsights } from './liveInsights.logic';
+import type { Insight, PlayerRef } from '@pll/data/api';
+import { insightIcon, insightPlayer, sortInsights, splitInsights } from './liveInsights.logic';
 
 const ins = (id: string, elapsedSeconds: number, kind: Insight['kind'] = 'note'): Insight => ({
   id,
@@ -41,5 +41,26 @@ describe('insights', () => {
   it('handles none and one', () => {
     expect(splitInsights([])).toEqual({ latest: null, older: [], hidden: 0 });
     expect(splitInsights([ins('a', 1)])).toEqual({ latest: ins('a', 1), older: [], hidden: 0 });
+  });
+});
+
+describe('insightPlayer', () => {
+  const ref = (id: string): PlayerRef => ({
+    id,
+    teamId: 't1',
+    firstName: 'Brennan',
+    lastName: 'Dowd',
+    jerseyNumber: 11,
+    position: 'A',
+    classYear: 'Sr',
+    photoUrl: null,
+  });
+  it('finds the referenced player', () => {
+    expect(insightPlayer({ playerId: 'p2' }, [ref('p1'), ref('p2')])?.id).toBe('p2');
+  });
+  it('is null for team-level insights, a missing ref or no refs at all', () => {
+    expect(insightPlayer({ playerId: null }, [ref('p1')])).toBeNull();
+    expect(insightPlayer({ playerId: 'p9' }, [ref('p1')])).toBeNull();
+    expect(insightPlayer({ playerId: 'p1' })).toBeNull();
   });
 });

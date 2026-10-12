@@ -41,6 +41,7 @@ import {
   WinProbabilityChart,
   WinProbabilityChartSkeleton,
   featuredArticle,
+  goalMarkers,
   nextVideo,
   orderVideos,
   otherArticles,
@@ -253,9 +254,13 @@ export function LatestPlaysModule() {
 export function WinProbabilityModule() {
   const { gameId, game } = useGameView();
   const query = useWinProbability(gameId);
+  // Goal dots come from the plays Game flow / Latest plays already load (same query key, so no extra request:
+  // `enabled: false` only reads the shared cache). Until they are there the chart renders without dots.
+  const plays = useGamePlays(gameId, { enabled: false }).data?.data;
+  const goals = plays ? goalMarkers(plays.plays, game, plays.playerRefs) : undefined;
   return (
     <QueryBoundary query={query} label="Win probability" loading={<WinProbabilityChartSkeleton />}>
-      {({ data }) => <WinProbabilityChart series={data} game={game} />}
+      {({ data }) => <WinProbabilityChart series={data} game={game} goals={goals} />}
     </QueryBoundary>
   );
 }
@@ -265,7 +270,7 @@ export function LiveInsightsModule() {
   const query = useGameInsights(gameId);
   return (
     <QueryBoundary query={query} label="Live insights" loading={<LiveInsightsSkeleton />}>
-      {({ data }) => <LiveInsights insights={data.insights} game={game} />}
+      {({ data }) => <LiveInsights insights={data.insights} game={game} playerRefs={data.playerRefs} />}
     </QueryBoundary>
   );
 }

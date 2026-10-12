@@ -11,7 +11,7 @@
  *   GET /games/{id}/stats           -> GameStats             (box score, key team stats, top performers)
  *   GET /games/{id}/plays           -> GamePlays             (play-by-play, latest scores)
  *   GET /games/{id}/win-probability -> WinProbabilitySeries  (line chart)
- *   GET /games/{id}/insights        -> GameInsights          (live insights)
+ *   GET /games/{id}/insights        -> GameInsights          (live insights + the players they mention)
  *   GET /games/{id}/preview         -> GamePreview           (pregame modules)
  *   GET /games/{id}/media           -> GameMedia             (videos + articles)
  */
@@ -231,7 +231,13 @@ export const Insight = z.object({
 });
 export type Insight = z.infer<typeof Insight>;
 
-export const GameInsights = envelope(z.object({ insights: z.array(Insight) }));
+export const GameInsights = envelope(
+  z.object({
+    insights: z.array(Insight),
+    /** Only the players referenced by `insights[].playerId` (so a card can show the player's photo). */
+    playerRefs: z.array(PlayerRef),
+  }),
+);
 export type GameInsights = z.infer<typeof GameInsights>;
 
 export const RosterPlayer = PlayerRef.extend({ season: Player.shape.season });

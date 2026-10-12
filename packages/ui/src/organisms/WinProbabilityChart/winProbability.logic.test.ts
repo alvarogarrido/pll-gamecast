@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { GameSummary, Play, PlayerRef } from '@pll/data/api';
 import {
   buildAreaSegments,
   buildLinePath,
@@ -11,14 +12,19 @@ import {
   describeSeries,
   displayProbability,
   finalResult,
+  goalLabel,
+  goalMarkers,
+  goalsAtSeconds,
   MAX_OT_SHARE,
   MIN_OT_SHARE,
   layoutBands,
   nearestIndex,
   pickChartColors,
+  placeGoalDots,
   sortPoints,
   stepIndex,
   summarizeSeries,
+  valueAtSeconds,
   type SeriesPoint,
 } from './winProbability.logic';
 import { teamPairColors } from '../../lib/team-style';
@@ -290,5 +296,85 @@ describe('finalResult (D15)', () => {
   it('falls back to "Final" for level or missing scores', () => {
     expect(finalResult(g(12, 12))).toEqual({ side: null, text: 'Final' });
     expect(finalResult(g(null, 12))).toEqual({ side: null, text: 'Final' });
+  });
+});
+
+describe('goalMarkers', () => {
+  const game = { home: { team: { id: 'h' } }, away: { team: { id: 'a' } } } as unknown as Pick<GameSummary, 'home' | 'away'>;
+  const play = (over: Partial<Play>): Play => ({
+    id: 'p',
+    seq: 0,
+    period: 1,
+    clockSeconds: 0,
+    elapsedSeconds: 0,
+    type: 'goal',
+    teamId: 'h',
+    playerId: null,
+    assistPlayerId: null,
+    goalieId: null,
+    opponentPlayerId: null,
+    description: '',
+    homeScore: 0,
+    awayScore: 0,
+    winProbabilityHome: null,
+    details: {},
+    ...over,
+  });
+  const foley = { id: 'k', teamId: 'a', firstName: 'Kyle', lastName: 'Foley', jerseyNumber: 7, position: 'A', classYear: 'Sr', photoUrl: null } as PlayerRef;
+
+  it('keeps only goals, maps the team to a side and labels the scorer', () => {
+    const plays = [
+      play({ id: '1', elapsedSeconds: 600, teamId: 'a', playerId: 'k' }),
+      play({ id: '2', elapsedSeconds: 700, type: 'shot', teamId: 'h' }),
+      play({ id: '3', elapsedSeconds: 800, teamId: 'h', playerId: 'unknown' }),
+    ];
+    expect(goalMarkers(plays, game, [foley])).toEqual([
+      { elapsedSeconds: 600, side: 'away', label: 'K. Foley' },
+      { elapsedSeconds: 800, side: 'home' },
+    ]);
+  });
+  it('ignores goals without a team or of a team outside the game, and sorts by time', () => {
+    const plays = [
+      play({ id: '1', elapsedSeconds: 900, teamId: 'h' }),
+      play({ id: '2', elapsedSeconds: 100, teamId: null }),
+      play({ id: '3', elapsedSeconds: 200, teamId: 'x' }),
+      play({ id: '4', elapsedSeconds: 300, teamId: 'a' }),
+    ];
+    expect(goalMarkers(plays, game).map((g) => [g.elapsedSeconds, g.side])).toEqual([[300, 'away'], [900, 'home']]);
+    expect(goalMarkers([], game)).toEqual([]);
+  });
+});
+
+describe('goal dots on the line', () => {
+  const points = [pt(0, 0.5), pt(600, 0.7), pt(1200, 0.3)];
+  const scale = createScale(400, 200, { top: 10, right: 40, bottom: 20, left: 0 }, REG);
+
+  it('valueAtSeconds hits points exactly, interpolates between them and is null outside the series', () => {
+    expect(valueAtSeconds(points, 600)).toBe(0.7);
+    expect(valueAtSeconds(points, 300)).toBeCloseTo(0.6);
+    expect(valueAtSeconds(points, 900)).toBeCloseTo(0.5);
+    expect(valueAtSeconds(points, 1300)).toBeNull();
+    expect(valueAtSeconds([], 0)).toBeNull();
+  });
+  it('places a dot on the line at the goal time', () => {
+    const [dot] = placeGoalDots([{ elapsedSeconds: 600, side: 'home' }], points, scale);
+    expect(dot).toMatchObject({ x: scale.x(600), y: scale.y(0.7), side: 'home' });
+  });
+  it('drops goals past the end of the series and dots that would cover the end marker', () => {
+    const goals = [
+      { elapsedSeconds: 600, side: 'away' as const },
+      { elapsedSeconds: 1200, side: 'home' as const },
+      { elapsedSeconds: 2000, side: 'home' as const },
+    ];
+    expect(placeGoalDots(goals, points, scale)).toHaveLength(2);
+    const end = { x: scale.x(1200), y: scale.y(0.3), radius: 10 };
+    expect(placeGoalDots(goals, points, scale, end).map((d) => d.elapsedSeconds)).toEqual([600]);
+  });
+  it('goalsAtSeconds and goalLabel feed the tooltip', () => {
+    const goals = [{ elapsedSeconds: 600, side: 'home' as const, label: 'K. Foley' }, { elapsedSeconds: 900, side: 'away' as const }];
+    expect(goalsAtSeconds(goals, 600)).toHaveLength(1);
+    expect(goalsAtSeconds(goals, 601)).toHaveLength(0);
+    expect(goalLabel(goals[0]!)).toBe('GOAL · K. Foley');
+    expect(goalLabel(goals[1]!)).toBe('GOAL');
   });
 });

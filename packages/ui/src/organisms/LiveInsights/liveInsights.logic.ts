@@ -1,4 +1,4 @@
-import type { Insight } from '@pll/data/api';
+import type { Insight, PlayerRef } from '@pll/data/api';
 import type { IconName } from '@pll/icons';
 
 /** Icon per insight kind: fire = run/streak, trend-up = lead change, trophy = milestone/record, clock = drought. */
@@ -58,4 +58,10 @@ export function splitInsights(insights: readonly Insight[], { maxOlder = 3, expa
   const [latest = null, ...rest] = sorted;
   const older = expanded ? rest : rest.slice(0, maxOlder);
   return { latest, older, hidden: rest.length - older.length };
+}
+
+/** The player an insight is about, found in `playerRefs`; `null` for team-level insights or when the ref is missing. */
+export function insightPlayer(insight: Pick<Insight, 'playerId'>, playerRefs: readonly PlayerRef[] = []): PlayerRef | null {
+  if (!insight.playerId) return null;
+  return playerRefs.find((p) => p.id === insight.playerId) ?? null;
 }

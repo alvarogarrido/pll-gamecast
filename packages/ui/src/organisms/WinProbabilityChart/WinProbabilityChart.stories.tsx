@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { db, fixtures, GAMES } from '../../fixtures';
 import { WinProbabilityChart } from './WinProbabilityChart';
+import { goalMarkers } from './winProbability.logic';
 
 const meta = {
   title: 'Organisms/WinProbabilityChart',
@@ -17,6 +18,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const of = (id: string) => ({ game: fixtures.game(id), series: fixtures.winProbability(id) });
+
+/** Same as `of`, plus the goal markers built from the game's plays (what apps/web passes). */
+const withGoals = (id: string) => {
+  const { plays, playerRefs } = fixtures.plays(id);
+  return { ...of(id), goals: goalMarkers(plays, fixtures.game(id), playerRefs) };
+};
 
 /**
  * Story helper: find a finished game that went to overtime by scanning the fixture db plays for period >= 5
@@ -56,8 +63,9 @@ export const Column380: Story = {
   decorators: [(Story) => <div className="mx-auto w-[380px] max-w-full"><Story /></div>],
 };
 
+/** 375px wide, with goal dots (about 6px) on the line. */
 export const Mobile: Story = {
-  args: of(GAMES.liveQ4),
+  args: withGoals(GAMES.liveQ4),
   globals: { viewport: { value: 'mobile1', isRotated: false } },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
   decorators: [(Story) => <div className="mx-auto w-[375px] max-w-full"><Story /></div>],
@@ -82,3 +90,8 @@ export const OvertimeMobile: Story = {
   args: of(findOvertimeGameId()),
   decorators: [(Story) => <div className="mx-auto w-[375px] max-w-full"><Story /></div>],
 };
+
+/** Goal dots in the scoring team's color; scrub onto one to see "GOAL · name" in the tooltip. The live end marker stays on top. */
+export const LiveQ4WithGoals: Story = { args: withGoals(GAMES.liveQ4) };
+export const FinalWithGoals: Story = { args: withGoals(GAMES.final) };
+export const OvertimeWithGoals: Story = { args: withGoals(findOvertimeGameId()) };

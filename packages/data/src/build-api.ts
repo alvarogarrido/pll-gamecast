@@ -340,7 +340,7 @@ function buildWinProbability(ctx: Ctx, g: GameRecord): WinProbabilitySeries {
 
 function buildInsights(ctx: Ctx, g: GameRecord): GameInsights {
   const v = ctx.view(g);
-  if (!v.started) return { data: { insights: [] }, meta: ctx.meta };
+  if (!v.started) return { data: { insights: [], playerRefs: [] }, meta: ctx.meta };
   const auto = autoInsights(
     v.plays,
     { gameId: g.id, homeId: g.home.teamId, awayId: g.away.teamId, names: ctx.names },
@@ -363,7 +363,8 @@ function buildInsights(ctx: Ctx, g: GameRecord): GameInsights {
       };
     });
   const insights = [...auto, ...editorial].sort((a, b) => a.elapsedSeconds - b.elapsedSeconds || a.id.localeCompare(b.id));
-  return { data: { insights }, meta: ctx.meta };
+  const playerRefs = ctx.refsFor(insights.flatMap((i) => (i.playerId ? [i.playerId] : [])));
+  return { data: { insights, playerRefs }, meta: ctx.meta };
 }
 
 function buildPreview(ctx: Ctx, g: GameRecord): GamePreview {

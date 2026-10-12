@@ -162,6 +162,19 @@ describe('buildApi', () => {
     if (g.status === 'final') expect(get<GameInsights>(`/games/${g.id}/insights`).data.insights.some((i) => i.id === editorial.id)).toBe(true);
   });
 
+  it('insights carry playerRefs for exactly the players their insights reference', () => {
+    let withPlayer = 0;
+    for (const g of db.games) {
+      const { insights, playerRefs } = get<GameInsights>(`/games/${g.id}/insights`).data;
+      const wanted = new Set(insights.flatMap((i) => (i.playerId ? [i.playerId] : [])));
+      withPlayer += wanted.size;
+      expect(new Set(playerRefs.map((r) => r.id))).toEqual(wanted);
+      expect(playerRefs).toHaveLength(wanted.size); // no duplicates
+    }
+    expect(withPlayer).toBeGreaterThan(0);
+    for (const g of scheduled) expect(get<GameInsights>(`/games/${g.id}/insights`).data.playerRefs).toEqual([]);
+  });
+
   it('preview and media modules are populated', () => {
     const g = scheduled[0]!;
     const preview = get<GamePreview>(`/games/${g.id}/preview`).data;

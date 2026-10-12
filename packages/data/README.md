@@ -58,7 +58,7 @@ validates against the schema in `src/api.ts`.
 | `/games/{id}/stats` | `GameStats` (team box score, player stats, player refs) |
 | `/games/{id}/plays` | `GamePlays` (chronological, server-rendered descriptions, running score and win probability) |
 | `/games/{id}/win-probability` | `WinProbabilitySeries` |
-| `/games/{id}/insights` | `GameInsights` (derived + editorial, chronological) |
+| `/games/{id}/insights` | `GameInsights` (derived + editorial, chronological; `playerRefs` for the players they mention) |
 | `/games/{id}/preview` | `GamePreview` (rosters, injuries, season averages, last 3 results, standings, staff picks) |
 | `/games/{id}/media` | `GameMedia` |
 

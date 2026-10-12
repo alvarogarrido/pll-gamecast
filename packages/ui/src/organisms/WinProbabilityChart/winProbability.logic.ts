@@ -2,8 +2,8 @@
  * Pure geometry and text for the win-probability chart: time domain (regulation plus overtimes), scales, the line and
  * area paths, quarter bands, scrub lookups and the screen-reader summary. No React, no DOM.
  */
-import type { WinProbabilitySeries } from '@pll/data/api';
-import { clock, pct, periodLabel } from '../../lib/format';
+import type { GameSummary, Play, PlayerRef, WinProbabilitySeries } from '@pll/data/api';
+import { clock, pct, periodLabel, playerShortName } from '../../lib/format';
 import { teamPairColors, type TeamColorPair } from '../../lib/team-style';
 
 export type SeriesData = WinProbabilitySeries['data'];
@@ -304,6 +304,91 @@ export function clockAtSeconds(domain: ChartDomain, seconds: number) {
 /** Left edge of a tooltip of `tipWidth` centered on `x`, kept inside `0..width`. */
 export function clampTooltipLeft(x: number, tipWidth: number, width: number): number {
   return Math.max(0, Math.min(width - tipWidth, x - tipWidth / 2));
+}
+
+// ---------------------------------------------------------------------------
+// Goal markers
+// ---------------------------------------------------------------------------
+
+export interface GoalMarker {
+  elapsedSeconds: number;
+  /** The scoring team. */
+  side: 'away' | 'home';
+  /** Scorer short name ("K. Foley"), when known. */
+  label?: string;
+}
+
+/**
+ * Goals from the play log as chart markers: `goal` plays with a team of this game, in game order. The label is the
+ * scorer's short name, looked up in `playerRefs` (no label without a match).
+ */
+export function goalMarkers(
+  plays: readonly Play[],
+  game: Pick<GameSummary, 'home' | 'away'>,
+  playerRefs: readonly PlayerRef[] = [],
+): GoalMarker[] {
+  const markers: GoalMarker[] = [];
+  for (const play of plays) {
+    if (play.type !== 'goal' || !play.teamId) continue;
+    const side = play.teamId === game.home.team.id ? 'home' : play.teamId === game.away.team.id ? 'away' : null;
+    if (!side) continue;
+    const scorer = play.playerId ? playerRefs.find((p) => p.id === play.playerId) : undefined;
+    markers.push({ elapsedSeconds: play.elapsedSeconds, side, ...(scorer ? { label: playerShortName(scorer) } : {}) });
+  }
+  return markers.sort((a, b) => a.elapsedSeconds - b.elapsedSeconds);
+}
+
+/** Home probability on the drawn line at `seconds` (linear between points); `null` outside the series. */
+export function valueAtSeconds(points: readonly SeriesPoint[], seconds: number): number | null {
+  const first = points[0];
+  const last = points[points.length - 1];
+  if (!first || !last || seconds < first.elapsedSeconds || seconds > last.elapsedSeconds) return null;
+  const i = nearestIndex(points, seconds);
+  // nearestIndex picks the latest of equal timestamps and the closest otherwise; interpolate toward the neighbor on the other side.
+  const near = points[i]!;
+  if (near.elapsedSeconds === seconds) return near.home;
+  const other = near.elapsedSeconds < seconds ? points[i + 1] : points[i - 1];
+  if (!other) return near.home;
+  const [a, b] = near.elapsedSeconds < other.elapsedSeconds ? [near, other] : [other, near];
+  const t = (seconds - a.elapsedSeconds) / (b.elapsedSeconds - a.elapsedSeconds);
+  return a.home + t * (b.home - a.home);
+}
+
+export interface GoalDot extends GoalMarker {
+  x: number;
+  y: number;
+}
+
+/**
+ * Goal markers placed on the line. Goals outside the series are dropped, and so is any dot within `avoid.radius` of
+ * `avoid` (the live end marker), so a dot never hides it.
+ */
+export function placeGoalDots(
+  goals: readonly GoalMarker[],
+  points: readonly SeriesPoint[],
+  scale: Scale,
+  avoid?: { x: number; y: number; radius: number },
+): GoalDot[] {
+  const dots: GoalDot[] = [];
+  for (const goal of goals) {
+    const value = valueAtSeconds(points, goal.elapsedSeconds);
+    if (value === null) continue;
+    const x = scale.x(goal.elapsedSeconds);
+    const y = scale.y(value);
+    if (avoid && Math.hypot(x - avoid.x, y - avoid.y) < avoid.radius) continue;
+    dots.push({ ...goal, x, y });
+  }
+  return dots;
+}
+
+/** Goals scored at `seconds` (the scrubbed point), so the tooltip can say "GOAL". */
+export function goalsAtSeconds(goals: readonly GoalMarker[], seconds: number): GoalMarker[] {
+  return goals.filter((g) => Math.abs(g.elapsedSeconds - seconds) < 0.5);
+}
+
+/** Tooltip / screen-reader text for a goal: "GOAL · K. Foley", or just "GOAL" without a scorer. */
+export function goalLabel(goal: Pick<GoalMarker, 'label'>): string {
+  return goal.label ? `GOAL · ${goal.label}` : 'GOAL';
 }
 
 // ---------------------------------------------------------------------------

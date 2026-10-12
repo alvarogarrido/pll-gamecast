@@ -73,3 +73,7 @@ Alvaro decided D7–D9. The coordinator decided D10–D18 from the PRD and Figma
 | D16 | Desktop pregame keeps venue and weather inside the Header Bar; there's no separate VenueInfo card on desktop pregame. |
 | D17 | GameSync banner and Figma's header action row are out of scope (PLL app features, not in the PRD). |
 | D18 | Overtime gets a fixed minimum width in the win-probability chart (at least 10% of the x axis) so its label and sudden-victory end stay legible. |
+| D19 | Insight cards show the player's avatar (team-colored ring) for player insights; team insights keep the logo. |
+| D20 | Win-probability line shows goal dots (team on-dark colors); the scrub tooltip names the scorer. |
+| D21 | Weather icons: keep the code glyphs; Figma gets placeholder components the designer will replace. |
+| D22 | **Desktop Header Bar (≥1024px) = Direction A "Broadcast band"** (proposal artifact https://claude.ai/artifact/CSeySuZS9eQSqdnZp28TGr): huge Barlow scores beside the teams, a team-color wash at each end, and a compact strip below (linescore, where to watch, venue, weather, attendance; pregame: win-probability split). Mobile and the minimized bar are unchanged. |

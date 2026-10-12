@@ -23,10 +23,14 @@ import {
   describeSeries,
   displayProbability,
   finalResult,
+  goalLabel,
+  goalsAtSeconds,
   layoutBands,
   nearestIndex,
+  placeGoalDots,
   sortPoints,
   stepIndex,
+  type GoalMarker,
   type SeriesData,
 } from './winProbability.logic';
 
@@ -34,6 +38,11 @@ export interface WinProbabilityChartProps {
   series: SeriesData;
   /** `winProbabilityHome` is the pregame value before kickoff (`GameDetail['data']` fits). */
   game: Pick<GameSummary, 'status' | 'home' | 'away'> & { winProbabilityHome?: number | null };
+  /**
+   * Goals to mark on the line: a small dot in the scoring team's color at each goal's elapsed time, and "GOAL · name" in
+   * the scrub tooltip. Build them from the plays with `goalMarkers(plays, game, playerRefs)`. Omit (plays not loaded) for no dots.
+   */
+  goals?: readonly GoalMarker[];
   loading?: boolean;
   className?: string;
 }
@@ -41,6 +50,10 @@ export interface WinProbabilityChartProps {
 const PADDING = { top: 8, right: 36, bottom: 22, left: 0 };
 const TOOLTIP_WIDTH = 148;
 const DEFAULT_WIDTH = 340;
+/** Goal dot radius: 3 = a 6px dot, readable at 375px without crowding the line. */
+const GOAL_DOT_RADIUS = 3;
+/** A goal dot closer than this to the live end marker (its pulse is r=7) is not drawn, so it never hides the marker. */
+const END_MARKER_CLEARANCE = 10;
 
 export function WinProbabilityChartSkeleton({ className }: { className?: string }) {
   return (
@@ -60,7 +73,7 @@ export function WinProbabilityChartSkeleton({ className }: { className?: string 
  * 99.9% / 0.1% (D15); a finished game's header says who won ("Duke won") instead of 100.0% / 0.0%. Overtime is drawn at
  * least 10% of the axis wide (D18). Before kickoff it is a simple split bar instead. The SVG is drawn in real pixels from the measured width, so strokes and text never stretch.
  */
-export function WinProbabilityChart({ series, game, loading = false, className }: WinProbabilityChartProps) {
+export function WinProbabilityChart({ series, game, goals, loading = false, className }: WinProbabilityChartProps) {
   const summaryId = useId();
   const hostRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(DEFAULT_WIDTH);
@@ -149,19 +162,26 @@ export function WinProbabilityChart({ series, game, loading = false, className }
   const result = finalResult(game);
   const winnerTeam = result.side ? game[result.side].team : null;
   const y50 = scale.y(0.5);
-
   const active = scrub === null ? null : points[Math.min(scrub, lastIndex)]!;
   const activeX = active ? scale.x(active.elapsedSeconds) : 0;
   const activeY = active ? scale.y(active.home) : 0;
   const tipLeft = clampTooltipLeft(activeX, TOOLTIP_WIDTH, width);
   const tipOnTop = active ? activeY > y50 : true;
 
+  const endX = scale.x(last.elapsedSeconds);
+  const endY = scale.y(last.home);
+  const goalDots = goals?.length
+    ? placeGoalDots(goals, points, scale, live ? { x: endX, y: endY, radius: END_MARKER_CLEARANCE } : undefined)
+    : [];
+  const activeGoals = active ? goalsAtSeconds(goals ?? [], active.elapsedSeconds) : [];
+
   const summary = describeSeries(points, { home: home.school, away: away.school }, { live, result: final ? result : undefined });
   const valueIndex = scrub ?? lastIndex;
   const valuePoint = points[valueIndex]!;
   const valueClock = clockAtSeconds(domain, valuePoint.elapsedSeconds).label;
   const shownHome = displayProbability(valuePoint.home);
-  const valueText = `${valueClock}: ${away.school} ${pct(1 - shownHome)}, ${home.school} ${pct(shownHome)}`;
+  const valueGoals = goalsAtSeconds(goals ?? [], valuePoint.elapsedSeconds);
+  const valueText = `${valueClock}: ${away.school} ${pct(1 - shownHome)}, ${home.school} ${pct(shownHome)}${valueGoals.map((g) => `. ${goalLabel(g)}`).join('')}`;
 
   const scrubFromPointer = (e: PointerEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -278,18 +298,33 @@ export function WinProbabilityChart({ series, game, loading = false, className }
             {/* The line */}
             <path d={linePath} fill="none" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" className="stroke-text-primary" />
 
+            {/* Goal dots on the line, in the scoring team's color with a 1px card ring; drawn under the end marker */}
+            {goalDots.length > 0 && (
+              <g>
+                {(['away', 'home'] as const).map((side) => (
+                  <g key={side} style={teamColorVars(game[side].team.colors.primary, null, colors[side])}>
+                    {goalDots
+                      .filter((d) => d.side === side)
+                      .map((d, i) => (
+                        <circle key={i} cx={d.x} cy={d.y} r={GOAL_DOT_RADIUS} strokeWidth={1} className="fill-team-primary-on-dark stroke-surface-card" />
+                      ))}
+                  </g>
+                ))}
+              </g>
+            )}
+
             {/* End marker while live */}
             {live && (
               <g>
                 <circle
-                  cx={scale.x(last.elapsedSeconds)}
-                  cy={scale.y(last.home)}
+                  cx={endX}
+                  cy={endY}
                   r={7}
                   className="fill-status-live/40 motion-safe:animate-live-pulse"
                   // Scale from the circle's own center, not the SVG origin.
                   style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
                 />
-                <circle cx={scale.x(last.elapsedSeconds)} cy={scale.y(last.home)} r={4} className="fill-status-live stroke-surface-card" strokeWidth={2} />
+                <circle cx={endX} cy={endY} r={4} className="fill-status-live stroke-surface-card" strokeWidth={2} />
               </g>
             )}
 
@@ -313,6 +348,16 @@ export function WinProbabilityChart({ series, game, loading = false, className }
               )}
             >
               <p className="font-display text-clock text-text-secondary">{clockAtSeconds(domain, active.elapsedSeconds).label}</p>
+              {activeGoals.map((g, i) => (
+                <p key={i} className="mt-1 flex items-center gap-1 truncate text-footnote font-semibold text-text-primary">
+                  <span
+                    aria-hidden="true"
+                    style={teamColorVars(game[g.side].team.colors.primary, null, colors[g.side])}
+                    className="size-2 shrink-0 rounded-full bg-team-primary-on-dark"
+                  />
+                  {goalLabel(g)}
+                </p>
+              ))}
               {[
                 { team: away, value: 1 - displayProbability(active.home), color: colors.away },
                 { team: home, value: displayProbability(active.home), color: colors.home },
