@@ -38,3 +38,14 @@ export const Mobile: Story = {
   decorators: [(Story) => <div style={{ width: 375 }}><Story /></div>],
 };
 export const Narrow320: Story = { decorators: [(Story) => <div style={{ width: 320 }}><Story /></div>] };
+
+/** `renderLink` lets the app use its router's `Link` so switching games is a client-side navigation. */
+export const CustomLink: Story = {
+  args: {
+    renderLink: (props) => (
+      <a {...props} data-router-link="" onClick={(e) => e.preventDefault()}>
+        {props.children}
+      </a>
+    ),
+  },
+};

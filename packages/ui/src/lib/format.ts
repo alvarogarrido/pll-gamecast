@@ -134,6 +134,25 @@ export function kickoffLabel(iso: string, nowMs: number, timeZone = DEFAULT_TIME
   return `${dateLabel(iso, timeZone)} · ${timeLabel(iso, timeZone)}`;
 }
 
+const MINUTE_MS = 60_000;
+const HOUR_MS = 3_600_000;
+
+/**
+ * How long ago something was posted: `"just now"`, `"5m ago"`, `"3h ago"`, `"2d ago"`, and the date (`"Mar 1"`) from a week
+ * on. `nowMs` is server time. A timestamp in the future (clock skew) reads `"just now"`; an unparseable one gives an
+ * empty string, so `{label && ...}` works.
+ */
+export function relativeTimeLabel(iso: string, nowMs: number, timeZone = DEFAULT_TIME_ZONE): string {
+  const ms = Date.parse(iso);
+  if (Number.isNaN(ms)) return '';
+  const age = nowMs - ms;
+  if (age < MINUTE_MS) return 'just now';
+  if (age < HOUR_MS) return `${Math.floor(age / MINUTE_MS)}m ago`;
+  if (age < DAY_MS) return `${Math.floor(age / HOUR_MS)}h ago`;
+  if (age < 7 * DAY_MS) return `${Math.floor(age / DAY_MS)}d ago`;
+  return dateLabel(iso, timeZone);
+}
+
 /** `"2h 5m"`, `"35m"`; under one minute gives `"<1m"`. */
 export function countdownLabel(ms: number): string {
   const minutes = Math.floor(Math.max(0, ms) / 60_000);

@@ -16,6 +16,7 @@ import {
   positionLabel,
   rankLabel,
   record,
+  relativeTimeLabel,
   signedChange,
   statusLine,
   statusParts,
@@ -86,6 +87,30 @@ describe('dates', () => {
     const now = iso('2027-03-10T12:00:00Z');
     expect(kickoffLabel('2027-03-13T20:30:00Z', now)).toBe('Sat 3:30 PM ET');
     expect(kickoffLabel('2027-03-30T20:30:00Z', now)).toBe('Mar 30 · 4:30 PM ET');
+  });
+  it('relativeTimeLabel: coarse units from server time', () => {
+    const now = iso('2027-03-13T12:00:00Z');
+    expect(relativeTimeLabel('2027-03-13T11:59:50Z', now)).toBe('just now');
+    expect(relativeTimeLabel('2027-03-13T11:59:00Z', now)).toBe('1m ago');
+    expect(relativeTimeLabel('2027-03-13T11:30:00Z', now)).toBe('30m ago');
+    expect(relativeTimeLabel('2027-03-13T11:00:00Z', now)).toBe('1h ago');
+    expect(relativeTimeLabel('2027-03-13T09:00:00Z', now)).toBe('3h ago');
+    expect(relativeTimeLabel('2027-03-12T12:00:00Z', now)).toBe('1d ago');
+    expect(relativeTimeLabel('2027-03-06T12:00:01Z', now)).toBe('6d ago');
+  });
+  it('relativeTimeLabel: a date from one week on, in the given zone', () => {
+    const now = iso('2027-03-13T12:00:00Z');
+    expect(relativeTimeLabel('2027-03-06T12:00:00Z', now)).toBe('Mar 6');
+    expect(relativeTimeLabel('2027-03-01T12:00:00Z', now)).toBe('Mar 1');
+    // 02:00 UTC on Mar 1 is still Feb 28 in New York.
+    expect(relativeTimeLabel('2027-03-01T02:00:00Z', now)).toBe('Feb 28');
+    expect(relativeTimeLabel('2027-03-01T02:00:00Z', now, 'UTC')).toBe('Mar 1');
+  });
+  it('relativeTimeLabel: tolerates future timestamps and bad input', () => {
+    const now = iso('2027-03-13T12:00:00Z');
+    expect(relativeTimeLabel('2027-03-14T12:00:00Z', now)).toBe('just now');
+    expect(relativeTimeLabel('nope', now)).toBe('');
+    expect(relativeTimeLabel('', now)).toBe('');
   });
   it('countdownLabel', () => {
     expect(countdownLabel(125 * 60_000)).toBe('2h 5m');

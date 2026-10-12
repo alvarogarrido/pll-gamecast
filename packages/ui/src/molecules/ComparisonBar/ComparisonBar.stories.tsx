@@ -25,6 +25,13 @@ export const OneSided: Story = { args: { away: 0, home: 7, label: 'Extra-man goa
 export const BothZero: Story = { args: { away: 0, home: 0, label: 'Penalties' } };
 export const NoTeamColors: Story = { args: { awayColor: undefined, homeColor: undefined } };
 
+/** Both navy: the bar lightens them to 3:1 on the dark card and the home team falls back to its secondary (gold). */
+export const NavyLookAlikes: Story = {
+  args: { awayColor: '#003087', awaySecondaryColor: '#FFFFFF', homeColor: '#0C2340', homeSecondaryColor: '#C99700', awayName: 'Duke', homeName: 'Notre Dame' },
+};
+/** Without secondaries a navy pair is only lightened (and the home color nudged further if they still collide). */
+export const NavyWithoutSecondaries: Story = { args: { awayColor: '#041E42', homeColor: '#041E42' } };
+
 export const FromFixtures: Story = {
   render: () => {
     const game = fixtures.game(GAMES.liveQ4);

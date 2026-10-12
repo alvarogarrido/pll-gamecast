@@ -42,3 +42,20 @@ export const Sizes: Story = {
 export const MonogramWithoutAbbreviation: Story = {
   args: { src: null, abbreviation: undefined, name: 'Notre Dame Fighting Irish' },
 };
+
+/** Navy rings on the dark card: each ring is lightened to 3:1 contrast (`border-team-primary-on-dark`), hue kept. */
+export const NavyTeamsOnDark: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-4">
+      {[
+        ['Notre Dame', 'ND', '#0C2340'],
+        ['Duke', 'DUKE', '#003087'],
+        ['Penn State', 'PSU', '#041E42'],
+        ['Virginia', 'UVA', '#232D4B'],
+        ['Maryland', 'UMD', '#E03A3E'],
+      ].map(([name, abbreviation, color]) => (
+        <TeamLogo key={name} {...args} src={null} name={name!} abbreviation={abbreviation} color={color} size="lg" />
+      ))}
+    </div>
+  ),
+};

@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
+import { relativeTimeLabel } from '../../lib/format';
 import { featuredArticle, keyQuote, otherArticles, publishedAgo, type ArticleWithAuthor } from './article.logic';
 
 const NOW = Date.parse('2027-03-13T12:00:00Z');
 const article = (id: string, kind: ArticleWithAuthor['kind'], publishedAt: string): ArticleWithAuthor =>
   ({ id, kind, publishedAt, title: id, keySentence: '', excerpt: '', author: { id: 'a', name: 'A', photoUrl: null, title: null } }) as unknown as ArticleWithAuthor;
 
-describe('publishedAgo', () => {
+describe('publishedAgo (alias of relativeTimeLabel)', () => {
+  it('is the same function result', () => {
+    for (const iso of ['2027-03-13T11:30:00Z', '2027-03-01T12:00:00Z', 'nope']) expect(publishedAgo(iso, NOW)).toBe(relativeTimeLabel(iso, NOW));
+  });
   it('uses coarse relative units from server time', () => {
     expect(publishedAgo('2027-03-13T11:59:50Z', NOW)).toBe('just now');
     expect(publishedAgo('2027-03-13T11:30:00Z', NOW)).toBe('30m ago');

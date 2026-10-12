@@ -6,12 +6,10 @@ import { Skeleton } from '../../atoms/Skeleton';
 import { TeamLogo } from '../../atoms/TeamLogo';
 import { ComparisonBar } from '../../molecules/ComparisonBar';
 import { SectionHeader } from '../../molecules/SectionHeader';
+import { TeamPercent } from '../../molecules/TeamPercent';
 import { cn } from '../../lib/cn';
-import { pct } from '../../lib/format';
-import { teamColorVars } from '../../lib/team-style';
+import { teamPairColors } from '../../lib/team-style';
 import { resolvePicks, tallyPicks, winSplit } from './picks.logic';
-
-type Team = GameDetail['data']['home']['team'];
 
 export interface WinPredictionsProps {
   game: GameDetail['data'];
@@ -19,24 +17,6 @@ export interface WinPredictionsProps {
   staffPicks: GamePreview['data']['staffPicks'];
   loading?: boolean;
   className?: string;
-}
-
-function ProbabilityTile({ team, probability, favorite }: { team: Team; probability: number | null; favorite: boolean }) {
-  return (
-    <div
-      style={teamColorVars(team.colors.primary, team.colors.secondary)}
-      className={cn(
-        'flex min-w-0 flex-col items-center gap-1 rounded-sm border bg-surface-track p-2',
-        favorite ? 'border-accent-gold' : 'border-border-hairline',
-      )}
-    >
-      <TeamLogo src={team.logoUrl} name={`${team.school} ${team.mascot}`} abbreviation={team.abbreviation} color={team.colors.primary} size="md" decorative />
-      <span className="max-w-full truncate text-footnote font-semibold text-text-primary">{team.school}</span>
-      <span className={cn('font-display text-score tabular-nums', favorite ? 'text-accent-gold' : 'text-text-primary')}>
-        {pct(probability, 0)}
-      </span>
-    </div>
-  );
 }
 
 /**
@@ -50,29 +30,30 @@ export function WinPredictions({ game, staffPicks, loading = false, className }:
   const split = winSplit(game.winProbabilityHome);
   const resolved = resolvePicks(staffPicks, game);
   const tally = tallyPicks(staffPicks, game);
+  const colors = teamPairColors(game.away.team.colors, game.home.team.colors);
   const awayFavored = split !== null && split.away > split.home;
   const homeFavored = split !== null && split.home > split.away;
+  if (loading) return <WinPredictionsSkeleton className={className} />;
 
   return (
-    <Card as="section" aria-labelledby={titleId} aria-busy={loading || undefined} className={cn('flex flex-col gap-4', className)}>
+    <Card as="section" aria-labelledby={titleId} className={cn('flex flex-col gap-4', className)}>
       <SectionHeader title={<span id={titleId}>Win predictions</span>} />
-      {loading ? (
-        <WinPredictionsSkeleton />
-      ) : (
-        <>
+      <>
           <div className="flex flex-col gap-2">
             <h3 className="text-subhead font-semibold text-text-secondary">Win probability</h3>
             {split ? (
               <>
                 <div className="grid grid-cols-2 gap-2">
-                  <ProbabilityTile team={game.away.team} probability={split.away} favorite={awayFavored} />
-                  <ProbabilityTile team={game.home.team} probability={split.home} favorite={homeFavored} />
+                  <TeamPercent layout="tile" team={game.away.team} value={split.away} digits={0} highlighted={awayFavored} color={colors.away} />
+                  <TeamPercent layout="tile" team={game.home.team} value={split.home} digits={0} highlighted={homeFavored} color={colors.home} />
                 </div>
                 <ComparisonBar
                   away={split.away}
                   home={split.home}
                   awayColor={game.away.team.colors.primary}
                   homeColor={game.home.team.colors.primary}
+                  awaySecondaryColor={game.away.team.colors.secondary}
+                  homeSecondaryColor={game.home.team.colors.secondary}
                   awayName={game.away.team.school}
                   homeName={game.home.team.school}
                   format="pct"
@@ -120,24 +101,27 @@ export function WinPredictions({ game, staffPicks, loading = false, className }:
               </ul>
             )}
           </div>
-        </>
-      )}
+      </>
     </Card>
   );
 }
 
-export function WinPredictionsSkeleton() {
+/** The same card and title as {@link WinPredictions}, with placeholder tiles and rows. */
+export function WinPredictionsSkeleton({ className }: { className?: string }) {
   return (
-    <div className="flex flex-col gap-3" role="status">
-      <span className="sr-only">Loading win predictions</span>
-      <div className="grid grid-cols-2 gap-2">
-        <Skeleton variant="rect" className="h-24" />
-        <Skeleton variant="rect" className="h-24" />
+    <Card as="section" aria-label="Win predictions" aria-busy="true" className={cn('flex flex-col gap-4', className)}>
+      <SectionHeader title="Win predictions" />
+      <div className="flex flex-col gap-3" role="status">
+        <span className="sr-only">Loading win predictions</span>
+        <div className="grid grid-cols-2 gap-2">
+          <Skeleton variant="rect" className="h-24" />
+          <Skeleton variant="rect" className="h-24" />
+        </div>
+        <Skeleton className="h-2 rounded-pill" />
+        {[0, 1, 2].map((i) => (
+          <Skeleton key={i} variant="rect" className="h-12 w-full" />
+        ))}
       </div>
-      <Skeleton className="h-2 rounded-pill" />
-      {[0, 1, 2].map((i) => (
-        <Skeleton key={i} variant="rect" className="h-12 w-full" />
-      ))}
-    </div>
+    </Card>
   );
 }

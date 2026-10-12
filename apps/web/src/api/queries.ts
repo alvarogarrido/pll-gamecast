@@ -4,7 +4,12 @@
  * TanStack Query hooks: one per endpoint of the contract in @pll/data/api.
  * Each hook returns the full `{ data, meta }` envelope (read `query.data?.data`).
  *
- * Polling: live games refetch every 15 s; everything else is fetched once.
+ * Polling (all decisions use SERVER time, never the device clock):
+ *  - a live game and its per-game endpoints refetch every 15 s;
+ *  - a scheduled/delayed game refetches `/games/{id}` every 60 s once it is within 2 h of its start
+ *    (and after the start time, until it flips), so the page moves to live on its own;
+ *  - the scoreboard refetches every 60 s while any game is live or starts within 2 h;
+ *  - everything else is fetched once.
  */
 import { useCallback, useSyncExternalStore } from 'react';
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
@@ -15,6 +20,7 @@ import type {
   GamePlays,
   GamePreview,
   GameStats,
+  GameSummary,
   ScoreboardResponse,
   WinProbabilitySeries,
 } from '@pll/data/api';
@@ -22,6 +28,21 @@ import { apiGet, type ResponseSchema } from './client';
 import { serverClock } from './server-clock';
 
 export const LIVE_POLL_MS = 15_000;
+/** Poll period for a game about to start, and for a scoreboard that has live or imminent games. */
+export const SOON_POLL_MS = 60_000;
+/** "About to start": the game starts within this window (or its start time has already passed). */
+export const SOON_WINDOW_MS = 2 * 60 * 60_000;
+/** Background refresh for a scheduled game further out (picks up delays, weather and broadcast changes). */
+export const SCHEDULED_POLL_MS = 5 * 60_000;
+
+/** Server now for polling decisions made outside React: the synced clock, else the response's own serverTime. */
+const serverNowFor = (meta: { serverTime: string }): number => serverClock.now() ?? Date.parse(meta.serverTime);
+
+/** A scheduled (or delayed) game that starts within {@link SOON_WINDOW_MS} of `nowMs`, or should have started already. */
+export function startsSoon(game: Pick<GameSummary, 'status' | 'startTime'>, nowMs: number): boolean {
+  if (game.status !== 'scheduled' && game.status !== 'delayed') return false;
+  return Date.parse(game.startTime) - nowMs <= SOON_WINDOW_MS;
+}
 
 // ---------------------------------------------------------------------------
 // Fetch plumbing
@@ -72,23 +93,33 @@ export interface QueryOptions {
 // Endpoints
 // ---------------------------------------------------------------------------
 
-/** GET /scoreboard. Polls while any listed game is live. */
+/** GET /scoreboard. Polls every 60 s while any listed game is live or starts within 2 h. */
 export function useScoreboard(options: QueryOptions = {}): UseQueryResult<ScoreboardResponse> {
   return useQuery({
     queryKey: queryKeys.scoreboard,
     queryFn: ({ signal }) => fetchEnvelope<ScoreboardResponse>('/scoreboard', 'ScoreboardResponse', signal),
-    refetchInterval: (query) =>
-      query.state.data?.data.games.some((g) => g.status === 'live') ? LIVE_POLL_MS : false,
+    refetchInterval: (query) => {
+      const response = query.state.data;
+      if (!response) return false;
+      const nowMs = serverNowFor(response.meta);
+      return response.data.games.some((g) => g.status === 'live' || startsSoon(g, nowMs)) ? SOON_POLL_MS : false;
+    },
     ...options,
   });
 }
 
-/** GET /games/{id}. Polls while the game is live. */
+/** GET /games/{id}. Polls every 15 s while live, 60 s while a scheduled game is within 2 h of its start, 5 min before that. */
 export function useGame(gameId: string, options: QueryOptions = {}): UseQueryResult<GameDetail> {
   return useQuery({
     queryKey: queryKeys.game(gameId),
     queryFn: ({ signal }) => fetchEnvelope<GameDetail>(gamePath(gameId), 'GameDetail', signal),
-    refetchInterval: (query) => (query.state.data?.data.status === 'live' ? LIVE_POLL_MS : false),
+    refetchInterval: (query) => {
+      const response = query.state.data;
+      if (!response) return false;
+      if (response.data.status === 'live') return LIVE_POLL_MS;
+      if (startsSoon(response.data, serverNowFor(response.meta))) return SOON_POLL_MS;
+      return response.data.status === 'scheduled' || response.data.status === 'delayed' ? SCHEDULED_POLL_MS : false;
+    },
     ...options,
   });
 }

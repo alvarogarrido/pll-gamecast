@@ -2,11 +2,13 @@ import { describeError } from './describe-error';
 import { ActionButton, StatePanel } from './StatePanel';
 
 export function ErrorState({
+  label,
   error,
   onRetry,
   retrying = false,
   className,
 }: {
+  label?: string;
   error: unknown;
   onRetry?: () => void;
   retrying?: boolean;
@@ -15,6 +17,7 @@ export function ErrorState({
   const copy = describeError(error);
   return (
     <StatePanel
+      label={label}
       role="alert"
       tone="error"
       title={copy.title}

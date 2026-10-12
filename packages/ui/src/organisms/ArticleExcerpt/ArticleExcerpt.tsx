@@ -1,13 +1,14 @@
 import { useId } from 'react';
 import { Icon } from '@pll/icons';
 import { Card } from '../../atoms/Card';
+import { MediaImage } from '../../atoms/MediaImage';
 import { PlayerAvatar } from '../../atoms/PlayerAvatar';
 import { Skeleton } from '../../atoms/Skeleton';
 import { EmptyState } from '../../molecules/EmptyState';
 import { SectionHeader } from '../../molecules/SectionHeader';
-import { MediaImage } from '../ArticleCarousel/MediaImage';
 import { cn } from '../../lib/cn';
-import { keyQuote, publishedAgo, type ArticleKind, type ArticleWithAuthor } from './article.logic';
+import { relativeTimeLabel } from '../../lib/format';
+import { keyQuote, type ArticleKind, type ArticleWithAuthor } from './article.logic';
 
 export interface ArticleExcerptProps {
   /** One entry of `GameMedia['data']['articles']`. `null` shows the empty state. */
@@ -32,13 +33,12 @@ const copy: Record<ArticleKind, { title: string; empty: string }> = {
 export function ArticleExcerpt({ article, kind, nowMs, loading = false, className }: ArticleExcerptProps) {
   const titleId = useId();
   const articleTitleId = useId();
+  if (loading) return <ArticleExcerptSkeleton kind={kind} className={className} />;
 
   return (
-    <Card as="section" aria-labelledby={titleId} aria-busy={loading || undefined} className={cn('flex flex-col gap-3', className)}>
+    <Card as="section" aria-labelledby={titleId} className={cn('flex flex-col gap-3', className)}>
       <SectionHeader title={<span id={titleId}>{copy[kind].title}</span>} />
-      {loading ? (
-        <ArticleExcerptSkeleton />
-      ) : !article ? (
+      {!article ? (
         <EmptyState icon="info" title="Nothing published yet" message={copy[kind].empty} />
       ) : (
         <article aria-labelledby={articleTitleId} className="flex flex-col gap-3">
@@ -54,7 +54,7 @@ export function ArticleExcerpt({ article, kind, nowMs, loading = false, classNam
             <p className="min-w-0 text-footnote text-text-secondary">
               <span className="font-semibold text-text-primary">{article.author.name}</span>
               <span aria-hidden="true"> · </span>
-              <time dateTime={article.publishedAt}>{publishedAgo(article.publishedAt, nowMs)}</time>
+              <time dateTime={article.publishedAt}>{relativeTimeLabel(article.publishedAt, nowMs)}</time>
             </p>
           </div>
           <a
@@ -71,14 +71,18 @@ export function ArticleExcerpt({ article, kind, nowMs, loading = false, classNam
   );
 }
 
-export function ArticleExcerptSkeleton() {
+/** The same card and title as {@link ArticleExcerpt} (`kind` picks "Game preview" or "Game recap"), with placeholder content. */
+export function ArticleExcerptSkeleton({ kind = 'preview', className }: { kind?: ArticleKind; className?: string }) {
   return (
-    <div className="flex flex-col gap-3" role="status">
-      <span className="sr-only">Loading article</span>
-      <Skeleton variant="rect" className="aspect-video w-full" />
-      <Skeleton className="h-5 w-3/4" />
-      <Skeleton className="h-4 w-full" />
-      <Skeleton className="h-4 w-2/3" />
-    </div>
+    <Card as="section" aria-label={copy[kind].title} aria-busy="true" className={cn('flex flex-col gap-3', className)}>
+      <SectionHeader title={copy[kind].title} />
+      <div className="flex flex-col gap-3" role="status">
+        <span className="sr-only">Loading article</span>
+        <Skeleton variant="rect" className="aspect-video w-full" />
+        <Skeleton className="h-5 w-3/4" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-2/3" />
+      </div>
+    </Card>
   );
 }

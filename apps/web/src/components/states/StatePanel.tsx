@@ -3,6 +3,7 @@ import { Card, cn } from '@pll/ui';
 
 /** Shared layout for empty / error / offline panels. */
 export function StatePanel({
+  label,
   title,
   message,
   action,
@@ -10,6 +11,8 @@ export function StatePanel({
   role,
   className,
 }: {
+  /** Name of the module this panel stands in for ("Top performers"), so a failed module still says what it was. */
+  label?: string;
   title: string;
   message?: string;
   action?: ReactNode;
@@ -22,6 +25,7 @@ export function StatePanel({
       role={role}
       className={cn('flex flex-col items-center gap-2 py-8 text-center', className)}
     >
+      {label && <p className="text-caption font-semibold uppercase tracking-wide text-text-tertiary">{label}</p>}
       <p className={cn('text-headline', tone === 'error' ? 'text-status-negative' : 'text-text-primary')}>{title}</p>
       {message && <p className="max-w-prose text-callout text-text-secondary">{message}</p>}
       {action && <div className="mt-2">{action}</div>}

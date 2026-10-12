@@ -2,7 +2,8 @@ import type { GameSummary, Play, PlayerRef, TeamRef } from '@pll/data/api';
 import { Icon } from '@pll/icons';
 import { cn } from '../../lib/cn';
 import { clock, periodLabel } from '../../lib/format';
-import { teamColorVars } from '../../lib/team-style';
+import { teamColorVars, teamPairColors } from '../../lib/team-style';
+import { ScoreChip } from '../../atoms/ScoreChip';
 import { TeamLogo } from '../../atoms/TeamLogo';
 import { PlayerIdentity } from '../../molecules/PlayerIdentity';
 import { dividerLabel, playDetail, playKind, playLabel, playerMap } from './playByPlay.logic';
@@ -52,29 +53,6 @@ function Divider({ play, game, className }: { play: Play; game: PlayGame; classN
   );
 }
 
-/** Running score "12–11" (away first), the scoring side emphasised. */
-function ScoreChip({ play, game, side }: { play: Play; game: PlayGame; side: 'away' | 'home' | null }) {
-  const away = game.away.team;
-  const home = game.home.team;
-  return (
-    <span
-      role="img"
-      aria-label={`Score ${away.school} ${play.awayScore}, ${home.school} ${play.homeScore}`}
-      className="inline-flex items-center gap-1 rounded-xs bg-surface-track px-2 py-0.5 font-display text-clock tabular-nums"
-    >
-      <span aria-hidden="true" className={cn(side === 'away' ? 'font-extrabold text-text-primary' : 'text-text-secondary')}>
-        {play.awayScore}
-      </span>
-      <span aria-hidden="true" className="text-text-tertiary">
-        –
-      </span>
-      <span aria-hidden="true" className={cn(side === 'home' ? 'font-extrabold text-text-primary' : 'text-text-secondary')}>
-        {play.homeScore}
-      </span>
-    </span>
-  );
-}
-
 /**
  * One play. Three looks, chosen from the play type:
  *  - goal: the strong "Recent Play / Goal" card (clock chip, title, running score, scorer and assist),
@@ -88,6 +66,8 @@ export function PlayRow({ play, game, playerRefs, density = 'card', className }:
 
   const players = playerMap(playerRefs);
   const scope = teamOf(game, play.teamId);
+  // On-dark color of the scoring/acting team, picked as a pair so look-alike teams (Duke / Notre Dame) stay apart.
+  const teamColor = scope ? teamPairColors(game.away.team.colors, game.home.team.colors)[scope.side] : undefined;
   const player = play.playerId ? players.get(play.playerId) : undefined;
   const detail = playDetail(play, players);
   const label = playLabel(play);
@@ -103,13 +83,13 @@ export function PlayRow({ play, game, playerRefs, density = 'card', className }:
       src={scope.team.logoUrl}
       name={`${scope.team.school} ${scope.team.mascot}`}
       abbreviation={scope.team.abbreviation}
-      color={scope.team.colors.primary}
+      color={teamColor}
       size="xs"
     />
   ) : null;
 
   const who = player ? (
-    <PlayerIdentity player={player} teamColor={scope?.team.colors.primary} size="sm" showMeta meta={detail || undefined} />
+    <PlayerIdentity player={player} teamColor={teamColor} size="sm" showMeta meta={detail || undefined} />
   ) : (
     // No player on the play, or the player is missing from `playerRefs`: fall back to the server text.
     <p className="text-footnote text-text-secondary">{play.description}</p>
@@ -117,19 +97,19 @@ export function PlayRow({ play, game, playerRefs, density = 'card', className }:
 
   if (isGoal) {
     return (
-      <li data-kind="goal" data-side={scope?.side} style={teamColorVars(scope?.team.colors.primary)} className={cn(shell, className)}>
+      <li data-kind="goal" data-side={scope?.side} style={teamColorVars(scope?.team.colors.primary, null, teamColor)} className={cn(shell, className)}>
         <div className={cn('flex items-center gap-2 py-2', flat ? 'px-0' : 'px-3')}>
           {logo}
           <Icon name="goal" size={20} className="shrink-0 text-accent-gold" />
           <span className="min-w-0 flex-1 truncate text-headline text-text-primary">{label}</span>
-          <ScoreChip play={play} game={game} side={scope?.side ?? null} />
+          <ScoreChip away={play.awayScore} home={play.homeScore} emphasis={scope?.side ?? null} awayName={game.away.team.school} homeName={game.home.team.school} />
           <span className="shrink-0 rounded-xs bg-surface-track px-2 py-0.5 font-display text-clock text-text-secondary">
             {clockLabel(play)}
           </span>
         </div>
         <div
           className={cn(
-            'border-l-4 border-team-primary py-2',
+            'border-l-4 border-team-primary-on-dark py-2',
             flat ? 'bg-surface-track px-3' : 'border-t border-t-border-hairline bg-surface-raised px-3',
           )}
         >

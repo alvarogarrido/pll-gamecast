@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, type CSSProperties } from 'react';
+import { useState } from 'react';
 import { cn } from '../../lib/cn';
+import { teamColorVars } from '../../lib/team-style';
 
 export type TeamLogoSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -15,7 +16,8 @@ export interface TeamLogoProps {
   size?: TeamLogoSize;
   /**
    * Team color (e.g. `team.colors.primary`), shown as the monogram's ring. Set as the `--team-primary` runtime
-   * variable on the element, so it reads through the `border-team-primary` utility.
+   * variable on the element; the ring is drawn with its on-dark variant (`border-team-primary-on-dark`), so navy
+   * teams stay visible on the dark card.
    */
   color?: string;
   /** Hide from assistive tech when the team name is already written next to the logo. */
@@ -87,10 +89,10 @@ export function TeamLogo({
       role={decorative ? undefined : 'img'}
       aria-label={decorative ? undefined : name}
       {...a11y}
-      style={color ? ({ '--team-primary': color } as CSSProperties) : undefined}
+      style={color ? teamColorVars(color) : undefined}
       className={cn(
         'inline-flex shrink-0 select-none items-center justify-center rounded-full border-2 bg-surface-raised tracking-tight text-text-primary',
-        color ? 'border-team-primary' : 'border-border-default',
+        color ? 'border-team-primary-on-dark' : 'border-border-default',
         boxes[size],
         monogramText[size],
         className,

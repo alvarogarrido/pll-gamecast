@@ -15,8 +15,9 @@ export interface MediaImageProps {
 }
 
 /**
- * PRIVATE building block of the media organisms (articles, videos): a 16:9 image that falls back to a neutral
- * placeholder tile. Probably belongs in the shared atoms.
+ * A 16:9 image that falls back to a neutral placeholder tile (icon on `surface.raised`) when `src` is missing or fails to
+ * load. Used by the media organisms (articles, videos). It fills its container's width: size it with `className`
+ * (`w-28`, `w-24 shrink-0`) or let the parent decide; override the ratio/rounding the same way (`rounded-none`).
  */
 export function MediaImage({ src, alt = '', placeholderIcon = 'lacrosse-field', className }: MediaImageProps) {
   // Remember which URL failed, so a new `src` gets a fresh attempt without an effect.

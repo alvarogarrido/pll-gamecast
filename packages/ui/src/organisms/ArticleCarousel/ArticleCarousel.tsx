@@ -2,14 +2,15 @@
 
 import { useId } from 'react';
 import { Card } from '../../atoms/Card';
+import { MediaImage } from '../../atoms/MediaImage';
 import { PlayerAvatar } from '../../atoms/PlayerAvatar';
 import { Skeleton } from '../../atoms/Skeleton';
+import { CarouselControls, CarouselRail, useCarousel } from '../../molecules/Carousel';
 import { EmptyState } from '../../molecules/EmptyState';
 import { SectionHeader } from '../../molecules/SectionHeader';
-import { publishedAgo, type ArticleWithAuthor } from '../ArticleExcerpt/article.logic';
+import type { ArticleWithAuthor } from '../ArticleExcerpt/article.logic';
 import { cn } from '../../lib/cn';
-import { CarouselControls, CarouselRail, useCarousel } from './CarouselRail';
-import { MediaImage } from './MediaImage';
+import { relativeTimeLabel } from '../../lib/format';
 
 export interface ArticleCarouselProps {
   /** `GameMedia['data']['articles']` (already without the featured one, see `otherArticles`). */
@@ -31,7 +32,7 @@ function ArticleMeta({ article, nowMs }: { article: ArticleWithAuthor; nowMs: nu
     <span className="flex items-center gap-2 text-caption text-text-secondary">
       <PlayerAvatar photoUrl={article.author.photoUrl} name={article.author.name} fallback="initials" size="sm" decorative />
       <span className="truncate">
-        {article.author.name} · <time dateTime={article.publishedAt}>{publishedAgo(article.publishedAt, nowMs)}</time>
+        {article.author.name} · <time dateTime={article.publishedAt}>{relativeTimeLabel(article.publishedAt, nowMs)}</time>
       </span>
     </span>
   );

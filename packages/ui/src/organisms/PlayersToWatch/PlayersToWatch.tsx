@@ -2,8 +2,9 @@ import type { GameDetail, GamePreview } from '@pll/data/api';
 import { cn } from '../../lib/cn';
 import { Card } from '../../atoms/Card';
 import { EmptyState } from '../../molecules/EmptyState';
+import { PlayerCompare } from '../../molecules/PlayerCompare';
 import { SectionHeader } from '../../molecules/SectionHeader';
-import { PerformerCompare } from '../TopPerformers/PerformerCompare';
+import { teamPairColors } from '../../lib/team-style';
 import { TopPerformersSkeleton } from '../TopPerformers/TopPerformers';
 import { buildPlayersToWatch, isEmptySections } from '../TopPerformers/topPerformers.logic';
 
@@ -21,6 +22,7 @@ export function PlayersToWatch({ preview, game, loading = false, className }: Pl
   const sections = buildPlayersToWatch(preview, game);
   const awayName = game.away.team.school;
   const homeName = game.home.team.school;
+  const teamColors = teamPairColors(game.away.team.colors, game.home.team.colors);
 
   return (
     <section aria-label="Players to watch" className={cn('flex flex-col gap-2', className)}>
@@ -31,7 +33,7 @@ export function PlayersToWatch({ preview, game, loading = false, className }: Pl
         ) : (
           sections.map((s, i) => (
             <div key={s.category} className={cn(i > 0 && 'border-t border-border-hairline pt-4')}>
-              <PerformerCompare section={s} awayName={awayName} homeName={homeName} />
+              <PlayerCompare title={s.title} emptyLabel={s.emptyLabel} away={s.away} home={s.home} awayName={awayName} homeName={homeName} teamColors={teamColors} />
             </div>
           ))
         )}

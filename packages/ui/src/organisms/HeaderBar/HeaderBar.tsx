@@ -1,21 +1,22 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import { Icon } from '@pll/icons';
 import { cn } from '../../lib/cn';
-import { NO_VALUE, periodLabel, statusParts, type StatusParts } from '../../lib/format';
+import { NO_VALUE, statusParts, type StatusParts } from '../../lib/format';
+import { teamPairColors } from '../../lib/team-style';
 import { Chip } from '../../atoms/Chip';
 import { LiveDot } from '../../atoms/LiveDot';
-import { NetworkBadge } from '../../atoms/NetworkBadge';
 import { RankBadge } from '../../atoms/RankBadge';
 import { Skeleton } from '../../atoms/Skeleton';
 import { TrendIndicator } from '../../atoms/TrendIndicator';
 import { EmptyState } from '../../molecules/EmptyState';
 import { GameStatusLabel } from '../../molecules/GameStatusLabel';
+import { Linescore } from '../../molecules/Linescore';
 import { TeamIdentity } from '../../molecules/TeamIdentity';
 import { TeamScope } from '../../molecules/TeamScope';
+import { WhereToWatch } from '../../molecules/WhereToWatch';
 import {
   eventTags,
   headerPhase,
-  linescorePeriods,
   preStatus,
   venueLabel,
   weatherLabel,
@@ -80,82 +81,17 @@ function TeamMeta({ game, side, phase }: { game: HeaderGame; side: HeaderSide; p
 /** Logo, rank, name and record, then rank/RPI meta. Abbreviation in narrow containers, school name from 448px up. */
 function TeamBlock({ game, side, phase }: { game: HeaderGame; side: HeaderSide; phase: HeaderPhase }) {
   const s = game[side];
+  const color = teamPairColors(game.away.team.colors, game.home.team.colors)[side];
   return (
-    <TeamScope team={s.team} className="flex min-w-0 flex-col items-center gap-1">
+    <TeamScope team={s.team} primaryOnDark={color} className="flex min-w-0 flex-col items-center gap-1">
       <div className="@md:hidden">
-        <TeamIdentity team={s.team} layout="stacked" size="sm" side={side} nameStyle="abbreviation" rank={s.rank} record={s.record} />
+        <TeamIdentity team={s.team} layout="stacked" size="sm" side={side} nameStyle="abbreviation" rank={s.rank} record={s.record} color={color} />
       </div>
       <div className="hidden @md:block">
-        <TeamIdentity team={s.team} layout="stacked" size="md" side={side} nameStyle="school" rank={s.rank} record={s.record} />
+        <TeamIdentity team={s.team} layout="stacked" size="md" side={side} nameStyle="school" rank={s.rank} record={s.record} color={color} />
       </div>
       <TeamMeta game={game} side={side} phase={phase} />
     </TeamScope>
-  );
-}
-
-function WhereToWatch({ broadcasts, height = 16 }: { broadcasts: HeaderGame['broadcasts']; height?: number }) {
-  return (
-    <ul aria-label="Where to watch" className="flex flex-wrap items-center justify-center gap-2">
-      {broadcasts.map((b) => (
-        <li key={b.network} className="flex items-center">
-          {b.url ? (
-            <a href={b.url} target="_blank" rel="noreferrer" aria-label={`Watch on ${b.network}`} className="rounded-xs border border-border-default px-2 py-1">
-              <NetworkBadge network={b.network} height={height} />
-            </a>
-          ) : (
-            <span className="rounded-xs border border-border-default px-2 py-1">
-              <NetworkBadge network={b.network} height={height} />
-            </span>
-          )}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-/** Compact 4-quarter box score (+ OT columns, T total). */
-function Linescore({ game }: { game: HeaderGame }) {
-  const periods = linescorePeriods(game);
-  const winner = winnerSide(game);
-  const livePeriod = game.status === 'live' ? (game.clock?.period ?? null) : null;
-  return (
-    <table className="w-full table-fixed text-caption tabular-nums">
-      <caption className="sr-only">Score by period</caption>
-      <thead>
-        <tr>
-          <th scope="col" className="w-14 text-left font-medium text-text-tertiary">
-            <span className="sr-only">Team</span>
-          </th>
-          {periods.map((p) => (
-            <th key={p} scope="col" className={cn('py-0.5 text-center font-medium', p === livePeriod ? 'text-status-live' : 'text-text-tertiary')}>
-              {periodLabel(p)}
-            </th>
-          ))}
-          <th scope="col" className="py-0.5 text-center font-medium text-text-tertiary">
-            T
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {SIDES.map((side) => {
-          const s = game[side];
-          const loser = winner !== null && winner !== side;
-          return (
-            <tr key={side} className="border-t border-border-hairline">
-              <th scope="row" className="truncate py-1 text-left font-semibold text-text-primary">
-                {s.team.abbreviation}
-              </th>
-              {periods.map((p) => (
-                <td key={p} className={cn('py-1 text-center', p === livePeriod ? 'text-text-primary' : 'text-text-secondary')}>
-                  {s.periodScores[p - 1] ?? NO_VALUE}
-                </td>
-              ))}
-              <td className={cn('py-1 text-center font-semibold', loser ? 'text-text-secondary' : 'text-text-primary')}>{s.score ?? NO_VALUE}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
   );
 }
 
@@ -178,13 +114,15 @@ function FullHeader({ game, nowMs, timeZone }: { game: HeaderGame; nowMs: number
   const venue = venueLabel(game.venue);
   const weather = weatherLabel(game.weather);
   const scoreClass = 'text-score @md:text-score-hero';
+  // Both teams side by side on a dark card: navy is lightened and look-alikes (Duke / Notre Dame) are told apart.
+  const stripColors = teamPairColors(game.away.team.colors, game.home.team.colors);
 
   return (
     <div className="overflow-hidden rounded-md border border-border-default bg-surface-card text-text-primary">
       {/* Team color strip: away left, home right. */}
       <div aria-hidden="true" className="grid h-1 grid-cols-2">
         {SIDES.map((side) => (
-          <TeamScope key={side} team={game[side].team} className="bg-team-primary" />
+          <TeamScope key={side} team={game[side].team} primaryOnDark={stripColors[side]} className="bg-team-primary-on-dark" />
         ))}
       </div>
       <div className="flex flex-col gap-3 p-4">
@@ -268,15 +206,7 @@ function MinimizedHeader({ game, nowMs, timeZone }: { game: HeaderGame; nowMs: n
           {phase === 'pre' ? (
             <>
               <span className="text-caption font-semibold text-text-primary">{parts.label}</span>
-              {game.broadcasts.length > 0 && (
-                <ul aria-label="Where to watch" className="mt-0.5 flex items-center gap-1">
-                  {game.broadcasts.slice(0, 3).map((b) => (
-                    <li key={b.network}>
-                      <NetworkBadge network={b.network} height={12} chipSize="sm" />
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <WhereToWatch broadcasts={game.broadcasts} size="sm" className="mt-0.5" />
             </>
           ) : (
             <>

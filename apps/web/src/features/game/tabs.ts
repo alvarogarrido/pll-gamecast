@@ -1,13 +1,19 @@
-export const GAME_TABS = ['gamecast', 'stats', 'plays', 'highlights'] as const;
-export type GameTab = (typeof GAME_TABS)[number];
-export const DEFAULT_TAB: GameTab = 'gamecast';
+import type { GamecastSection } from '@pll/ui';
 
-export const TAB_LABELS: Record<GameTab, string> = {
-  gamecast: 'Gamecast',
-  stats: 'Stats',
-  plays: 'Plays',
-  highlights: 'Highlights',
-};
+/** The game page sections, in selector order. `?tab=` holds one of these. */
+export type GameTab = GamecastSection;
+export const GAME_TABS: readonly GameTab[] = ['gamecast', 'stats', 'plays', 'highlights'];
+export const DEFAULT_TAB: GameTab = 'gamecast';
 
 export const isGameTab = (value: string | null | undefined): value is GameTab =>
   (GAME_TABS as readonly string[]).includes(value ?? '');
+
+/** Where a game is in its life, for choosing the layout and the available sections. */
+export type GamePhase = 'pre' | 'live' | 'final';
+
+/** scheduled / delayed / postponed / canceled = pre, live = live, final = post. */
+export function phaseOf(status: string): GamePhase {
+  if (status === 'live') return 'live';
+  if (status === 'final') return 'final';
+  return 'pre';
+}

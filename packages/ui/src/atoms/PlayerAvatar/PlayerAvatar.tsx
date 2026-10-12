@@ -12,7 +12,7 @@ export interface PlayerAvatarProps {
   photoUrl: string | null;
   /** Player name: the accessible name, and the source of the initials. */
   name: string;
-  /** Team color (e.g. `team.colors.primary`). Rings the avatar through `--team-primary`; omit to use the neutral border. */
+  /** Team color (e.g. `team.colors.primary`). Rings the avatar with the team color made visible on dark (`--team-primary-on-dark`); omit to use the neutral border. */
   color?: string;
   size?: PlayerAvatarSize;
   /** What to draw without a photo: a head-and-shoulders `silhouette` (default) or the `initials`. */
@@ -82,7 +82,7 @@ export function PlayerAvatar({
       style={teamColorVars(color)}
       className={cn(
         'relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full border-2 bg-surface-raised',
-        color ? 'border-team-primary' : 'border-border-default',
+        color ? 'border-team-primary-on-dark' : 'border-border-default',
         boxes[size],
         className,
       )}

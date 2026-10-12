@@ -33,7 +33,7 @@ Rules that define the project:
 - `src/components/` app-level building blocks, including the loading / error / offline / empty states (`QueryBoundary`, `components/states/*`).
   Every data-driven module must render through `QueryBoundary` so all four states exist.
 - `src/lib/static-params.ts` build-time game ids for `generateStaticParams` (reads `packages/data/db/games.json`).
-- Polling: the game, scoreboard and per-game endpoints refetch every 15 s only while the game is `live`.
+- Polling (all decisions use server time): `/games/{id}` and the per-game endpoints refetch every 15 s while `live`. A scheduled/delayed game refetches `/games/{id}` every 60 s within 2 h of start and every 5 min before that, so it flips to live by itself. The scoreboard refetches every 60 s while any game is live or starts within 2 h.
 - Tab state lives in the query string (`?tab=`), read client-side with `useSearchParams` inside `<Suspense>` (static export).
 
 ## Component conventions (`packages/ui`)
@@ -65,10 +65,22 @@ Rules that define the project:
   - Components never format inline: call `lib/format.ts` (`pct`, `clock`, `statusLine`, `record`, `playerShortName`, `formatStat`...). Missing data renders `NO_VALUE` (an en dash),
     never `NaN%` or blank. Time helpers take `nowMs` (server time) and an optional `timeZone` (default `America/New_York`); `lib/format.ts` never reads the device clock.
   - Team color: wrap in `TeamScope` or pass `style={teamColorVars(primary, secondary)}` from `lib/team-style.ts`, then use `bg-team-primary` / `border-team-primary`.
-- **Reuse the shared building blocks** instead of re-making them: atoms `LiveDot`, `PlayerAvatar`, `StatValue`, `NetworkBadge`, `TrendIndicator`
-  (plus `Card`, `Chip`, `StatusPill`, `TeamLogo`, `RankBadge`, `Skeleton`, `Tabs`); molecules `SectionHeader`, `ComparisonRow`, `ComparisonBar`, `TeamIdentity`,
-  `PlayerIdentity`, `GameStatusLabel`, `TeamScope`, `Disclosure`, `DataTable*`, `EmptyState`. Icons and network logos come from `@pll/icons` (`<Icon name>`, `NetworkLogo`).
-  Need a variation? Add a prop to the shared component rather than forking it.
+    **On a dark surface (cards, the page) use `bg-team-primary-on-dark` / `border-team-primary-on-dark` / `fill-team-primary-on-dark` instead**: navy primaries
+    (#0C2340, #003087) vanish on #1F1F1F. `teamColorVars` / `TeamScope` also set `--team-primary-on-dark` (the primary lightened, hue kept, to 3:1 contrast with
+    `surface.card`, see `teamColorOnDark`). Where both teams of a game appear together, resolve them with `teamPairColors(away, home)` (look-alikes such as Duke and
+    Notre Dame fall back to a secondary color) and pass the result as the third argument of `teamColorVars` / `TeamScope`'s `primaryOnDark` / a component's `color`.
+    The `*-team-primary-on-dark` utility is defined in `packages/ui/src/styles.css` (derived from runtime data, so it is not a token).
+- **Reuse the shared building blocks** instead of re-making them (organisms must not keep private copies of these). Icons and network logos come from
+  `@pll/icons` (`<Icon name>`, `NetworkLogo`). Need a variation? Add a prop to the shared component rather than forking it. Before writing a sub-component
+  inside an organism, check this list; if you build one that a second organism could use, put it in `atoms/` or `molecules/` (with a story) right away.
+  - **Atoms**: `Card`, `Chip`, `StatusPill`, `TeamLogo`, `RankBadge`, `Skeleton`, `Tabs`, `LiveDot`, `PlayerAvatar`, `StatValue`, `NetworkBadge`, `TrendIndicator`,
+    `MediaImage` (16:9 image with placeholder fallback), `FilterChip` + `FilterChipGroup` (single-choice pills, gold when selected; `pressed` or `radio` semantics),
+    `ScoreChip` (running score "12–11").
+  - **Molecules**: `SectionHeader`, `ComparisonRow`, `ComparisonBar`, `TeamIdentity`, `PlayerIdentity` (`trailing` slot for a stat beside it), `GameStatusLabel`,
+    `TeamScope`, `Disclosure`, `DataTable*`, `EmptyState`, `PlayerCompare` (head-to-head of two players), `StatComparisonCard` (team logos either side of a title, then
+    `ComparisonRow`s), `Carousel` / `CarouselRail` / `CarouselControls` / `useCarousel` (scroll-snap rail with prev/next), `TeamPercent` (team + percentage; `inline` or
+    `tile`), `Linescore` (period box score), `WhereToWatch` (broadcast logos), `GameChip` (game as a link chip; `renderLink` for router links).
+  - **`lib/`**: `format.ts` (`pct`, `clock`, `statusLine`, `relativeTimeLabel`...), `team-style.ts` (`teamColorVars`, `teamColorOnDark`, `teamPairColors`), `cn`.
 - **Stories use real data.** Import `fixtures` and `GAMES` from `src/fixtures` (Storybook only, **never** import it from a component or the barrels):
   `fixtures.game(GAMES.liveQ4)`, `fixtures.stats(...)`, `fixtures.plays(...)`, `fixtures.at(id, elapsedSeconds)`. Cover every state (default, live, final,
   scheduled, missing/empty data, mirrored sides, sizes) and at least one story built from fixtures. Fixtures have no player photos and remote logos can fail offline: that is
@@ -88,7 +100,8 @@ Rules that define the project:
   `color.surface.page` -> `bg-surface-page`, `text.footnote` -> `text-footnote`, `radius.md` -> `rounded-md`. Tailwind's default palette, type scale,
   radii, shadows and font families are disabled.
 - Fonts: Inter (UI) and Barlow Condensed (scores, clock, big numerals). `apps/web` loads them with `next/font/google`; Storybook via `preview-head.html`.
-- Team colors are runtime data: set `style={{ '--team-primary': team.colors.primary }}` on a team scope and use `bg-team-primary` / `text-team-secondary`.
+- Team colors are runtime data: set `style={{ '--team-primary': team.colors.primary }}` on a team scope and use `bg-team-primary` / `text-team-secondary`;
+  on dark surfaces use the `*-team-primary-on-dark` utilities (see Component conventions): prefer `TeamScope` / `teamColorVars`, which set both variables.
 
 ## Scenario Lab (tooling, not product)
 

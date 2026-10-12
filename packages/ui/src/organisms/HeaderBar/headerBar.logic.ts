@@ -73,16 +73,5 @@ export function eventTags(game: Pick<HeaderGame, 'label' | 'neutralSite'>): stri
   return tags;
 }
 
-/** The winner of a final game, or `null` for a tie / unknown / not final. */
-export function winnerSide(game: Pick<HeaderGame, 'status' | 'home' | 'away'>): HeaderSide | null {
-  if (game.status !== 'final') return null;
-  const { home, away } = game;
-  if (home.score === null || away.score === null || home.score === away.score) return null;
-  return home.score > away.score ? 'home' : 'away';
-}
-
-/** Column headings of the linescore: Q1..Q4 always, plus an OT column for each extra period played. */
-export function linescorePeriods(game: Pick<HeaderGame, 'home' | 'away'>): number[] {
-  const played = Math.max(game.home.periodScores.length, game.away.periodScores.length);
-  return Array.from({ length: Math.max(4, played) }, (_, i) => i + 1);
-}
+// The linescore helpers live with the Linescore molecule; re-exported so existing imports of the header logic keep working.
+export { linescorePeriods, winnerSide } from '../../molecules/Linescore/linescore.logic';

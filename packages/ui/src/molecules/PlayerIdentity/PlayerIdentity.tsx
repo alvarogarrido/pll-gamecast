@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { PlayerRef } from '@pll/data/api';
 import { cn } from '../../lib/cn';
 import { playerInitials, playerMeta, playerShortName } from '../../lib/format';
@@ -21,6 +22,11 @@ export interface PlayerIdentityProps {
   /** Replace the meta line (e.g. "2A, 5PTS" for a stat line). */
   meta?: string;
   avatarFallback?: PlayerAvatarFallback;
+  /**
+   * Content beside the identity, on its outer edge (right of an away player, left of a home player): a stat, a score, an
+   * action. It keeps its own width and the identity takes the rest. `className` then applies to the wrapper that holds both.
+   */
+  trailing?: ReactNode;
   className?: string;
 }
 
@@ -49,20 +55,20 @@ export function PlayerIdentity({
   showMeta = true,
   meta,
   avatarFallback,
+  trailing,
   className,
 }: PlayerIdentityProps) {
   const stacked = layout === 'stacked';
   const mirrored = side === 'home';
   const fullName = `${player.firstName} ${player.lastName}`;
 
-  return (
+  const identity = (
     <div
-      data-side={side}
-      data-layout={layout}
+      {...(trailing ? {} : { 'data-side': side, 'data-layout': layout })}
       className={cn(
         'flex min-w-0 gap-2.5',
         stacked ? 'flex-col items-center text-center' : mirrored ? 'flex-row-reverse items-center text-right' : 'items-center text-left',
-        className,
+        trailing ? 'flex-1' : className,
       )}
     >
       <PlayerAvatar
@@ -80,6 +86,15 @@ export function PlayerIdentity({
         </span>
         {showMeta && <span className="truncate text-caption text-text-secondary">{meta ?? playerMeta(player)}</span>}
       </div>
+    </div>
+  );
+
+  if (!trailing) return identity;
+
+  return (
+    <div data-side={side} data-layout={layout} className={cn('flex min-w-0 items-start gap-2', mirrored && 'flex-row-reverse', className)}>
+      {identity}
+      <div className="shrink-0">{trailing}</div>
     </div>
   );
 }

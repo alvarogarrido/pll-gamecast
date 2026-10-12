@@ -1,26 +1,15 @@
-import { dateLabel } from '../../lib/format';
+import { relativeTimeLabel } from '../../lib/format';
 import type { GameMedia } from '@pll/data/api';
 
 export type ArticleWithAuthor = GameMedia['data']['articles'][number];
 export type ArticleKind = 'preview' | 'recap';
 
-const MIN = 60_000;
-const HOUR = 60 * MIN;
-const DAY = 24 * HOUR;
-
 /**
- * "just now", "5m ago", "3h ago", "2d ago", and the date (`Mar 13`) after a week. `nowMs` is server time. Timestamps in
- * the future (clock skew) read "just now"; an unparseable one reads as an empty string.
+ * Alias of {@link relativeTimeLabel} (`lib/format.ts`), kept so existing imports keep working.
+ * @deprecated Use `relativeTimeLabel`.
  */
 export function publishedAgo(iso: string, nowMs: number): string {
-  const ms = Date.parse(iso);
-  if (Number.isNaN(ms)) return '';
-  const age = nowMs - ms;
-  if (age < MIN) return 'just now';
-  if (age < HOUR) return `${Math.floor(age / MIN)}m ago`;
-  if (age < DAY) return `${Math.floor(age / HOUR)}h ago`;
-  if (age < 7 * DAY) return `${Math.floor(age / DAY)}d ago`;
-  return dateLabel(iso);
+  return relativeTimeLabel(iso, nowMs);
 }
 
 const newest = (a: ArticleWithAuthor, b: ArticleWithAuthor) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt);

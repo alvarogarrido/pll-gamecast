@@ -3,8 +3,9 @@ import { cn } from '../../lib/cn';
 import { Card } from '../../atoms/Card';
 import { Skeleton } from '../../atoms/Skeleton';
 import { EmptyState } from '../../molecules/EmptyState';
+import { PlayerCompare } from '../../molecules/PlayerCompare';
 import { SectionHeader } from '../../molecules/SectionHeader';
-import { PerformerCompare } from './PerformerCompare';
+import { teamPairColors } from '../../lib/team-style';
 import { buildTopPerformers, isEmptySections } from './topPerformers.logic';
 
 export interface TopPerformersProps {
@@ -24,6 +25,8 @@ export function TopPerformers({ stats, game, loading = false, onViewAll, classNa
   const sections = buildTopPerformers(stats, game);
   const awayName = game.away.team.school;
   const homeName = game.home.team.school;
+  // Both teams in every block: tell look-alikes (Duke / Notre Dame) apart.
+  const teamColors = teamPairColors(game.away.team.colors, game.home.team.colors);
 
   return (
     <section aria-label="Top performers" className={cn('flex flex-col gap-2', className)}>
@@ -34,7 +37,7 @@ export function TopPerformers({ stats, game, loading = false, onViewAll, classNa
         ) : (
           sections.map((s, i) => (
             <div key={s.category} className={cn(i > 0 && 'border-t border-border-hairline pt-4')}>
-              <PerformerCompare section={s} awayName={awayName} homeName={homeName} />
+              <PlayerCompare title={s.title} emptyLabel={s.emptyLabel} away={s.away} home={s.home} awayName={awayName} homeName={homeName} teamColors={teamColors} />
             </div>
           ))
         )}

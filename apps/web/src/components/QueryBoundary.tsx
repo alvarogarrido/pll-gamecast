@@ -14,6 +14,7 @@ import { StatePanel } from './states/StatePanel';
  */
 export function QueryBoundary<T>({
   query,
+  label,
   loading,
   isEmpty,
   empty,
@@ -21,6 +22,8 @@ export function QueryBoundary<T>({
   className,
 }: {
   query: UseQueryResult<T>;
+  /** Module name, shown in the error / offline / empty panels ("Top performers"). */
+  label?: string;
   loading: ReactNode;
   /** Return true when the loaded data has nothing to show. */
   isEmpty?: (data: T) => boolean;
@@ -33,11 +36,12 @@ export function QueryBoundary<T>({
 
   if (data === undefined) {
     if (isError) {
-      return <ErrorState error={error} onRetry={() => void refetch()} retrying={isRefetching} className={className} />;
+      return <ErrorState label={label} error={error} onRetry={() => void refetch()} retrying={isRefetching} className={className} />;
     }
     if (isPending && (fetchStatus === 'paused' || !online)) {
       return (
         <StatePanel
+          label={label}
           role="status"
           title="You're offline"
           message="We'll load this as soon as you're back online."
@@ -49,7 +53,7 @@ export function QueryBoundary<T>({
   }
 
   if (isEmpty?.(data)) {
-    return <EmptyState title={empty?.title ?? 'Nothing here yet'} message={empty?.message} className={className} />;
+    return <EmptyState label={label} title={empty?.title ?? 'Nothing here yet'} message={empty?.message} className={className} />;
   }
 
   return (

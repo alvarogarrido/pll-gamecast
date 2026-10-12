@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
-import type { GameSummary, TeamRef } from '@pll/data/api';
+import type { GameSummary } from '@pll/data/api';
 import { cn } from '../../lib/cn';
 import { pct } from '../../lib/format';
-import { teamColorVars } from '../../lib/team-style';
+import { teamColorVars, teamPairColors } from '../../lib/team-style';
 import { Card } from '../../atoms/Card';
 import { Skeleton } from '../../atoms/Skeleton';
 import { StatusPill } from '../../atoms/StatusPill';
@@ -12,6 +12,7 @@ import { TeamLogo } from '../../atoms/TeamLogo';
 import { ComparisonBar } from '../../molecules/ComparisonBar';
 import { EmptyState } from '../../molecules/EmptyState';
 import { SectionHeader } from '../../molecules/SectionHeader';
+import { TeamPercent } from '../../molecules/TeamPercent';
 import {
   buildAreaSegments,
   buildLinePath,
@@ -22,7 +23,6 @@ import {
   describeSeries,
   layoutBands,
   nearestIndex,
-  pickChartColors,
   sortPoints,
   stepIndex,
   type SeriesData,
@@ -48,25 +48,6 @@ export function WinProbabilityChartSkeleton({ className }: { className?: string 
       <Skeleton variant="rect" className="h-10 w-full" />
       <Skeleton variant="rect" className="h-40 w-full" />
     </Card>
-  );
-}
-
-function TeamPct({ team, value, side, color }: { team: TeamRef; value: number | null; side: 'away' | 'home'; color?: string }) {
-  return (
-    <div
-      data-side={side}
-      style={teamColorVars(color ?? team.colors.primary, team.colors.secondary)}
-      className={cn('flex items-center gap-2', side === 'home' && 'flex-row-reverse text-right')}
-    >
-      <TeamLogo src={team.logoUrl} name={`${team.school} ${team.mascot}`} abbreviation={team.abbreviation} color={team.colors.primary} size="sm" decorative />
-      <div className="flex flex-col">
-        <span className={cn('flex items-center gap-1 text-caption text-text-secondary', side === 'home' && 'flex-row-reverse')}>
-          <span aria-hidden="true" className="size-2 shrink-0 rounded-full border border-border-hairline bg-team-primary" />
-          {team.abbreviation}
-        </span>
-        <span className="font-display text-score tabular-nums text-text-primary">{pct(value)}</span>
-      </div>
-    </div>
   );
 }
 
@@ -100,7 +81,7 @@ export function WinProbabilityChart({ series, game, loading = false, className }
   const away = game.away.team;
   const home = game.home.team;
   // Dark team colors are lightened and look-alike teams separated, so both areas stay readable on the dark card.
-  const colors = pickChartColors(away.colors, home.colors);
+  const colors = teamPairColors(away.colors, home.colors);
   const live = game.status === 'live';
   const started = game.status === 'live' || game.status === 'final';
 
@@ -119,14 +100,16 @@ export function WinProbabilityChart({ series, game, loading = false, className }
         ) : (
           <>
             <div className="flex items-center justify-between gap-2">
-              <TeamPct team={away} value={1 - pregame} side="away" color={colors.away} />
-              <TeamPct team={home} value={pregame} side="home" color={colors.home} />
+              <TeamPercent team={away} value={1 - pregame} side="away" color={colors.away} />
+              <TeamPercent team={home} value={pregame} side="home" color={colors.home} />
             </div>
             <ComparisonBar
               away={1 - pregame}
               home={pregame}
-              awayColor={colors.away}
-              homeColor={colors.home}
+              awayColor={away.colors.primary}
+              homeColor={home.colors.primary}
+              awaySecondaryColor={away.colors.secondary}
+              homeSecondaryColor={home.colors.secondary}
               awayName={away.school}
               homeName={home.school}
               format="pct"
@@ -191,8 +174,8 @@ export function WinProbabilityChart({ series, game, loading = false, className }
       <SectionHeader title={title} action={live ? <StatusPill status="live" /> : undefined} />
 
       <div className="flex items-center justify-between gap-2">
-        <TeamPct team={away} value={1 - current} side="away" color={colors.away} />
-        <TeamPct team={home} value={current} side="home" color={colors.home} />
+        <TeamPercent team={away} value={1 - current} side="away" color={colors.away} />
+        <TeamPercent team={home} value={current} side="home" color={colors.home} />
       </div>
 
       <p id={summaryId} className="sr-only">
@@ -239,11 +222,11 @@ export function WinProbabilityChart({ series, game, loading = false, className }
             <line x1={scale.plot.left} x2={scale.plot.right} y1={scale.plot.bottom} y2={scale.plot.bottom} className="stroke-border-default" strokeWidth={1} />
 
             {/* Areas between the line and 50%: home above, away below */}
-            <g style={teamColorVars(colors.home)}>
-              {areas.filter((a) => a.side === 'home').map((a, i) => <path key={i} d={a.d} className="fill-team-primary/80" />)}
+            <g style={teamColorVars(home.colors.primary, null, colors.home)}>
+              {areas.filter((a) => a.side === 'home').map((a, i) => <path key={i} d={a.d} className="fill-team-primary-on-dark/80" />)}
             </g>
-            <g style={teamColorVars(colors.away)}>
-              {areas.filter((a) => a.side === 'away').map((a, i) => <path key={i} d={a.d} className="fill-team-primary/80" />)}
+            <g style={teamColorVars(away.colors.primary, null, colors.away)}>
+              {areas.filter((a) => a.side === 'away').map((a, i) => <path key={i} d={a.d} className="fill-team-primary-on-dark/80" />)}
             </g>
 
             {/* Dashed 50% line */}
@@ -305,11 +288,11 @@ export function WinProbabilityChart({ series, game, loading = false, className }
             >
               <p className="font-display text-clock text-text-secondary">{clockAtSeconds(domain, active.elapsedSeconds).label}</p>
               {[
-                { team: away, value: 1 - active.home },
-                { team: home, value: active.home },
-              ].map(({ team, value }) => (
+                { team: away, value: 1 - active.home, color: colors.away },
+                { team: home, value: active.home, color: colors.home },
+              ].map(({ team, value, color }) => (
                 <div key={team.id} className="mt-1 flex items-center gap-2 text-footnote">
-                  <TeamLogo src={team.logoUrl} name={team.school} abbreviation={team.abbreviation} color={team.colors.primary} size="xs" decorative />
+                  <TeamLogo src={team.logoUrl} name={team.school} abbreviation={team.abbreviation} color={color} size="xs" decorative />
                   <span className="flex-1 truncate text-text-secondary">{team.abbreviation}</span>
                   <span className="font-semibold tabular-nums text-text-primary">{pct(value)}</span>
                 </div>

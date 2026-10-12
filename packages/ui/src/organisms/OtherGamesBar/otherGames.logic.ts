@@ -1,16 +1,10 @@
 import type { GameSummary } from '@pll/data/api';
+import { gameBucket, type GameBucket } from '../../molecules/GameChip/gameChip.logic';
 
-export type GameBucket = 'live' | 'upcoming' | 'completed';
+export { gameBucket, type GameBucket };
 
 /** Order of the buckets in the bar: live games first, then upcoming, then completed. */
 const BUCKET_ORDER: Record<GameBucket, number> = { live: 0, upcoming: 1, completed: 2 };
-
-/** `live` = in progress, `completed` = final, everything else (scheduled, delayed, postponed, canceled) = `upcoming`. */
-export function gameBucket(game: Pick<GameSummary, 'status'>): GameBucket {
-  if (game.status === 'live') return 'live';
-  if (game.status === 'final') return 'completed';
-  return 'upcoming';
-}
 
 /** Ranking facts the tie-breakers use. An unranked team counts as `Infinity`. */
 export interface RankFacts {

@@ -27,13 +27,12 @@ export interface InjuryReportProps {
 export function InjuryReport({ injuries, game, loading = false, className }: InjuryReportProps) {
   const titleId = useId();
   const groups = groupInjuries(injuries, game);
+  if (loading) return <InjuryReportSkeleton className={className} />;
 
   return (
-    <Card as="section" aria-labelledby={titleId} aria-busy={loading || undefined} className={cn('flex flex-col gap-3', className)}>
+    <Card as="section" aria-labelledby={titleId} className={cn('flex flex-col gap-3', className)}>
       <SectionHeader title={<span id={titleId}>Injury report</span>} />
-      {loading ? (
-        <InjuryReportSkeleton />
-      ) : !hasInjuries(groups) ? (
+      {!hasInjuries(groups) ? (
         <EmptyState icon="plaster" title="No injuries reported" message="Both teams are listed as healthy." />
       ) : (
         <div className="flex flex-col gap-4">
@@ -72,14 +71,18 @@ export function InjuryReport({ injuries, game, loading = false, className }: Inj
   );
 }
 
-export function InjuryReportSkeleton() {
+/** The same card and title as {@link InjuryReport}, with placeholder rows. */
+export function InjuryReportSkeleton({ className }: { className?: string }) {
   return (
-    <div className="flex flex-col gap-2" role="status">
-      <span className="sr-only">Loading injury report</span>
-      <Skeleton className="h-7 w-40" variant="rect" />
-      {[0, 1, 2].map((i) => (
-        <Skeleton key={i} variant="rect" className="h-12 w-full" />
-      ))}
-    </div>
+    <Card as="section" aria-label="Injury report" aria-busy="true" className={cn('flex flex-col gap-3', className)}>
+      <SectionHeader title="Injury report" />
+      <div className="flex flex-col gap-2" role="status">
+        <span className="sr-only">Loading injury report</span>
+        <Skeleton className="h-7 w-40" variant="rect" />
+        {[0, 1, 2].map((i) => (
+          <Skeleton key={i} variant="rect" className="h-12 w-full" />
+        ))}
+      </div>
+    </Card>
   );
 }

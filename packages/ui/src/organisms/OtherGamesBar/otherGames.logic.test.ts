@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { gameBucket, orderOtherGames, rankFacts } from './otherGames.logic';
+import { orderOtherGames, rankFacts } from './otherGames.logic';
 
 type G = Parameters<typeof orderOtherGames>[0][number];
 
@@ -21,14 +21,6 @@ function game(
   } as G & { id: string };
 }
 const ids = (games: { id: string }[]) => games.map((g) => g.id);
-
-describe('gameBucket', () => {
-  it('maps statuses to buckets', () => {
-    expect(gameBucket({ status: 'live' })).toBe('live');
-    expect(gameBucket({ status: 'final' })).toBe('completed');
-    for (const s of ['scheduled', 'delayed', 'postponed', 'canceled'] as const) expect(gameBucket({ status: s })).toBe('upcoming');
-  });
-});
 
 describe('rankFacts', () => {
   it('counts ranked teams, sums ranks and finds the best one', () => {

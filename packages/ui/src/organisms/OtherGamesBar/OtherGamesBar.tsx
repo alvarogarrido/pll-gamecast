@@ -3,13 +3,10 @@
 import { useEffect, useRef } from 'react';
 import type { GameSummary } from '@pll/data/api';
 import { cn } from '../../lib/cn';
-import { NO_VALUE, statusLine } from '../../lib/format';
-import { RankBadge } from '../../atoms/RankBadge';
 import { Skeleton } from '../../atoms/Skeleton';
-import { TeamLogo } from '../../atoms/TeamLogo';
 import { EmptyState } from '../../molecules/EmptyState';
-import { GameStatusLabel } from '../../molecules/GameStatusLabel';
-import { gameBucket, orderOtherGames } from './otherGames.logic';
+import { GameChip, type GameChipRenderLink } from '../../molecules/GameChip';
+import { orderOtherGames } from './otherGames.logic';
 
 export interface OtherGamesBarProps {
   /** The week's games (`scoreboard.data.games`), in any order: the bar sorts them (live, upcoming, completed). */
@@ -23,63 +20,12 @@ export interface OtherGamesBarProps {
   /** Show the skeleton instead of the games. */
   loading?: boolean;
   timeZone?: string;
+  /**
+   * Render each chip's link yourself, e.g. with your router's `Link`, so switching games does not reload the page:
+   * `renderLink={(props) => <Link {...props} />}`. Default: a plain `<a>`.
+   */
+  renderLink?: GameChipRenderLink;
   className?: string;
-}
-
-const SIDES = ['away', 'home'] as const;
-
-function ChipRow({ game, side, loser, showScore }: { game: GameSummary; side: (typeof SIDES)[number]; loser: boolean; showScore: boolean }) {
-  const s = game[side];
-  return (
-    <div className="flex items-center gap-2">
-      <TeamLogo src={s.team.logoUrl} name={`${s.team.school} ${s.team.mascot}`} abbreviation={s.team.abbreviation} color={s.team.colors.primary} size="xs" decorative />
-      <span className="flex min-w-0 flex-1 items-center gap-1">
-        {s.rank !== null && <RankBadge rank={s.rank} />}
-        <span className={cn('truncate text-footnote font-semibold', loser ? 'text-text-secondary' : 'text-text-primary')}>{s.team.abbreviation}</span>
-      </span>
-      {showScore && (
-        <span aria-hidden="true" className={cn('font-display text-headline font-bold tabular-nums', loser ? 'text-text-secondary' : 'text-text-primary')}>
-          {s.score ?? NO_VALUE}
-        </span>
-      )}
-    </div>
-  );
-}
-
-function GameChip({ game, current, href, nowMs, timeZone }: { game: GameSummary; current: boolean; href: string; nowMs: number; timeZone?: string }) {
-  const bucket = gameBucket(game);
-  const showScore = bucket !== 'upcoming';
-  const a = game.away.score ?? 0;
-  const h = game.home.score ?? 0;
-  const loserSide = bucket === 'completed' && a !== h ? (a > h ? 'home' : 'away') : null;
-  const label = [
-    `${game.away.team.school}${showScore ? ` ${a}` : ''} at ${game.home.team.school}${showScore ? ` ${h}` : ''}`,
-    statusLine(game, nowMs, { timeZone }),
-    current ? 'current game' : null,
-  ]
-    .filter(Boolean)
-    .join(', ');
-
-  return (
-    <li className="snap-start">
-      <a
-        href={href}
-        aria-label={label}
-        aria-current={current ? 'page' : undefined}
-        data-current={current ? '' : undefined}
-        data-bucket={bucket}
-        className={cn(
-          'flex w-40 shrink-0 flex-col gap-1 rounded-md border p-2 transition-colors',
-          current ? 'border-accent-gold bg-gold-tint' : 'border-border-default bg-surface-card hover:bg-surface-track',
-        )}
-      >
-        {SIDES.map((side) => (
-          <ChipRow key={side} game={game} side={side} showScore={showScore} loser={loserSide === side} />
-        ))}
-        <GameStatusLabel game={game} nowMs={nowMs} variant="text" timeZone={timeZone} className="mt-0.5 text-caption" />
-      </a>
-    </li>
-  );
 }
 
 export function OtherGamesBarSkeleton({ className }: { className?: string }) {
@@ -98,7 +44,7 @@ export function OtherGamesBarSkeleton({ className }: { className?: string }) {
  * score with quarter and clock, or the final score. The current game is outlined in gold. The scroller is focusable, so
  * arrow keys scroll it, and snaps chip by chip on touch screens.
  */
-export function OtherGamesBar({ games, currentGameId, nowMs, getHref, loading = false, timeZone, className }: OtherGamesBarProps) {
+export function OtherGamesBar({ games, currentGameId, nowMs, getHref, loading = false, timeZone, renderLink, className }: OtherGamesBarProps) {
   const scroller = useRef<HTMLUListElement>(null);
 
   // Bring the current game into view inside the scroller only (scrollIntoView would also move the page).
@@ -126,7 +72,7 @@ export function OtherGamesBar({ games, currentGameId, nowMs, getHref, loading = 
           className="flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-smooth rounded-sm pb-2 [scrollbar-width:thin] sm:snap-none motion-reduce:scroll-auto"
         >
           {orderOtherGames(games).map((game) => (
-            <GameChip key={game.id} game={game} current={game.id === currentGameId} href={getHref(game.id)} nowMs={nowMs} timeZone={timeZone} />
+            <GameChip key={game.id} game={game} current={game.id === currentGameId} href={getHref(game.id)} nowMs={nowMs} timeZone={timeZone} renderLink={renderLink} />
           ))}
         </ul>
       )}

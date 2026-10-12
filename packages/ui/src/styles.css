@@ -12,6 +12,17 @@
 /* Make Tailwind scan this package's components when this file is imported from another project. */
 @source ".";
 
+/*
+ * Team color on dark surfaces: `bg-team-primary-on-dark`, `border-team-primary-on-dark`, `fill-team-primary-on-dark`...
+ * Navy primaries vanish on surface.card (#1F1F1F), so `teamColorVars()` / `TeamScope` also set `--team-primary-on-dark`
+ * (the primary lightened to 3:1 contrast, see lib/team-style.ts). Use this utility, not `*-team-primary`, wherever the
+ * team color is drawn on a dark surface. It is defined here, not in @pll/tokens, because it is derived at runtime from
+ * API data; the fallback chain lets a scope that only set `--team-primary` (older call sites) keep working.
+ */
+@theme inline {
+  --color-team-primary-on-dark: var(--team-primary-on-dark, var(--team-primary, var(--pll-color-team-primary)));
+}
+
 @theme {
   --animate-live-pulse: live-pulse 1.6s ease-in-out infinite;
 

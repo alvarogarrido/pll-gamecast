@@ -3,13 +3,13 @@
 import { useId } from 'react';
 import { Icon } from '@pll/icons';
 import { Card } from '../../atoms/Card';
+import { MediaImage } from '../../atoms/MediaImage';
 import { Skeleton } from '../../atoms/Skeleton';
+import { CarouselControls, CarouselRail, useCarousel } from '../../molecules/Carousel';
 import { EmptyState } from '../../molecules/EmptyState';
 import { SectionHeader } from '../../molecules/SectionHeader';
-import { publishedAgo } from '../ArticleExcerpt/article.logic';
-import { CarouselControls, CarouselRail, useCarousel } from '../ArticleCarousel/CarouselRail';
-import { MediaImage } from '../ArticleCarousel/MediaImage';
 import { cn } from '../../lib/cn';
+import { relativeTimeLabel } from '../../lib/format';
 import { durationLabel, type VideoItem } from '../VideoPlayer/video.logic';
 
 export interface HighlightsCarouselProps {
@@ -87,7 +87,7 @@ export function HighlightsCarousel({
               </span>
               <span className="line-clamp-2 min-h-10 text-subhead font-semibold text-text-primary">{video.title}</span>
               <span className="flex items-center justify-between gap-2 text-caption text-text-secondary">
-                <time dateTime={video.publishedAt}>{publishedAgo(video.publishedAt, nowMs)}</time>
+                <time dateTime={video.publishedAt}>{relativeTimeLabel(video.publishedAt, nowMs)}</time>
                 {selected && <span className="font-semibold text-accent-gold">Now playing</span>}
               </span>
             </button>

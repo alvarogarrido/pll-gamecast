@@ -9,9 +9,9 @@ import { TeamLogo } from '../../atoms/TeamLogo';
 import { Tabs, tabPanelProps, type TabItem } from '../../atoms/Tabs';
 import { EmptyState } from '../../molecules/EmptyState';
 import { SectionHeader } from '../../molecules/SectionHeader';
+import { StatComparisonCard } from '../../molecules/StatComparisonCard';
 import { TeamIdentity } from '../../molecules/TeamIdentity';
 import { BoxScoreTable } from './BoxScoreTable';
-import { StatCard } from './StatCard';
 import { boxTables, hasGameStats, teamLines, teamStatGroups, teamsFor, type Side } from './statsSection.logic';
 
 export type StatsView = 'team' | Side;
@@ -86,7 +86,7 @@ function TeamStatsView({ stats, game }: { stats: GameStats['data']; game: GameDe
   return (
     <>
       {teamStatGroups(teams.away, teams.home).map((g) => (
-        <StatCard key={g.id} title={g.title} game={game} rows={g.rows} />
+        <StatComparisonCard key={g.id} title={g.title} away={game.away.team} home={game.home.team} rows={g.rows} />
       ))}
     </>
   );

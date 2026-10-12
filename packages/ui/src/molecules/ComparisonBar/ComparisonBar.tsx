@@ -1,6 +1,6 @@
 import { cn } from '../../lib/cn';
 import { formatStat, type StatFormat } from '../../lib/format';
-import { teamColorVars } from '../../lib/team-style';
+import { teamColorOnDark, teamColorVars, teamPairColors } from '../../lib/team-style';
 
 export interface ComparisonBarProps {
   /** Away team's amount (left segment). Only the ratio matters. */
@@ -10,6 +10,12 @@ export interface ComparisonBarProps {
   /** Team colors (`team.colors.primary`). Without them the neutral team token is used. */
   awayColor?: string;
   homeColor?: string;
+  /**
+   * Secondary colors (`team.colors.secondary`), used when the two primaries still look alike on the dark card (Duke vs
+   * Notre Dame): one team then falls back to its secondary. Optional.
+   */
+  awaySecondaryColor?: string;
+  homeSecondaryColor?: string;
   /** Stat name shown between the two values. When omitted no value row is drawn. */
   label?: string;
   format?: StatFormat;
@@ -22,13 +28,16 @@ export interface ComparisonBarProps {
 
 /**
  * Two-team proportional bar in team colors, e.g. possession or shot share. Both zero draws an even, muted bar;
- * a zero on one side lets the other fill it. Exposed as a single `img` with a text description.
+ * a zero on one side lets the other fill it. Exposed as a single `img` with a text description. Colors are made visible
+ * on the dark surface (navy is lightened) and look-alike teams are told apart, see `teamPairColors`.
  */
 export function ComparisonBar({
   away,
   home,
   awayColor,
   homeColor,
+  awaySecondaryColor,
+  homeSecondaryColor,
   label,
   format = 'number',
   digits,
@@ -44,6 +53,10 @@ export function ComparisonBar({
 
   const awayText = formatStat(away, format, digits);
   const homeText = formatStat(home, format, digits);
+  const fills =
+    awayColor && homeColor
+      ? teamPairColors({ primary: awayColor, secondary: awaySecondaryColor }, { primary: homeColor, secondary: homeSecondaryColor })
+      : { away: awayColor ? teamColorOnDark(awayColor) : undefined, home: homeColor ? teamColorOnDark(homeColor) : undefined };
   const description = `${label ? `${label}: ` : ''}${awayName} ${awayText}, ${homeName} ${homeText}`;
 
   return (
@@ -60,16 +73,16 @@ export function ComparisonBar({
           <span
             data-side="away"
             // Inline width: a data-driven proportion cannot be a static utility.
-            style={{ ...teamColorVars(awayColor), width: `${awayShare}%` }}
-            className={cn('h-full', total === 0 ? 'bg-surface-selected' : 'bg-team-primary')}
+            style={{ ...teamColorVars(awayColor, null, fills.away), width: `${awayShare}%` }}
+            className={cn('h-full', total === 0 ? 'bg-surface-selected' : 'bg-team-primary-on-dark')}
           />
         )}
         {homeShare > 0 && (
           <span
             data-side="home"
             // Inline width: a data-driven proportion cannot be a static utility.
-            style={{ ...teamColorVars(homeColor), width: `${homeShare}%` }}
-            className={cn('h-full', total === 0 ? 'bg-surface-selected' : 'bg-team-primary')}
+            style={{ ...teamColorVars(homeColor, null, fills.home), width: `${homeShare}%` }}
+            className={cn('h-full', total === 0 ? 'bg-surface-selected' : 'bg-team-primary-on-dark')}
           />
         )}
       </div>

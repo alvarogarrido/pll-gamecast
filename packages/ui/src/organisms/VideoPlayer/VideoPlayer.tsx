@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from '@pll/icons';
 import { Chip } from '../../atoms/Chip';
+import { MediaImage } from '../../atoms/MediaImage';
 import { Skeleton } from '../../atoms/Skeleton';
 import { SectionHeader } from '../../molecules/SectionHeader';
-import { MediaImage } from '../ArticleCarousel/MediaImage';
 import { cn } from '../../lib/cn';
 import { durationLabel, shouldAutoplay, type VideoItem } from './video.logic';
 

@@ -39,3 +39,22 @@ export {
   type SortDirection,
 } from './DataTable';
 export { EmptyState, type EmptyStateProps } from './EmptyState';
+export { PlayerCompare, type PlayerCompareProps, type PlayerCompareEntry } from './PlayerCompare';
+export {
+  StatComparisonCard,
+  type StatComparisonCardProps,
+  type StatComparisonCardRow,
+} from './StatComparisonCard';
+export {
+  Carousel,
+  CarouselRail,
+  CarouselControls,
+  useCarousel,
+  type CarouselProps,
+  type CarouselRailProps,
+  type CarouselControlsProps,
+} from './Carousel';
+export { Linescore, linescorePeriods, winnerSide, type LinescoreProps, type LinescoreGame, type LinescoreSide } from './Linescore';
+export { WhereToWatch, type WhereToWatchProps, type WhereToWatchSize } from './WhereToWatch';
+export { GameChip, gameBucket, type GameChipProps, type GameChipLinkProps, type GameChipRenderLink, type GameBucket } from './GameChip';
+export { TeamPercent, type TeamPercentProps, type TeamPercentLayout, type TeamPercentSide } from './TeamPercent';

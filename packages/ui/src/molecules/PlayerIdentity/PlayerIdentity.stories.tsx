@@ -27,6 +27,24 @@ export const InitialsFallback: Story = { args: { avatarFallback: 'initials' } };
 export const CustomMetaLine: Story = { args: { meta: '2A, 5PTS' } };
 export const NameOnly: Story = { args: { showMeta: false } };
 
+const Stat = ({ value, label }: { value: string; label: string }) => (
+  <div className="flex flex-col items-center pt-1">
+    <span className="font-display text-score tabular-nums text-text-primary">{value}</span>
+    <span className="text-caption text-text-secondary">{label}</span>
+  </div>
+);
+
+/** `trailing` puts a stat (or an action) on the outer edge; the identity keeps the rest of the width. */
+export const WithTrailingStat: Story = {
+  args: { layout: 'stacked', trailing: <Stat value="6" label="Goals" />, className: 'max-w-xs' },
+};
+export const WithTrailingStatMirrored: Story = {
+  args: { layout: 'stacked', side: 'home', player: homePlayer, teamColor: game.home.team.colors.primary, trailing: <Stat value="4" label="Goals" />, className: 'max-w-xs' },
+};
+export const InlineWithTrailing: Story = {
+  args: { trailing: <span className="font-display text-score tabular-nums text-text-primary">12</span>, className: 'max-w-xs' },
+};
+
 export const MirroredInline: Story = {
   render: (args) => (
     <div className="flex max-w-md items-center justify-between gap-4 rounded-md border border-border-default bg-surface-card p-4">

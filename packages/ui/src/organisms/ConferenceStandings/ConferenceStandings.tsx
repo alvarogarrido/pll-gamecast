@@ -102,13 +102,12 @@ export function ConferenceStandings({ standings, game, loading = false, classNam
   const [selected, setSelected] = useState<string | null>(null);
   const activeId = tables.some((t) => t.conferenceId === selected) ? selected : defaultConferenceId;
   const active = tables.find((t) => t.conferenceId === activeId);
+  if (loading) return <StandingsSkeleton className={className} />;
 
   return (
-    <Card as="section" aria-labelledby={titleId} aria-busy={loading || undefined} className={cn('flex flex-col gap-3', className)}>
+    <Card as="section" aria-labelledby={titleId} className={cn('flex flex-col gap-3', className)}>
       <SectionHeader title={<span id={titleId}>Standings</span>} />
-      {loading ? (
-        <StandingsSkeleton />
-      ) : !active ? (
+      {!active ? (
         <EmptyState icon="standings" title="Standings unavailable" message="Conference standings appear once the season is under way." />
       ) : tables.length === 1 ? (
         <>
@@ -136,14 +135,18 @@ export function ConferenceStandings({ standings, game, loading = false, classNam
   );
 }
 
-export function StandingsSkeleton() {
+/** The same card and title as {@link ConferenceStandings}, with placeholder rows. */
+export function StandingsSkeleton({ className }: { className?: string }) {
   return (
-    <div className="flex flex-col gap-2" role="status">
-      <span className="sr-only">Loading standings</span>
-      <Skeleton variant="rect" className="h-8 w-full" />
-      {[0, 1, 2, 3, 4].map((i) => (
-        <Skeleton key={i} variant="rect" className="h-8 w-full" />
-      ))}
-    </div>
+    <Card as="section" aria-label="Standings" aria-busy="true" className={cn('flex flex-col gap-3', className)}>
+      <SectionHeader title="Standings" />
+      <div className="flex flex-col gap-2" role="status">
+        <span className="sr-only">Loading standings</span>
+        <Skeleton variant="rect" className="h-8 w-full" />
+        {[0, 1, 2, 3, 4].map((i) => (
+          <Skeleton key={i} variant="rect" className="h-8 w-full" />
+        ))}
+      </div>
+    </Card>
   );
 }

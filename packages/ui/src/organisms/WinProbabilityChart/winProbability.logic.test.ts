@@ -15,6 +15,7 @@ import {
   summarizeSeries,
   type SeriesPoint,
 } from './winProbability.logic';
+import { teamPairColors } from '../../lib/team-style';
 
 const pt = (elapsedSeconds: number, home: number): SeriesPoint => ({ elapsedSeconds, home });
 const REG = 3600;
@@ -161,19 +162,17 @@ describe('summary', () => {
   });
 });
 
-describe('pickChartColors', () => {
+describe('pickChartColors (alias of teamPairColors)', () => {
   it('lightens very dark primaries and keeps light ones', () => {
     const out = pickChartColors({ primary: '#E03A3E' }, { primary: '#0C2340', secondary: '#000000' });
     expect(out.away).toBe('#e03a3e');
     expect(out.home).not.toBe('#0c2340');
   });
-  it('uses the home secondary when both teams look alike', () => {
-    const out = pickChartColors({ primary: '#003087', secondary: '#FFFFFF' }, { primary: '#0C2340', secondary: '#C99700' });
-    expect(out.home).toBe('#c99700');
-  });
-  it('keeps both primaries when they differ', () => {
-    const out = pickChartColors({ primary: '#E03A3E' }, { primary: '#7BAFD4', secondary: '#13294B' });
-    expect(out).toEqual({ away: '#e03a3e', home: '#7bafd4' });
+  it('is the shared helper: look-alikes use the home secondary', () => {
+    const duke = { primary: '#003087', secondary: '#FFFFFF' };
+    const notreDame = { primary: '#0C2340', secondary: '#C99700' };
+    expect(pickChartColors(duke, notreDame)).toEqual(teamPairColors(duke, notreDame));
+    expect(pickChartColors(duke, notreDame).home).toBe('#c99700');
   });
   it('passes through invalid colors', () => {
     expect(pickChartColors({ primary: 'red' }, { primary: '#fff' })).toEqual({ away: 'red', home: '#fff' });

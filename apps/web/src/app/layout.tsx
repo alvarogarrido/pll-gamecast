@@ -29,6 +29,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  // Lets the page use the notch area; sticky bars pad themselves with env(safe-area-inset-top).
+  viewportFit: 'cover',
   themeColor: tokens.color.surface.page,
   colorScheme: 'dark',
 };

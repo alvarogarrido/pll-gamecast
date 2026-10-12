@@ -33,3 +33,14 @@ export {
   type TrendDirection,
   type TrendIndicatorSize,
 } from './TrendIndicator';
+export { MediaImage, type MediaImageProps } from './MediaImage';
+export { ScoreChip, type ScoreChipProps, type ScoreChipSide } from './ScoreChip';
+export {
+  FilterChip,
+  FilterChipGroup,
+  type FilterChipProps,
+  type FilterChipItem,
+  type FilterChipGroupProps,
+  type FilterChipGroupLayout,
+  type FilterChipGroupSemantics,
+} from './FilterChip';

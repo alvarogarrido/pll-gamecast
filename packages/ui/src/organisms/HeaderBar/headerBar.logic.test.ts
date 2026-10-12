@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { eventTags, headerPhase, linescorePeriods, preStatus, venueLabel, weatherLabel, winnerSide, type HeaderGame } from './headerBar.logic';
+import { eventTags, headerPhase, preStatus, venueLabel, weatherLabel, type HeaderGame } from './headerBar.logic';
 
 const at = (iso: string) => Date.parse(iso);
 const START = '2027-03-13T22:00:00Z'; // 5:00 PM ET
@@ -50,26 +50,5 @@ describe('venueLabel, eventTags', () => {
   it('lists label and neutral site', () => {
     expect(eventTags({ label: 'NCAA Quarterfinal', neutralSite: true })).toEqual(['NCAA Quarterfinal', 'Neutral site']);
     expect(eventTags({ label: null, neutralSite: false })).toEqual([]);
-  });
-});
-
-describe('winnerSide', () => {
-  const g = (status: HeaderGame['status'], away: number | null, home: number | null) => ({ status, away: { score: away }, home: { score: home } }) as Pick<HeaderGame, 'status' | 'home' | 'away'>;
-  it('picks the higher score of a final game', () => {
-    expect(winnerSide(g('final', 8, 11))).toBe('home');
-    expect(winnerSide(g('final', 12, 9))).toBe('away');
-  });
-  it('is null for ties, live games and missing scores', () => {
-    expect(winnerSide(g('final', 9, 9))).toBeNull();
-    expect(winnerSide(g('live', 9, 3))).toBeNull();
-    expect(winnerSide(g('final', null, 3))).toBeNull();
-  });
-});
-
-describe('linescorePeriods', () => {
-  it('is Q1..Q4 and adds a column per overtime', () => {
-    const sides = (a: number, h: number) => ({ away: { periodScores: Array(a).fill(0) }, home: { periodScores: Array(h).fill(0) } }) as Pick<HeaderGame, 'home' | 'away'>;
-    expect(linescorePeriods(sides(2, 2))).toEqual([1, 2, 3, 4]);
-    expect(linescorePeriods(sides(5, 5))).toEqual([1, 2, 3, 4, 5]);
   });
 });

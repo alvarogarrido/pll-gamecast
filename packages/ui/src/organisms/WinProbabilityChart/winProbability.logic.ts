@@ -4,6 +4,7 @@
  */
 import type { WinProbabilitySeries } from '@pll/data/api';
 import { clock, pct, periodLabel } from '../../lib/format';
+import { teamPairColors, type TeamColorPair } from '../../lib/team-style';
 
 export type SeriesData = WinProbabilitySeries['data'];
 export type SeriesPoint = SeriesData['points'][number];
@@ -280,65 +281,21 @@ export function describeSeries(
 }
 
 // ---------------------------------------------------------------------------
-// Chart colors
+// Chart colors (moved to lib/team-style.ts; the old names stay exported)
 // ---------------------------------------------------------------------------
 
-type Rgb = [number, number, number];
+export { relativeLuminance, type TeamColorPair } from '../../lib/team-style';
 
-function parseHex(hex: string): Rgb | null {
-  const m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(hex.trim());
-  if (!m) return null;
-  const h = m[1]!.length === 3 ? [...m[1]!].map((c) => c + c).join('') : m[1]!;
-  return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
-}
-
-const toHex = ([r, g, b]: Rgb) => `#${[r, g, b].map((v) => Math.round(v).toString(16).padStart(2, '0')).join('')}`;
-
-/** WCAG relative luminance, 0 (black) to 1 (white). */
-export function relativeLuminance([r, g, b]: Rgb): number {
-  const lin = (v: number) => {
-    const s = v / 255;
-    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
-  };
-  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
-}
-
-const distance = (a: Rgb, b: Rgb) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
-
-/** Luminance a fill needs to stay visible on the dark card surface. */
+/** Luminance a fill needed to stay visible on the dark card. Superseded by the 3:1 contrast rule of `teamColorOnDark`. */
 export const MIN_FILL_LUMINANCE = 0.1;
-/** RGB distance under which two fills read as the same team. */
+/** RGB distance under which two fills read as the same team. Superseded by the perceptual rule of `teamPairColors`. */
 export const MIN_TEAM_DISTANCE = 70;
 
-/** Mix a color toward white until it reaches {@link MIN_FILL_LUMINANCE}. Light colors are returned unchanged. */
-function visibleOnDark(rgb: Rgb): Rgb {
-  let out = rgb;
-  for (let t = 0; t <= 1 && relativeLuminance(out) < MIN_FILL_LUMINANCE; t += 0.05) {
-    out = rgb.map((v) => v + (255 - v) * t) as Rgb;
-  }
-  return out;
-}
-
-export interface TeamColorPair {
-  primary: string;
-  secondary?: string;
-}
-
 /**
- * Fill colors for the two areas. Team primaries are often navy and vanish on the dark card, so very dark colors are
- * lightened (hue kept). When both teams still look alike (Duke vs Notre Dame), the home team uses its secondary color.
- * Unparseable colors are returned as given.
+ * Fill colors for the two areas.
+ * @deprecated Alias of `teamPairColors` (`lib/team-style.ts`): primaries are lightened to 3:1 contrast on the dark card
+ * (hue kept) and look-alike teams are separated through their secondary color.
  */
 export function pickChartColors(away: TeamColorPair, home: TeamColorPair): { away: string; home: string } {
-  const a = parseHex(away.primary);
-  const h = parseHex(home.primary);
-  if (!a || !h) return { away: away.primary, home: home.primary };
-  const aFill = visibleOnDark(a);
-  let hFill = visibleOnDark(h);
-  if (distance(aFill, hFill) < MIN_TEAM_DISTANCE) {
-    const alt = home.secondary ? parseHex(home.secondary) : null;
-    const altFill = alt ? visibleOnDark(alt) : null;
-    if (altFill && distance(aFill, altFill) >= MIN_TEAM_DISTANCE) hFill = altFill;
-  }
-  return { away: toHex(aFill), home: toHex(hFill) };
+  return teamPairColors(away, home);
 }

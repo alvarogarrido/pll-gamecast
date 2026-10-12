@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import type { GameDetail, Play, PlayerRef } from '@pll/data/api';
 import { cn } from '../../lib/cn';
 import { clock, periodLabel, playerShortName } from '../../lib/format';
+import { teamPairColors } from '../../lib/team-style';
 import { Card } from '../../atoms/Card';
 import { LiveDot } from '../../atoms/LiveDot';
 import { Skeleton } from '../../atoms/Skeleton';
@@ -41,7 +42,7 @@ function Lane({ goals, slots, latest }: { goals: GoalEvent[]; slots: number; lat
             key={g.play.id}
             data-latest={g.play.id === latest ? '' : undefined}
             // The outline keeps dark team colors (navy on a dark card) visible; the latest goal gets a gold one.
-            className={cn('rounded-xs bg-team-primary', g.play.id === latest ? 'border-2 border-accent-gold' : 'border border-text-tertiary')}
+            className={cn('rounded-xs bg-team-primary-on-dark', g.play.id === latest ? 'border-2 border-accent-gold' : 'border border-text-tertiary')}
           />
         ))
       )}
@@ -49,7 +50,7 @@ function Lane({ goals, slots, latest }: { goals: GoalEvent[]; slots: number; lat
   );
 }
 
-function QuarterRow({ row, game, slots, latest }: { row: QuarterFlow; game: GameDetail['data']; slots: number; latest: string | null }) {
+function QuarterRow({ row, game, colors, slots, latest }: { row: QuarterFlow; game: GameDetail['data']; colors: Record<FlowSide, string>; slots: number; latest: string | null }) {
   const spoken = `${row.label}: ${game.away.team.school} ${row.counts.away}, ${game.home.team.school} ${row.counts.home}`;
   return (
     <li className="grid grid-cols-[2.5rem_1.25rem_minmax(0,1fr)_1.25rem] items-center gap-x-2 gap-y-1" aria-current={row.inProgress ? 'step' : undefined}>
@@ -59,12 +60,12 @@ function QuarterRow({ row, game, slots, latest }: { row: QuarterFlow; game: Game
         {row.inProgress && <LiveDot size="sm" />}
       </span>
       {SIDES.map((side) => (
-        <TeamScope key={side} team={game[side].team} className="contents">
+        <TeamScope key={side} team={game[side].team} primaryOnDark={colors[side]} className="contents">
           <TeamLogo
             src={game[side].team.logoUrl}
             name={game[side].team.school}
             abbreviation={game[side].team.abbreviation}
-            color={game[side].team.colors.primary}
+            color={colors[side]}
             size="xs"
             decorative
           />
@@ -78,7 +79,7 @@ function QuarterRow({ row, game, slots, latest }: { row: QuarterFlow; game: Game
   );
 }
 
-function ScoreInfo({ game, goal, playerRefs }: { game: GameDetail['data']; goal: GoalEvent; playerRefs: readonly PlayerRef[] }) {
+function ScoreInfo({ game, goal, color, playerRefs }: { game: GameDetail['data']; goal: GoalEvent; color: string; playerRefs: readonly PlayerRef[] }) {
   const { play, side } = goal;
   const team = game[side].team;
   const byId = (id: string | null) => (id ? playerRefs.find((p) => p.id === id) : undefined);
@@ -91,7 +92,7 @@ function ScoreInfo({ game, goal, playerRefs }: { game: GameDetail['data']; goal:
       <div className="flex flex-col gap-2 @sm:flex-row @sm:items-center @sm:gap-4">
         <h3 className="text-subhead font-semibold text-text-primary @sm:w-16 @sm:shrink-0">Score Info</h3>
         <div aria-live="polite" className="flex min-w-0 items-center gap-2.5">
-          <TeamLogo src={team.logoUrl} name={`${team.school} ${team.mascot}`} abbreviation={team.abbreviation} color={team.colors.primary} size="md" decorative />
+          <TeamLogo src={team.logoUrl} name={`${team.school} ${team.mascot}`} abbreviation={team.abbreviation} color={color} size="md" decorative />
           <div className="flex min-w-0 flex-col">
             <span className="text-caption tabular-nums text-text-secondary">
               {periodLabel(play.period)} {clock(play.clockSeconds)} · {game.away.team.abbreviation} {play.awayScore}–{play.homeScore} {game.home.team.abbreviation}
@@ -129,6 +130,8 @@ export function GameFlow({ game, plays, playerRefs, title = 'Game flow', loading
   const rows = quarterFlows(game, plays);
   const goal = latestGoal(game, plays);
   const slots = maxGoalsInPeriod(rows);
+  // Both teams' lanes sit on the same dark card: lighten navy and keep look-alikes (Duke / Notre Dame) apart.
+  const colors = teamPairColors(game.away.team.colors, game.home.team.colors);
 
   return (
     <Card as="section" aria-label={title} className={cn('@container', className)}>
@@ -139,11 +142,11 @@ export function GameFlow({ game, plays, playerRefs, title = 'Game flow', loading
         <div className="flex flex-col gap-3">
           <ol aria-label="Goals by period" className="flex flex-col gap-3">
             {rows.map((row) => (
-              <QuarterRow key={row.period} row={row} game={game} slots={slots} latest={goal?.play.id ?? null} />
+              <QuarterRow key={row.period} row={row} game={game} colors={colors} slots={slots} latest={goal?.play.id ?? null} />
             ))}
           </ol>
           {goal ? (
-            <ScoreInfo game={game} goal={goal} playerRefs={playerRefs} />
+            <ScoreInfo game={game} goal={goal} color={colors[goal.side]} playerRefs={playerRefs} />
           ) : (
             <p aria-live="polite" className="text-footnote text-text-tertiary">
               No goals yet.

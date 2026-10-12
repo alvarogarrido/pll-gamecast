@@ -5,7 +5,7 @@ import { Card } from '../../atoms/Card';
 import { Skeleton } from '../../atoms/Skeleton';
 import { EmptyState } from '../../molecules/EmptyState';
 import { SectionHeader } from '../../molecules/SectionHeader';
-import { StatCard } from '../StatsSection/StatCard';
+import { StatComparisonCard } from '../../molecules/StatComparisonCard';
 import { teamsFor } from '../StatsSection/statsSection.logic';
 import { gameTotalsRows, seasonAverageRows } from './keyTeamStats.logic';
 
@@ -56,7 +56,7 @@ export function KeyTeamStats({ game, stats, preview, onSeeAll, seeAllHref, loadi
     <section aria-label="Key team stats" className={cn('flex flex-col gap-2', className)}>
       <SectionHeader title="Key Team Stats" />
       {rows ? (
-        <StatCard title={totals ? 'Game' : 'Season Avg'} game={game} rows={rows} footer={footer} />
+        <StatComparisonCard title={totals ? 'Game' : 'Season Avg'} away={game.away.team} home={game.home.team} rows={rows} footer={footer} />
       ) : (
         <Card>
           <EmptyState title="No team stats yet" message="Team comparisons appear once stats are available." />

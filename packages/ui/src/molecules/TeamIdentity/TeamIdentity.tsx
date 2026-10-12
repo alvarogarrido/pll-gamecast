@@ -22,6 +22,11 @@ export interface TeamIdentityProps {
   rank?: number | null;
   /** Current record, e.g. `game.home.record`. Omit to hide. */
   record?: { wins: number; losses: number } | null;
+  /**
+   * Color of the logo's fallback ring. Defaults to the team's primary, made visible on dark. Pass one half of
+   * `teamPairColors(away, home)` when both teams of a game are on screen, so look-alikes stay apart.
+   */
+  color?: string;
   className?: string;
 }
 
@@ -55,6 +60,7 @@ export function TeamIdentity({
   nameStyle = 'school',
   rank = null,
   record,
+  color,
   className,
 }: TeamIdentityProps) {
   const mirrored = side === 'home';
@@ -75,7 +81,7 @@ export function TeamIdentity({
         src={team.logoUrl}
         name={`${team.school} ${team.mascot}`}
         abbreviation={team.abbreviation}
-        color={team.colors.primary}
+        color={color ?? team.colors.primary}
         size={logoSize[size][layout]}
         decorative
       />

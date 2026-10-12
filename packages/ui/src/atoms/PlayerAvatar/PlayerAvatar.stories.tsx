@@ -42,3 +42,14 @@ export const SizesAndStates: Story = {
     </div>
   ),
 };
+
+/** Navy rings on the dark card are lightened to 3:1 contrast, hue kept. */
+export const NavyTeamsOnDark: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-4">
+      {['#0C2340', '#003087', '#041E42', '#232D4B', '#E03A3E'].map((color) => (
+        <PlayerAvatar key={color} {...args} photoUrl={null} fallback="initials" color={color} />
+      ))}
+    </div>
+  ),
+};

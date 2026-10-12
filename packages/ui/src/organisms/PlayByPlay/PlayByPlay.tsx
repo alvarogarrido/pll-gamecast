@@ -5,6 +5,7 @@ import type { Play, PlayerRef } from '@pll/data/api';
 import { Icon } from '@pll/icons';
 import { cn } from '../../lib/cn';
 import { Card } from '../../atoms/Card';
+import { FilterChipGroup } from '../../atoms/FilterChip';
 import { LiveDot } from '../../atoms/LiveDot';
 import { Skeleton } from '../../atoms/Skeleton';
 import { Disclosure } from '../../molecules/Disclosure';
@@ -102,30 +103,13 @@ export function PlayByPlay({
     <section aria-label="Play-by-play" className={cn('flex flex-col gap-3', className)}>
       <SectionHeader title="Play-by-play" action={toggle} />
 
-      <div role="group" aria-label="Filter plays" // Arbitrary variants: hide the scrollbar of the swipeable chip row (no token equivalent).
-        className="-mx-4 flex gap-2 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
-        {PLAY_FILTERS.map(({ id, label }) => {
-          const selected = filter === id;
-          return (
-            <button
-              key={id}
-              type="button"
-              aria-pressed={selected}
-              onClick={() => setFilter(id)}
-              className={cn(
-                'inline-flex min-h-10 shrink-0 items-center gap-1 rounded-pill px-3 text-footnote font-semibold',
-                selected ? 'bg-accent-gold text-text-on-accent' : 'bg-surface-chip text-text-secondary hover:text-text-primary',
-              )}
-            >
-              {label}
-              <span className={cn('text-caption2 tabular-nums', selected ? 'text-text-on-accent' : 'text-text-tertiary')}>
-                <span className="sr-only"> </span>
-                {counts[id]}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+      <FilterChipGroup
+        label="Filter plays"
+        layout="scroll"
+        items={PLAY_FILTERS.map(({ id, label }) => ({ id, label, count: counts[id] }))}
+        value={filter}
+        onValueChange={setFilter}
+      />
 
       {groups.length === 0 ? (
         <Card padding="none">
