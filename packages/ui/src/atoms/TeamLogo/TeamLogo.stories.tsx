@@ -12,7 +12,7 @@ const meta = {
   title: 'Atoms/TeamLogo',
   component: TeamLogo,
   args: { src: demoLogo, name: 'Duke Blue Devils', abbreviation: 'DUKE', size: 'lg' },
-  argTypes: { size: { control: 'inline-radio', options: ['xs', 'sm', 'md', 'lg', 'xl'] } },
+  argTypes: { size: { control: 'inline-radio', options: ['xs', 'sm', 'md', 'lg', 'xl', 'fill'] } },
 } satisfies Meta<typeof TeamLogo>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -56,6 +56,21 @@ export const NavyTeamsOnDark: Story = {
       ].map(([name, abbreviation, color]) => (
         <TeamLogo key={name} {...args} src={null} name={name!} abbreviation={abbreviation} color={color} size="lg" />
       ))}
+    </div>
+  ),
+};
+
+/** `fill` takes its parent's size: the desktop Header Bar sets 88px (72px when tight) on a wrapper. */
+export const FillsParent: Story = {
+  args: { size: 'fill' },
+  render: (args) => (
+    <div className="flex items-end gap-4">
+      <div className="size-22">
+        <TeamLogo {...args} />
+      </div>
+      <div className="size-18">
+        <TeamLogo {...args} src={null} color="#003087" />
+      </div>
     </div>
   ),
 };

@@ -7,7 +7,7 @@ Source of truth for the Gamecast design tokens. Approved by Alvaro Garrido on 20
 | D1 | Page background | `#111111` (brand/coal, absorbs #121212) |
 | D2 | Card surface | `#1F1F1F` (gray/900) |
 | D3 | Live / positive | `#00CB83` (absorbs #00C364; mint #20F4CA not adopted) |
-| D4 | Web fonts | **Inter** for UI text, **Barlow Condensed** for scores, the clock and big numerals. SF Pro can't be licensed for web. |
+| D4 | Web fonts | **Inter** for UI text, **Barlow Condensed** (600, 700, 800) for scores, the clock and big numerals. SF Pro can't be licensed for web. |
 | D5 | Spacing scale | 2, 4, 8, **10**, 12, 16, 20, 24, 32, 40 |
 | D6 | Gold | `#FFCB06` (absorbs #FFCC06, #FFC906, #FFCE00, #FFD200) |
 
@@ -39,9 +39,11 @@ Team colors come from the API data at runtime (`--team-primary`, `--team-seconda
 ## Type scale (px, size/line-height)
 | Token | Spec | Family |
 |---|---|---|
+| score.display | 84/84, 800 (D22) | Barlow Condensed |
 | score.hero | 48/48, 800 | Barlow Condensed |
 | score | 32/32, 800 | Barlow Condensed |
 | score.sm | 24/24, 800 (D14) | Barlow Condensed |
+| clock.lg | 34/34, 700, tabular (D22) | Barlow Condensed |
 | clock | 13/16, 600, tabular | Barlow Condensed |
 | title1 | 28/34, 600 | Inter |
 | title3 | 20/25, 700 (section headers, uppercase) | Inter |
@@ -77,3 +79,5 @@ Alvaro decided D7–D9. The coordinator decided D10–D18 from the PRD and Figma
 | D20 | Win-probability line shows goal dots (team on-dark colors); the scrub tooltip names the scorer. |
 | D21 | Weather icons: keep the code glyphs; Figma gets placeholder components the designer will replace. |
 | D22 | **Desktop Header Bar (≥1024px) = Direction A "Broadcast band"** (proposal artifact https://claude.ai/artifact/CSeySuZS9eQSqdnZp28TGr): huge Barlow scores beside the teams, a team-color wash at each end, and a compact strip below (linescore, where to watch, venue, weather, attendance; pregame: win-probability split). Mobile and the minimized bar are unchanged. |
+
+D22 implementation notes (2026-10-13): the band applies when the Header Bar's own container is >= 1024px (`@5xl`), not the viewport; on the product page that means a viewport of about 1072px and up (page padding), or 1440px+ with the ad gutters (content width 1040px). Two type tokens were added for it: **score.display** (84/84 Barlow 800, the two scores) and **clock.lg** (34/34 Barlow 700 tabular, kickoff time and live clock). The pregame en dash uses `score.hero` (48) instead of the proposal's 56px, and Barlow Condensed 700 is now loaded next to 600 and 800.

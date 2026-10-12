@@ -1,5 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { eventTags, headerPhase, preStatus, realMovement, venueLabel, weatherLabel, type HeaderGame } from './headerBar.logic';
+import {
+  attendanceLabel,
+  eventTags,
+  headerPhase,
+  preStatus,
+  realMovement,
+  resultLine,
+  sideMovement,
+  teamMetaLine,
+  venueLabel,
+  weatherLabel,
+  winProbabilitySplit,
+  type HeaderGame,
+} from './headerBar.logic';
 
 const at = (iso: string) => Date.parse(iso);
 const START = '2027-03-13T22:00:00Z'; // 5:00 PM ET
@@ -15,7 +28,7 @@ describe('headerPhase', () => {
 describe('preStatus', () => {
   it('shows date and time, and a countdown within 12 hours', () => {
     const s = preStatus({ status: 'scheduled', startTime: START }, at('2027-03-13T20:00:00Z'));
-    expect(s).toMatchObject({ date: 'Mar 13', countdown: 'Starts in 2h 0m', notice: null });
+    expect(s).toMatchObject({ date: 'Sat, Mar 13', countdown: 'Starts in 2h 0m', notice: null });
     expect(s.time).toContain('5:00 PM');
   });
   it('has no countdown further out', () => {
@@ -63,5 +76,42 @@ describe('realMovement (D13)', () => {
     expect(realMovement(null)).toBeNull();
     expect(realMovement(undefined)).toBeNull();
     expect(realMovement(Number.NaN)).toBeNull();
+  });
+});
+
+describe('desktop band helpers (D22)', () => {
+  const side = { record: { wins: 4, losses: 0 }, conferenceShortName: 'ACC', rpi: 2, seed: null as number | null };
+  it('builds the team meta line and skips missing parts', () => {
+    expect(teamMetaLine(side)).toBe('4-0 · ACC · RPI 2');
+    expect(teamMetaLine({ ...side, seed: 2 })).toBe('Seed 2 · 4-0 · ACC · RPI 2');
+    expect(teamMetaLine({ ...side, rpi: null, conferenceShortName: '' })).toBe('4-0');
+  });
+  it('shows movement only after the game and only when it moved (D13)', () => {
+    const s = { rank: 3, rankChange: 1, rpiChange: 0 };
+    expect(sideMovement(s, 'live')).toEqual({ rank: null, rpi: null });
+    expect(sideMovement(s, 'final')).toEqual({ rank: 1, rpi: null });
+    expect(sideMovement({ ...s, rank: null }, 'final').rank).toBeNull();
+  });
+  it('words the result', () => {
+    const g = (status: HeaderGame['status'], a: number | null, h: number | null) => ({
+      status,
+      away: { team: { school: 'Penn' }, score: a },
+      home: { team: { school: 'Cornell' }, score: h },
+    }) as unknown as Parameters<typeof resultLine>[0];
+    expect(resultLine(g('final', 8, 11))).toBe('Cornell won by 3');
+    expect(resultLine(g('final', 12, 9))).toBe('Penn won by 3');
+    expect(resultLine(g('final', 9, 9))).toBeNull();
+    expect(resultLine(g('live', 8, 11))).toBeNull();
+  });
+  it('formats attendance', () => {
+    expect(attendanceLabel(4690)).toBe('Att. 4,690');
+    expect(attendanceLabel(null)).toBeNull();
+    expect(attendanceLabel(0)).toBeNull();
+  });
+  it('splits the win probability', () => {
+    const split = winProbabilitySplit({ winProbabilityHome: 0.61 });
+    expect(split?.home).toBe(0.61);
+    expect(split?.away).toBeCloseTo(0.39);
+    expect(winProbabilitySplit({ winProbabilityHome: null })).toBeNull();
   });
 });

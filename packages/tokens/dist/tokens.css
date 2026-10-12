@@ -56,6 +56,11 @@
   --pll-text-score-hero-line-height: 48px;
   --pll-text-score-hero-font-weight: 800;
   --pll-text-score-hero-letter-spacing: 0px;
+  --pll-text-score-display-font-family: var(--pll-font-family-display);
+  --pll-text-score-display-font-size: 84px;
+  --pll-text-score-display-line-height: 84px;
+  --pll-text-score-display-font-weight: 800;
+  --pll-text-score-display-letter-spacing: 0px;
   --pll-text-score-font-family: var(--pll-font-family-display);
   --pll-text-score-font-size: 32px;
   --pll-text-score-line-height: 32px;
@@ -72,6 +77,12 @@
   --pll-text-clock-font-weight: 600;
   --pll-text-clock-letter-spacing: 0px;
   --pll-text-clock-font-variant-numeric: tabular-nums;
+  --pll-text-clock-lg-font-family: var(--pll-font-family-display);
+  --pll-text-clock-lg-font-size: 34px;
+  --pll-text-clock-lg-line-height: 34px;
+  --pll-text-clock-lg-font-weight: 700;
+  --pll-text-clock-lg-letter-spacing: 0px;
+  --pll-text-clock-lg-font-variant-numeric: tabular-nums;
   --pll-text-title1-font-family: var(--pll-font-family-sans);
   --pll-text-title1-font-size: 28px;
   --pll-text-title1-line-height: 34px;

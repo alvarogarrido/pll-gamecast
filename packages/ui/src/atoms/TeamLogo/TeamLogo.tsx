@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { cn } from '../../lib/cn';
 import { teamColorVars } from '../../lib/team-style';
 
-export type TeamLogoSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+/** `fill` takes the size of its parent (`size-full`): the parent sets the box, e.g. the desktop header's 88px / 72px logo. */
+export type TeamLogoSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'fill';
 
 export interface TeamLogoProps {
   /** Logo URL. `null` (or a URL that fails to load) renders the monogram fallback. */
@@ -31,6 +32,7 @@ const boxes: Record<TeamLogoSize, string> = {
   md: 'size-10',
   lg: 'size-14',
   xl: 'size-20',
+  fill: 'size-full',
 };
 
 const monogramText: Record<TeamLogoSize, string> = {
@@ -39,9 +41,10 @@ const monogramText: Record<TeamLogoSize, string> = {
   md: 'text-caption font-semibold',
   lg: 'text-title3',
   xl: 'text-score',
+  fill: 'text-score',
 };
 
-const maxChars: Record<TeamLogoSize, number> = { xs: 2, sm: 3, md: 4, lg: 4, xl: 4 };
+const maxChars: Record<TeamLogoSize, number> = { xs: 2, sm: 3, md: 4, lg: 4, xl: 4, fill: 4 };
 
 function initials(name: string): string {
   return name

@@ -103,10 +103,14 @@ export function timeLabel(iso: string, timeZone = DEFAULT_TIME_ZONE): string {
   return `${t.hour}:${t.minute} ${t.dayPeriod} ${t.timeZoneName}`;
 }
 
-/** `"Mar 13"`. */
-export function dateLabel(iso: string, timeZone = DEFAULT_TIME_ZONE): string {
+/** `"Mar 13"`, or `"Sat, Mar 13"` with `{ weekday: true }`. */
+export function dateLabel(iso: string, timeZone = DEFAULT_TIME_ZONE, { weekday = false }: { weekday?: boolean } = {}): string {
   const ms = Date.parse(iso);
   if (Number.isNaN(ms)) return NO_VALUE;
+  if (weekday) {
+    const d = parts(ms, timeZone, 'date-weekday', { weekday: 'short', month: 'short', day: 'numeric' });
+    return `${d.weekday}, ${d.month} ${d.day}`;
+  }
   const d = parts(ms, timeZone, 'date', { month: 'short', day: 'numeric' });
   return `${d.month} ${d.day}`;
 }

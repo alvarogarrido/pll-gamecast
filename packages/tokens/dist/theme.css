@@ -32,6 +32,10 @@
   --text-score-hero--line-height: var(--pll-text-score-hero-line-height);
   --text-score-hero--font-weight: var(--pll-text-score-hero-font-weight);
   --text-score-hero--letter-spacing: var(--pll-text-score-hero-letter-spacing);
+  --text-score-display: var(--pll-text-score-display-font-size);
+  --text-score-display--line-height: var(--pll-text-score-display-line-height);
+  --text-score-display--font-weight: var(--pll-text-score-display-font-weight);
+  --text-score-display--letter-spacing: var(--pll-text-score-display-letter-spacing);
   --text-score: var(--pll-text-score-font-size);
   --text-score--line-height: var(--pll-text-score-line-height);
   --text-score--font-weight: var(--pll-text-score-font-weight);
@@ -44,6 +48,10 @@
   --text-clock--line-height: var(--pll-text-clock-line-height);
   --text-clock--font-weight: var(--pll-text-clock-font-weight);
   --text-clock--letter-spacing: var(--pll-text-clock-letter-spacing);
+  --text-clock-lg: var(--pll-text-clock-lg-font-size);
+  --text-clock-lg--line-height: var(--pll-text-clock-lg-line-height);
+  --text-clock-lg--font-weight: var(--pll-text-clock-lg-font-weight);
+  --text-clock-lg--letter-spacing: var(--pll-text-clock-lg-letter-spacing);
   --text-title1: var(--pll-text-title1-font-size);
   --text-title1--line-height: var(--pll-text-title1-line-height);
   --text-title1--font-weight: var(--pll-text-title1-font-weight);
@@ -111,8 +119,11 @@
 /* Text-style extras that Tailwind's --text-* variables cannot carry. */
 @layer utilities {
   :where(.text-score-hero) { font-family: var(--pll-text-score-hero-font-family); }
+  :where(.text-score-display) { font-family: var(--pll-text-score-display-font-family); }
   :where(.text-score) { font-family: var(--pll-text-score-font-family); }
   :where(.text-score-sm) { font-family: var(--pll-text-score-sm-font-family); }
   :where(.text-clock) { font-family: var(--pll-text-clock-font-family); }
   :where(.text-clock) { font-variant-numeric: tabular-nums; }
+  :where(.text-clock-lg) { font-family: var(--pll-text-clock-lg-font-family); }
+  :where(.text-clock-lg) { font-variant-numeric: tabular-nums; }
 }

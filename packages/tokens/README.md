@@ -46,7 +46,7 @@ Token names map 1:1 (camelCase becomes kebab-case): `accent.goldSubtle` is `bg-a
 ### Type
 
 Each `text.<style>` carries `fontFamily`, `fontSize`, `lineHeight`, `fontWeight`, `letterSpacing`. The style utility (`text-footnote`) sets size, line
-height, weight and letter spacing. The display styles (`scoreHero`, `score`, `scoreSm`, `clock`) also set the Barlow Condensed family, and `clock` sets
+height, weight and letter spacing. The display styles (`scoreDisplay`, `scoreHero`, `score`, `scoreSm`, `clockLg`, `clock`) also set the Barlow Condensed family, and `clock` / `clockLg` set
 `tabular-nums`, through zero-specificity rules in `theme.css`, so `text-score` alone is enough and an explicit `font-*` utility still wins.
 `subhead` and `footnote` have a regular (400) default and a `fontWeightStrong` (600) variant: add `font-semibold`. `title3` is for section headers;
 add `uppercase`.
@@ -82,7 +82,7 @@ inside a team page). `TeamLogo` already follows this pattern for its ring.
 
 ## Fonts
 
-Inter (400, 500, 600, 700) for UI text, Barlow Condensed (600, 800) for scores, the clock and big numerals. The tokens only name the families; loading is
+Inter (400, 500, 600, 700) for UI text, Barlow Condensed (600, 700, 800) for scores, the clock and big numerals. The tokens only name the families; loading is
 the app's job. The font token carries the host variable as an extension (`$extensions["com.pll"].hostVar`), so `tokens.css` emits
 `--pll-font-family-sans: var(--font-inter, Inter), ui-sans-serif, ...`:
 

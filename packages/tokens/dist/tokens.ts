@@ -82,6 +82,13 @@ export const tokens = {
       "fontWeight": 800,
       "letterSpacing": "0px"
     },
+    "scoreDisplay": {
+      "fontFamily": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
+      "fontSize": "84px",
+      "lineHeight": "84px",
+      "fontWeight": 800,
+      "letterSpacing": "0px"
+    },
     "score": {
       "fontFamily": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
       "fontSize": "32px",
@@ -101,6 +108,14 @@ export const tokens = {
       "fontSize": "13px",
       "lineHeight": "16px",
       "fontWeight": 600,
+      "letterSpacing": "0px",
+      "fontVariantNumeric": "tabular-nums"
+    },
+    "clockLg": {
+      "fontFamily": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
+      "fontSize": "34px",
+      "lineHeight": "34px",
+      "fontWeight": 700,
       "letterSpacing": "0px",
       "fontVariantNumeric": "tabular-nums"
     },
@@ -243,6 +258,11 @@ export const cssVars = {
   "text.scoreHero.lineHeight": "--pll-text-score-hero-line-height",
   "text.scoreHero.fontWeight": "--pll-text-score-hero-font-weight",
   "text.scoreHero.letterSpacing": "--pll-text-score-hero-letter-spacing",
+  "text.scoreDisplay.fontFamily": "--pll-text-score-display-font-family",
+  "text.scoreDisplay.fontSize": "--pll-text-score-display-font-size",
+  "text.scoreDisplay.lineHeight": "--pll-text-score-display-line-height",
+  "text.scoreDisplay.fontWeight": "--pll-text-score-display-font-weight",
+  "text.scoreDisplay.letterSpacing": "--pll-text-score-display-letter-spacing",
   "text.score.fontFamily": "--pll-text-score-font-family",
   "text.score.fontSize": "--pll-text-score-font-size",
   "text.score.lineHeight": "--pll-text-score-line-height",
@@ -259,6 +279,12 @@ export const cssVars = {
   "text.clock.fontWeight": "--pll-text-clock-font-weight",
   "text.clock.letterSpacing": "--pll-text-clock-letter-spacing",
   "text.clock.fontVariantNumeric": "--pll-text-clock-font-variant-numeric",
+  "text.clockLg.fontFamily": "--pll-text-clock-lg-font-family",
+  "text.clockLg.fontSize": "--pll-text-clock-lg-font-size",
+  "text.clockLg.lineHeight": "--pll-text-clock-lg-line-height",
+  "text.clockLg.fontWeight": "--pll-text-clock-lg-font-weight",
+  "text.clockLg.letterSpacing": "--pll-text-clock-lg-letter-spacing",
+  "text.clockLg.fontVariantNumeric": "--pll-text-clock-lg-font-variant-numeric",
   "text.title1.fontFamily": "--pll-text-title1-font-family",
   "text.title1.fontSize": "--pll-text-title1-font-size",
   "text.title1.lineHeight": "--pll-text-title1-line-height",
@@ -882,6 +908,61 @@ export const tokenList: readonly TokenEntry[] = [
     "utility": null
   },
   {
+    "path": "text.scoreDisplay.fontFamily",
+    "cssVar": "--pll-text-score-display-font-family",
+    "type": "fontFamily",
+    "value": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
+    "ref": "font.family.display",
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.scoreDisplay.fontSize",
+    "cssVar": "--pll-text-score-display-font-size",
+    "type": "dimension",
+    "value": "84px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": "text-score-display"
+  },
+  {
+    "path": "text.scoreDisplay.lineHeight",
+    "cssVar": "--pll-text-score-display-line-height",
+    "type": "dimension",
+    "value": "84px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.scoreDisplay.fontWeight",
+    "cssVar": "--pll-text-score-display-font-weight",
+    "type": "fontWeight",
+    "value": 800,
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.scoreDisplay.letterSpacing",
+    "cssVar": "--pll-text-score-display-letter-spacing",
+    "type": "dimension",
+    "value": "0px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
     "path": "text.score.fontFamily",
     "cssVar": "--pll-text-score-font-family",
     "type": "fontFamily",
@@ -1049,6 +1130,72 @@ export const tokenList: readonly TokenEntry[] = [
   {
     "path": "text.clock.fontVariantNumeric",
     "cssVar": "--pll-text-clock-font-variant-numeric",
+    "type": "string",
+    "value": "tabular-nums",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.clockLg.fontFamily",
+    "cssVar": "--pll-text-clock-lg-font-family",
+    "type": "fontFamily",
+    "value": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
+    "ref": "font.family.display",
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.clockLg.fontSize",
+    "cssVar": "--pll-text-clock-lg-font-size",
+    "type": "dimension",
+    "value": "34px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": "text-clock-lg"
+  },
+  {
+    "path": "text.clockLg.lineHeight",
+    "cssVar": "--pll-text-clock-lg-line-height",
+    "type": "dimension",
+    "value": "34px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.clockLg.fontWeight",
+    "cssVar": "--pll-text-clock-lg-font-weight",
+    "type": "fontWeight",
+    "value": 700,
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.clockLg.letterSpacing",
+    "cssVar": "--pll-text-clock-lg-letter-spacing",
+    "type": "dimension",
+    "value": "0px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.clockLg.fontVariantNumeric",
+    "cssVar": "--pll-text-clock-lg-font-variant-numeric",
     "type": "string",
     "value": "tabular-nums",
     "ref": null,

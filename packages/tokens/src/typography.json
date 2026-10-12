@@ -24,6 +24,14 @@
       "fontWeight": { "$type": "fontWeight", "$value": 800 },
       "letterSpacing": { "$type": "dimension", "$value": "0px" }
     },
+    "scoreDisplay": {
+      "$description": "score.display (D22): the desktop Header Bar band (container >= 1024px), one huge score beside each team.",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },
+      "fontSize": { "$type": "dimension", "$value": "84px" },
+      "lineHeight": { "$type": "dimension", "$value": "84px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 800 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
+    },
     "score": {
       "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },
       "fontSize": { "$type": "dimension", "$value": "32px" },
@@ -45,6 +53,15 @@
       "fontSize": { "$type": "dimension", "$value": "13px" },
       "lineHeight": { "$type": "dimension", "$value": "16px" },
       "fontWeight": { "$type": "fontWeight", "$value": 600 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" },
+      "fontVariantNumeric": { "$type": "string", "$value": "tabular-nums" }
+    },
+    "clockLg": {
+      "$description": "clock.lg (D22): kickoff time and live clock in the desktop Header Bar band. Tabular numerals, Barlow 700.",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },
+      "fontSize": { "$type": "dimension", "$value": "34px" },
+      "lineHeight": { "$type": "dimension", "$value": "34px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 700 },
       "letterSpacing": { "$type": "dimension", "$value": "0px" },
       "fontVariantNumeric": { "$type": "string", "$value": "tabular-nums" }
     },

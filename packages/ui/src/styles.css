@@ -23,6 +23,42 @@
   --color-team-primary-on-dark: var(--team-primary-on-dark, var(--team-primary, var(--pll-color-team-primary)));
 }
 
+/*
+ * Desktop Header Bar band (D22, `organisms/HeaderBar`). Shown when the HeaderBar's own container is >= 64rem (`@5xl`).
+ * These need values no utility can express, so they live here as small documented classes instead of arbitrary values:
+ *   .hb-band       the 5-column grid [away team | away score | center | home score | home team]. The team columns take what is
+ *                  left; score and center widths come from the spacing scale (22/44/22 steps = 88/176/88px when tight, then
+ *                  28/56/28 = 112/224/112px from 72rem; the proposal's 240px center leaves long names no room at 1152px).
+ *   .hb-wash-*     the team-color wash: the team's on-dark color at 22% fading to transparent by 34% of the width, from the left
+ *                  (away) or the right (home) edge. It reads `--team-primary-on-dark`, so put it on a `TeamScope`.
+ */
+@layer components {
+  .hb-band {
+    grid-template-columns:
+      minmax(0, 1fr) calc(var(--spacing) * 22) calc(var(--spacing) * 44) calc(var(--spacing) * 22) minmax(0, 1fr);
+  }
+  @container (width >= 72rem) {
+    .hb-band {
+      grid-template-columns:
+        minmax(0, 1fr) calc(var(--spacing) * 28) calc(var(--spacing) * 56) calc(var(--spacing) * 28) minmax(0, 1fr);
+    }
+  }
+  .hb-wash-away {
+    background-image: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--team-primary-on-dark, var(--team-primary)) 22%, transparent),
+      transparent 34%
+    );
+  }
+  .hb-wash-home {
+    background-image: linear-gradient(
+      270deg,
+      color-mix(in srgb, var(--team-primary-on-dark, var(--team-primary)) 22%, transparent),
+      transparent 34%
+    );
+  }
+}
+
 @theme {
   --animate-live-pulse: live-pulse 1.6s ease-in-out infinite;
 

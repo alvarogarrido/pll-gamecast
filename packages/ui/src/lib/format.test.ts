@@ -81,6 +81,7 @@ describe('dates', () => {
   });
   it('dateLabel', () => {
     expect(dateLabel('2027-03-13T20:30:00Z')).toBe('Mar 13');
+    expect(dateLabel('2027-03-13T20:30:00Z', undefined, { weekday: true })).toBe('Sat, Mar 13');
     // 02:00 UTC is still the evening before in New York.
     expect(dateLabel('2027-03-14T02:00:00Z')).toBe('Mar 13');
   });
