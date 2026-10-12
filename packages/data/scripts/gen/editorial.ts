@@ -176,7 +176,7 @@ function previewArticle(ctx: Ctx, g: GameRecord, author: Person, stakes: string)
     gameId: g.id,
     kind: 'preview',
     title,
-    keySentence: stakes.split('. ')[0]?.replace(/\.$/, '.') ?? stakes,
+    keySentence: firstSentence(stakes),
     excerpt: `${stakes}${leaders} Opening faceoff is at ${where}.`,
     authorId: author.id,
     imageUrl: null,
@@ -428,4 +428,10 @@ export function buildEditorial(root: Rng, season: SeasonOutput, snapshotTime: st
   });
 
   return { games, articles, videos, staff: STAFF, staffPicks, insights };
+}
+
+/** First sentence of `text`, ignoring the period in poll abbreviations like "No. 2". */
+function firstSentence(text: string): string {
+  const match = /^.*?[.!?](?=\s+[A-Z])(?<!\bNo\.)/s.exec(text);
+  return (match ? match[0] : text).trim();
 }

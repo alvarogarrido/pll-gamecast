@@ -70,7 +70,12 @@ export const GAMES = {
   scheduledIndoor: '5a80179e-949b-4eea-a9f9-300233d1a3cb',
   /** Penn State vs Duke, NCAA Quarterfinal in May, neutral site, seeded. */
   ncaa: 'ab6e3fd1-15ec-4dae-9b79-15ca4aa32201',
+  /** An earlier-week game that went to overtime (final). */
+  finalOvertime: '8d07bac4-b313-4fd4-ab59-cb4ac3753693',
 } as const;
+
+/** Server "now" of the snapshot — pass as `nowMs` in stories (the app derives it from meta.serverTime). */
+export const nowMs: number = Date.parse(db.meta.snapshotTime);
 
 function client(opts: BuildApiOptions = {}) {
   const api = createApi(db, opts);

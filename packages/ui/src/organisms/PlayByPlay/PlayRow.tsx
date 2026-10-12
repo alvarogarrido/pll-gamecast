@@ -1,0 +1,154 @@
+import type { GameSummary, Play, PlayerRef, TeamRef } from '@pll/data/api';
+import { Icon } from '@pll/icons';
+import { cn } from '../../lib/cn';
+import { clock, periodLabel } from '../../lib/format';
+import { teamColorVars } from '../../lib/team-style';
+import { TeamLogo } from '../../atoms/TeamLogo';
+import { PlayerIdentity } from '../../molecules/PlayerIdentity';
+import { dividerLabel, playDetail, playKind, playLabel, playerMap } from './playByPlay.logic';
+
+/** The slice of a game the play rows need (a `GameDetail['data']` or `GameSummary` fits). */
+export type PlayGame = Pick<GameSummary, 'home' | 'away'> & Partial<Pick<GameSummary, 'status'>>;
+
+export type PlayRowDensity = 'card' | 'flat';
+
+export interface PlayRowProps {
+  play: Play;
+  game: PlayGame;
+  /** `playerRefs` of the plays response (array or an id map). */
+  playerRefs: readonly PlayerRef[] | ReadonlyMap<string, PlayerRef>;
+  /**
+   * `card` (default): own surface and border, used in the Play-by-Play tab.
+   * `flat`: no surface, a hairline divider, for use inside another card (Latest Plays).
+   */
+  density?: PlayRowDensity;
+  className?: string;
+}
+
+function teamOf(game: PlayGame, teamId: string | null): { team: TeamRef; side: 'away' | 'home' } | null {
+  if (teamId === game.home.team.id) return { team: game.home.team, side: 'home' };
+  if (teamId === game.away.team.id) return { team: game.away.team, side: 'away' };
+  return null;
+}
+
+const clockLabel = (play: Play) => `${periodLabel(play.period)} ${clock(play.clockSeconds)}`;
+
+/** Small separator for period starts/ends and timeouts ("All" view only). */
+function Divider({ play, game, className }: { play: Play; game: PlayGame; className?: string }) {
+  const t = teamOf(game, play.teamId);
+  return (
+    <li
+      data-kind="divider"
+      className={cn('flex items-center gap-2 px-1 py-0.5 text-caption text-text-tertiary', className)}
+    >
+      <span aria-hidden="true" className="h-px flex-1 bg-border-hairline" />
+      <span className="shrink-0 tabular-nums">
+        {dividerLabel(play, t?.team.abbreviation)}
+        <span className="sr-only">, </span>
+        <span className="ml-1 font-display">{clock(play.clockSeconds)}</span>
+      </span>
+      <span aria-hidden="true" className="h-px flex-1 bg-border-hairline" />
+    </li>
+  );
+}
+
+/** Running score "12–11" (away first), the scoring side emphasised. */
+function ScoreChip({ play, game, side }: { play: Play; game: PlayGame; side: 'away' | 'home' | null }) {
+  const away = game.away.team;
+  const home = game.home.team;
+  return (
+    <span
+      role="img"
+      aria-label={`Score ${away.school} ${play.awayScore}, ${home.school} ${play.homeScore}`}
+      className="inline-flex items-center gap-1 rounded-xs bg-surface-track px-2 py-0.5 font-display text-clock tabular-nums"
+    >
+      <span aria-hidden="true" className={cn(side === 'away' ? 'font-extrabold text-text-primary' : 'text-text-secondary')}>
+        {play.awayScore}
+      </span>
+      <span aria-hidden="true" className="text-text-tertiary">
+        –
+      </span>
+      <span aria-hidden="true" className={cn(side === 'home' ? 'font-extrabold text-text-primary' : 'text-text-secondary')}>
+        {play.homeScore}
+      </span>
+    </span>
+  );
+}
+
+/**
+ * One play. Three looks, chosen from the play type:
+ *  - goal: the strong "Recent Play / Goal" card (clock chip, title, running score, scorer and assist),
+ *  - micro: every other game action, a two-line row (title and clock, then the player and one detail),
+ *  - divider: period start/end and timeouts as a hairline caption.
+ * The row is a `<li>`: render it inside a `<ul>`/`<ol>`.
+ */
+export function PlayRow({ play, game, playerRefs, density = 'card', className }: PlayRowProps) {
+  const kind = playKind(play);
+  if (kind === 'divider') return <Divider play={play} game={game} className={className} />;
+
+  const players = playerMap(playerRefs);
+  const scope = teamOf(game, play.teamId);
+  const player = play.playerId ? players.get(play.playerId) : undefined;
+  const detail = playDetail(play, players);
+  const label = playLabel(play);
+  const isGoal = kind === 'goal';
+  const flat = density === 'flat';
+
+  const shell = flat
+    ? 'border-b border-border-hairline px-4 py-3 last:border-b-0'
+    : cn('overflow-hidden rounded-md border bg-surface-card', isGoal ? 'border-accent-gold/40' : 'border-border-hairline');
+
+  const logo = scope ? (
+    <TeamLogo
+      src={scope.team.logoUrl}
+      name={`${scope.team.school} ${scope.team.mascot}`}
+      abbreviation={scope.team.abbreviation}
+      color={scope.team.colors.primary}
+      size="xs"
+    />
+  ) : null;
+
+  const who = player ? (
+    <PlayerIdentity player={player} teamColor={scope?.team.colors.primary} size="sm" showMeta meta={detail || undefined} />
+  ) : (
+    // No player on the play, or the player is missing from `playerRefs`: fall back to the server text.
+    <p className="text-footnote text-text-secondary">{play.description}</p>
+  );
+
+  if (isGoal) {
+    return (
+      <li data-kind="goal" data-side={scope?.side} style={teamColorVars(scope?.team.colors.primary)} className={cn(shell, className)}>
+        <div className={cn('flex items-center gap-2 py-2', flat ? 'px-0' : 'px-3')}>
+          {logo}
+          <Icon name="goal" size={20} className="shrink-0 text-accent-gold" />
+          <span className="min-w-0 flex-1 truncate text-headline text-text-primary">{label}</span>
+          <ScoreChip play={play} game={game} side={scope?.side ?? null} />
+          <span className="shrink-0 rounded-xs bg-surface-track px-2 py-0.5 font-display text-clock text-text-secondary">
+            {clockLabel(play)}
+          </span>
+        </div>
+        <div
+          className={cn(
+            'border-l-4 border-team-primary py-2',
+            flat ? 'bg-surface-track px-3' : 'border-t border-t-border-hairline bg-surface-raised px-3',
+          )}
+        >
+          {who}
+        </div>
+      </li>
+    );
+  }
+
+  return (
+    <li data-kind="micro" title={play.description} className={cn(shell, flat ? '' : 'px-3 py-2', 'flex gap-2.5', className)}>
+      <div className="pt-0.5">{logo}</div>
+      <div className="flex min-w-0 flex-1 flex-col gap-1">
+        <div className="flex items-baseline justify-between gap-2">
+          <span className="truncate text-footnote font-semibold text-text-primary">{label}</span>
+          <span className="shrink-0 font-display text-clock text-text-secondary">{clockLabel(play)}</span>
+        </div>
+        {who}
+      </div>
+    </li>
+  );
+}
