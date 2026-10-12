@@ -31,6 +31,14 @@
       "fontWeight": { "$type": "fontWeight", "$value": 800 },
       "letterSpacing": { "$type": "dimension", "$value": "0px" }
     },
+    "scoreSm": {
+      "$description": "score.sm (D14): the minimized header and compact score chips.",
+      "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },
+      "fontSize": { "$type": "dimension", "$value": "24px" },
+      "lineHeight": { "$type": "dimension", "$value": "24px" },
+      "fontWeight": { "$type": "fontWeight", "$value": 800 },
+      "letterSpacing": { "$type": "dimension", "$value": "0px" }
+    },
     "clock": {
       "$description": "Tabular numerals (tabular-nums is applied by the generated utility).",
       "fontFamily": { "$type": "fontFamily", "$value": "{font.family.display}" },

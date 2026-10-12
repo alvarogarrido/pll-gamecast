@@ -8,6 +8,8 @@ import {
   selectTopFaceoff,
   selectTopGoalie,
   selectTopScorer,
+  selectTopScorerPerGame,
+  MIN_GAMES_TO_WATCH,
   type Candidate,
 } from './topPerformers.logic';
 
@@ -46,6 +48,29 @@ describe('selectTopScorer', () => {
   it('is null when nobody has a point', () => {
     expect(selectTopScorer([cand('x', { shots: 4 })])).toBeNull();
     expect(selectTopScorer([])).toBeNull();
+  });
+});
+
+describe('selectTopScorerPerGame (D9)', () => {
+  const gp = (id: string, gamesPlayed: number, tally: Partial<typeof zero> = {}) => cand(id, { ...tally, gamesPlayed } as Partial<typeof zero>);
+
+  it('ranks by points per game, not by total points', () => {
+    const top = selectTopScorerPerGame([gp('volume', 10, { goals: 10, assists: 5 }), gp('rate', 4, { goals: 4, assists: 4 })]);
+    expect(top?.player.id).toBe('rate'); // 2.0 pts/G beats 1.5 pts/G
+  });
+  it('requires at least 3 games played', () => {
+    expect(MIN_GAMES_TO_WATCH).toBe(3);
+    const top = selectTopScorerPerGame([gp('two', 2, { goals: 9 }), gp('three', 3, { goals: 3 })]);
+    expect(top?.player.id).toBe('three');
+    expect(selectTopScorerPerGame([gp('two', 2, { goals: 9 })])).toBeNull();
+    expect(selectTopScorerPerGame([cand('nogp', { goals: 5 })])).toBeNull();
+  });
+  it('breaks a rate tie with goals per game, then fewer shots', () => {
+    expect(selectTopScorerPerGame([gp('a', 4, { goals: 2, assists: 2 }), gp('b', 4, { goals: 3, assists: 1 })])?.player.id).toBe('b');
+    expect(selectTopScorerPerGame([gp('a', 4, { goals: 2, assists: 2, shots: 9 }), gp('b', 4, { goals: 2, assists: 2, shots: 6 })])?.player.id).toBe('b');
+  });
+  it('is null when nobody has a point', () => {
+    expect(selectTopScorerPerGame([gp('a', 5, { shots: 12 })])).toBeNull();
   });
 });
 
@@ -110,6 +135,10 @@ describe('buildTopPerformers', () => {
     ],
   } as unknown as GameStats['data'];
 
+  it('titles the chips Goals / Saves / Faceoff Wins (D7)', () => {
+    expect(buildTopPerformers(stats, game).map((s) => s.title)).toEqual(['Goals', 'Saves', 'Faceoff Wins']);
+  });
+
   it('builds three sections, away and home sides kept apart', () => {
     const [scoring, goalie, faceoff] = buildTopPerformers(stats, game);
     expect(scoring?.away?.player.id).toBe('p1');
@@ -145,11 +174,24 @@ describe('buildPlayersToWatch', () => {
 
   it('formats season rates to 1 decimal and handles a side without data', () => {
     const [scoring, goalie, faceoff] = buildPlayersToWatch(preview, game);
-    expect(scoring?.away?.primary).toEqual({ value: '2.5', label: 'Goals/G' });
-    expect(scoring?.away?.secondary).toEqual(['6.3 SH/G', '40.0% SH%']);
+    expect(scoring?.away?.primary).toEqual({ value: '3.0', label: 'Pts/G' }); // (10 G + 2 A) / 4 GP
+    expect(scoring?.away?.secondary).toEqual(['2.5 G/G', '0.5 A/G', '4 GP']);
     expect(scoring?.home).toBeNull();
     expect(goalie?.away?.primary.value).toBe('10.0');
     expect(goalie?.away?.secondary).toEqual(['66.7% SV%']);
     expect(faceoff?.away).toBeNull();
+  });
+
+  it('skips a scorer under 3 games played (D9)', () => {
+    const few = {
+      rosters: {
+        away: [rp('a1', 'a', 'A', season({ goals: 9, assists: 3, gamesPlayed: 2 })), rp('a2', 'a', 'A', season({ goals: 3, assists: 3, gamesPlayed: 3 }))],
+        home: [rp('h1', 'h', 'A', season({ goals: 9, gamesPlayed: 2 }))],
+      },
+    } as unknown as GamePreview['data'];
+    const [scoring] = buildPlayersToWatch(few, game);
+    expect(scoring?.away?.player.id).toBe('a2');
+    expect(scoring?.away?.primary).toEqual({ value: '2.0', label: 'Pts/G' });
+    expect(scoring?.home).toBeNull();
   });
 });

@@ -1,7 +1,7 @@
 import type { GameSummary, Play, PlayerRef, TeamRef } from '@pll/data/api';
 import { Icon } from '@pll/icons';
 import { cn } from '../../lib/cn';
-import { clock, periodLabel } from '../../lib/format';
+import { clock, periodLabel, playerLabel } from '../../lib/format';
 import { teamColorVars, teamPairColors } from '../../lib/team-style';
 import { ScoreChip } from '../../atoms/ScoreChip';
 import { TeamLogo } from '../../atoms/TeamLogo';
@@ -56,7 +56,9 @@ function Divider({ play, game, className }: { play: Play; game: PlayGame; classN
 /**
  * One play. Three looks, chosen from the play type:
  *  - goal: the strong "Recent Play / Goal" card (clock chip, title, running score, scorer and assist),
- *  - micro: every other game action, a two-line row (title and clock, then the player and one detail),
+ *  - micro: every other game action, ONE ~40px line (D8): team logo, play type, "J. Smith (#11)", detail, clock. No avatar.
+ *    On narrow rows the detail drops out visually (kept for screen readers and in the `title` tooltip). In the `card`
+ *    density the period is omitted from the clock because the row sits inside its period's accordion.
  *  - divider: period start/end and timeouts as a hairline caption.
  * The row is a `<li>`: render it inside a `<ul>`/`<ol>`.
  */
@@ -119,16 +121,34 @@ export function PlayRow({ play, game, playerRefs, density = 'card', className }:
     );
   }
 
+  // Micro row: a single line. The play type never shrinks; the player name truncates first. The detail is visually hidden
+  // below a 448px row (container query) so the line never wraps, but stays readable for assistive tech.
+  const microClock = flat ? clockLabel(play) : clock(play.clockSeconds);
   return (
-    <li data-kind="micro" title={play.description} className={cn(shell, flat ? '' : 'px-3 py-2', 'flex gap-2.5', className)}>
-      <div className="pt-0.5">{logo}</div>
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <div className="flex items-baseline justify-between gap-2">
-          <span className="truncate text-footnote font-semibold text-text-primary">{label}</span>
-          <span className="shrink-0 font-display text-clock text-text-secondary">{clockLabel(play)}</span>
-        </div>
-        {who}
-      </div>
+    <li
+      data-kind="micro"
+      title={detail ? `${play.description} (${detail})` : play.description}
+      className={cn(
+        '@container flex min-h-10 items-center gap-2',
+        flat ? 'border-b border-border-hairline px-4 py-2 last:border-b-0' : 'rounded-md border border-border-hairline bg-surface-card px-3',
+        className,
+      )}
+    >
+      <span className="flex shrink-0 items-center">{logo}</span>
+      <span className="shrink-0 whitespace-nowrap text-footnote font-semibold text-text-primary">{label}</span>
+      <span className="min-w-0 flex-1 truncate text-footnote text-text-secondary">
+        {player ? playerLabel(player) : play.description}
+        {detail && (
+          <>
+            <span className="sr-only @md:hidden">, </span>
+            <span aria-hidden="true" className="hidden @md:inline @md:text-text-tertiary">
+              {' · '}
+            </span>
+            <span className="sr-only @md:not-sr-only @md:text-text-tertiary">{detail}</span>
+          </>
+        )}
+      </span>
+      <span className="shrink-0 whitespace-nowrap font-display text-clock text-text-secondary">{microClock}</span>
     </li>
   );
 }

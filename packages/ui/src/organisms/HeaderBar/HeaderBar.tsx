@@ -18,6 +18,7 @@ import {
   eventTags,
   headerPhase,
   preStatus,
+  realMovement,
   venueLabel,
   weatherLabel,
   winnerSide,
@@ -57,21 +58,22 @@ function Score({ value, loser, className }: { value: number | null; loser: boole
 function TeamMeta({ game, side, phase }: { game: HeaderGame; side: HeaderSide; phase: HeaderPhase }) {
   const s = game[side];
   const post = phase === 'final';
-  const showRankChange = post && s.rank !== null && s.rankChange !== null;
-  const showRpiChange = post && s.rpiChange !== null;
-  if (s.rpi === null && s.seed === null && !showRankChange) return null;
+  // D13: unchanged rank / RPI is hidden; only real movement shows.
+  const rankChange = post && s.rank !== null ? realMovement(s.rankChange) : null;
+  const rpiChange = post ? realMovement(s.rpiChange) : null;
+  if (s.rpi === null && s.seed === null && rankChange === null) return null;
   return (
     <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-caption text-text-secondary">
       {s.seed !== null && <RankBadge rank={s.seed} kind="seed" />}
-      {showRankChange && (
+      {rankChange !== null && (
         <span className="inline-flex items-center gap-0.5">
-          Rank <TrendIndicator change={s.rankChange} showValue size="sm" />
+          Rank <TrendIndicator change={rankChange} showValue size="sm" />
         </span>
       )}
       {s.rpi !== null && (
         <span className="inline-flex items-center gap-0.5">
           <RankBadge rank={s.rpi} kind="rpi" />
-          {showRpiChange && <TrendIndicator change={s.rpiChange} showValue size="sm" />}
+          {rpiChange !== null && <TrendIndicator change={rpiChange} showValue size="sm" />}
         </span>
       )}
     </div>
@@ -210,7 +212,7 @@ function MinimizedHeader({ game, nowMs, timeZone }: { game: HeaderGame; nowMs: n
             </>
           ) : (
             <>
-              <span className="flex items-center gap-2 text-score">
+              <span className="flex items-center gap-2 text-score-sm">
                 <Score value={game.away.score} loser={winner === 'home'} />
                 <span aria-hidden="true" className="text-text-tertiary">
                   –

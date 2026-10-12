@@ -77,3 +77,56 @@ export const Rows: Story = {
     );
   },
 };
+
+/**
+ * D8: every non-goal play is ONE ~40px line: team logo, play type, "J. Smith (#11)", detail, clock. No avatar. Shown at 320px
+ * (the detail drops out visually below 448px but stays for screen readers) and wider, where the detail appears.
+ */
+export const SingleLineMicroRows: Story = {
+  args: data(GAMES.final),
+  render: (args) => {
+    const saved = args.plays.find((p) => p.type === 'shot' && p.details.shotResult === 'saved')!;
+    const micro = [saved, ...['turnover', 'penalty', 'faceoff', 'ground_ball', 'clear'].flatMap((t) => args.plays.find((p) => p.type === t) ?? [])];
+    return (
+      <div className="flex flex-col gap-6">
+        {[320, 375, 560].map((w) => (
+          <div key={w} style={{ width: w }} className="max-w-full">
+            <p className="mb-2 text-caption text-text-tertiary">{w}px</p>
+            <ul className="flex flex-col gap-2">
+              {micro.map((p) => (
+                <PlayRow key={p.id} play={p} game={args.game} playerRefs={args.playerRefs} />
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
+  },
+};
+
+/** The same single-line rows in the `flat` density used inside the Latest Plays card (the clock keeps its period there). */
+export const SingleLineMicroRowsFlat: Story = {
+  args: data(GAMES.liveQ4),
+  render: (args) => (
+    <ul className="flex w-[375px] max-w-full flex-col overflow-hidden rounded-md border border-border-default bg-surface-card">
+      {args.plays
+        .filter((p) => p.type !== 'goal' && p.type !== 'period_start' && p.type !== 'period_end' && p.type !== 'timeout')
+        .slice(0, 6)
+        .map((p) => (
+          <PlayRow key={p.id} play={p} game={args.game} playerRefs={args.playerRefs} density="flat" />
+        ))}
+    </ul>
+  ),
+};
+
+/** Mobile at 320px, the smallest supported width: nothing wraps or overflows. */
+export const Mobile320: Story = {
+  args: data(GAMES.liveQ4),
+  decorators: [
+    (Story) => (
+      <div className="mx-auto w-[320px] max-w-full">
+        <Story />
+      </div>
+    ),
+  ],
+};

@@ -1,4 +1,5 @@
 import type { ConferenceStandings, GameDetail } from '@pll/data/api';
+import { formatStat } from '../../lib/format';
 
 export type StandingsRowData = ConferenceStandings['rows'][number];
 type Game = Pick<GameDetail['data'], 'home' | 'away'>;
@@ -36,4 +37,14 @@ export function standingsView(standings: readonly ConferenceStandings[], game: G
   const containing = (teamId: string) => withRows.find((s) => s.rows.some((r) => r.team.id === teamId));
   const defaultConference = containing(game.away.team.id) ?? containing(game.home.team.id) ?? withRows[0];
   return { tables: withRows, defaultConferenceId: defaultConference?.conferenceId ?? null };
+}
+
+/** The four number columns of a row (D11): Conf W, Conf L, W, L. Missing values print as an en dash. */
+export function standingsCells(row: Pick<StandingsRowData, 'conferenceRecord' | 'record'>) {
+  return {
+    confWins: formatStat(row.conferenceRecord?.wins),
+    confLosses: formatStat(row.conferenceRecord?.losses),
+    wins: formatStat(row.record?.wins),
+    losses: formatStat(row.record?.losses),
+  };
 }

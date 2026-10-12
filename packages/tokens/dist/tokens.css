@@ -61,6 +61,11 @@
   --pll-text-score-line-height: 32px;
   --pll-text-score-font-weight: 800;
   --pll-text-score-letter-spacing: 0px;
+  --pll-text-score-sm-font-family: var(--pll-font-family-display);
+  --pll-text-score-sm-font-size: 24px;
+  --pll-text-score-sm-line-height: 24px;
+  --pll-text-score-sm-font-weight: 800;
+  --pll-text-score-sm-letter-spacing: 0px;
   --pll-text-clock-font-family: var(--pll-font-family-display);
   --pll-text-clock-font-size: 13px;
   --pll-text-clock-line-height: 16px;

@@ -2,9 +2,17 @@
 
 import { useState } from 'react';
 import { cn } from '../../lib/cn';
-import { DataTable, DataTableBody, DataTableCell, DataTableHeadCell, DataTableHeader, DataTableRow } from '../../molecules/DataTable';
+import {
+  DataTable,
+  DataTableBody,
+  DataTableCell,
+  DataTableFooter,
+  DataTableHeadCell,
+  DataTableHeader,
+  DataTableRow,
+} from '../../molecules/DataTable';
 import { PlayerIdentity } from '../../molecules/PlayerIdentity';
-import { nextSort, sortBoxRows, type BoxSort, type BoxTable } from './statsSection.logic';
+import { boxTotals, nextSort, sortBoxRows, type BoxSort, type BoxTable } from './statsSection.logic';
 
 export interface BoxScoreTableProps {
   table: BoxTable;
@@ -14,10 +22,11 @@ export interface BoxScoreTableProps {
   className?: string;
 }
 
-/** One sortable player table (sticky player column, numeric columns). Sorted by its `defaultSort` descending at first. */
+/** One sortable player table (sticky player column, numeric columns, a Totals footer row). Sorted by its `defaultSort` descending at first. */
 export function BoxScoreTable({ table, teamName, teamColor, className }: BoxScoreTableProps) {
   const [sort, setSort] = useState<BoxSort>({ key: table.defaultSort, direction: 'desc' });
   const rows = sortBoxRows(table, sort);
+  const totals = boxTotals(table);
   const dir = (key: string) => (sort.key === key ? sort.direction : 'none');
 
   return (
@@ -56,6 +65,19 @@ export function BoxScoreTable({ table, teamName, teamColor, className }: BoxScor
             </DataTableRow>
           ))}
         </DataTableBody>
+        {/* D12: a Totals row. Counts are sums of the rows above, percentages are recomputed from the sums. */}
+        <DataTableFooter>
+          <DataTableRow zebra={false} className="bg-surface-raised">
+            <DataTableCell sticky className="border-t border-t-border-default">
+              Totals
+            </DataTableCell>
+            {table.columns.map((c, i) => (
+              <DataTableCell key={c.key} numeric className="border-t border-t-border-default">
+                {totals[i]}
+              </DataTableCell>
+            ))}
+          </DataTableRow>
+        </DataTableFooter>
       </DataTable>
     </div>
   );

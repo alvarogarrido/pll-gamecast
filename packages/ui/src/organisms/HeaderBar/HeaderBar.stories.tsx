@@ -41,6 +41,16 @@ export const LiveQ4Tied: Story = { args: { game: liveQ4 } };
 export const Halftime: Story = { args: { game: halftime } };
 /** Winner in white, loser in secondary; rank and RPI movement under each team. */
 export const Final: Story = { args: { game: final } };
+/** D13: rank / RPI that did not move after the game show nothing, no "=" indicator. Only real movement shows. */
+export const FinalNoMovement: Story = {
+  args: {
+    game: {
+      ...final,
+      away: { ...final.away, rankChange: 0, rpiChange: 0 },
+      home: { ...final.home, rankChange: 0, rpiChange: 0 },
+    },
+  },
+};
 export const FinalBlowout: Story = { args: { game: fixtures.game(GAMES.finalBlowout) } };
 /** Fifth period: an OT column joins the linescore and the status reads FINAL/OT. */
 export const FinalOvertime: Story = { args: { game: fixtures.game(FINAL_OT) } };
@@ -50,6 +60,7 @@ export const FinalOvertime: Story = { args: { game: fixtures.game(FINAL_OT) } };
 export const MinimizedPregame: Story = { args: { variant: 'minimized', game: fixtures.game(GAMES.scheduled) } };
 export const MinimizedLive: Story = { args: { variant: 'minimized', game: liveQ4 } };
 export const MinimizedHalftime: Story = { args: { variant: 'minimized', game: halftime } };
+/** D14: the minimized score uses the `score.sm` type token (24/24 Barlow 800). */
 export const MinimizedFinal: Story = { args: { variant: 'minimized', game: final } };
 
 /** Every state stacked, as the page would pin them at the top of the viewport. */
@@ -92,5 +103,7 @@ export const Column380: Story = { args: { game: final }, decorators: [at(380)] }
 export const Column580: Story = { args: { game: final }, decorators: [at(580)] };
 
 export const Loading: Story = { args: { loading: true } };
+/** The minimized bar at 320px, the smallest supported width. */
+export const MinimizedNarrow320: Story = { args: { game: liveQ4, variant: 'minimized' }, decorators: [at(320)] };
 export const LoadingMinimized: Story = { args: { loading: true, variant: 'minimized' } };
 export const NoGame: Story = { args: { game: null } };

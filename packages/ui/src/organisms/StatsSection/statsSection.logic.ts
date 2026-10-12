@@ -3,7 +3,7 @@
  * Only fields that exist in `TeamGameStats` / `PlayerGameStats` are used; derived values are plain ratios of them.
  */
 import type { GameDetail, GameStats, PlayerGameStats, PlayerRef, TeamGameStats } from '@pll/data/api';
-import { clock, formatStat, pct, type StatFormat } from '../../lib/format';
+import { NO_VALUE, clock, formatStat, pct, type StatFormat } from '../../lib/format';
 
 export type Side = 'away' | 'home';
 
@@ -169,6 +169,11 @@ export interface BoxColumn {
   value: (l: BoxLine) => number | null;
   /** Text shown in the cell (defaults to the integer value). */
   display?: (l: BoxLine) => string;
+  /**
+   * Text of the Totals row (D12). Counts are sums over `rows`; ratios (FO%, SV%) are recomputed from the summed
+   * numerators and denominators, never averaged. Defaults to an en dash.
+   */
+  total?: (rows: readonly BoxLine[]) => string;
 }
 
 export interface BoxTable {
@@ -181,26 +186,38 @@ export interface BoxTable {
   defaultSort: string;
 }
 
-const col = (key: string, label: string, title: string, value: BoxColumn['value'], display?: BoxColumn['display']): BoxColumn => ({
+const col = (
+  key: string,
+  label: string,
+  title: string,
+  value: BoxColumn['value'],
+  display?: BoxColumn['display'],
+  total?: BoxColumn['total'],
+): BoxColumn => ({
   key,
   label,
   title,
   value,
   display,
+  total,
 });
 
 const num = (pick: (s: PlayerGameStats) => number): BoxColumn['value'] => (l) => pick(l.stats);
 const fmt = (pick: (s: PlayerGameStats) => number): BoxColumn['display'] => (l) => formatStat(pick(l.stats));
 
+/** Sum of one stat over the rows of a table. */
+const sum = (rows: readonly BoxLine[], pick: (s: PlayerGameStats) => number): number => rows.reduce((acc, l) => acc + pick(l.stats), 0);
+const sumFmt = (pick: (s: PlayerGameStats) => number): BoxColumn['total'] => (rows) => formatStat(sum(rows, pick));
+
 const offenseColumns = (): BoxColumn[] => [
-  col('goals', 'G', 'Goals', num((s) => s.goals), fmt((s) => s.goals)),
-  col('assists', 'A', 'Assists', num((s) => s.assists), fmt((s) => s.assists)),
-  col('points', 'P', 'Points', num((s) => s.points), fmt((s) => s.points)),
-  col('shots', 'SH', 'Shots', num((s) => s.shots), fmt((s) => s.shots)),
-  col('shotsOnGoal', 'SOG', 'Shots on goal', num((s) => s.shotsOnGoal), fmt((s) => s.shotsOnGoal)),
-  col('groundBalls', 'GB', 'Ground balls', num((s) => s.groundBalls), fmt((s) => s.groundBalls)),
-  col('turnovers', 'TO', 'Turnovers', num((s) => s.turnovers), fmt((s) => s.turnovers)),
-  col('causedTurnovers', 'CT', 'Caused turnovers', num((s) => s.causedTurnovers), fmt((s) => s.causedTurnovers)),
+  col('goals', 'G', 'Goals', num((s) => s.goals), fmt((s) => s.goals), sumFmt((s) => s.goals)),
+  col('assists', 'A', 'Assists', num((s) => s.assists), fmt((s) => s.assists), sumFmt((s) => s.assists)),
+  col('points', 'P', 'Points', num((s) => s.points), fmt((s) => s.points), sumFmt((s) => s.points)),
+  col('shots', 'SH', 'Shots', num((s) => s.shots), fmt((s) => s.shots), sumFmt((s) => s.shots)),
+  col('shotsOnGoal', 'SOG', 'Shots on goal', num((s) => s.shotsOnGoal), fmt((s) => s.shotsOnGoal), sumFmt((s) => s.shotsOnGoal)),
+  col('groundBalls', 'GB', 'Ground balls', num((s) => s.groundBalls), fmt((s) => s.groundBalls), sumFmt((s) => s.groundBalls)),
+  col('turnovers', 'TO', 'Turnovers', num((s) => s.turnovers), fmt((s) => s.turnovers), sumFmt((s) => s.turnovers)),
+  col('causedTurnovers', 'CT', 'Caused turnovers', num((s) => s.causedTurnovers), fmt((s) => s.causedTurnovers), sumFmt((s) => s.causedTurnovers)),
 ];
 
 const hasOffense = (s: PlayerGameStats) =>
@@ -220,8 +237,8 @@ export function boxTables(lines: readonly BoxLine[]): BoxTable[] {
       id: 'faceoffs',
       title: 'Faceoffs',
       columns: [
-        col('faceoffsWon', 'FO W-T', 'Faceoffs won-taken', num((s) => s.faceoffsWon), (l) => `${formatStat(l.stats.faceoffsWon)}-${formatStat(l.stats.faceoffsTaken)}`),
-        col('faceoffPct', 'FO%', 'Faceoff percentage', (l) => ratio(l.stats.faceoffsWon, l.stats.faceoffsTaken), (l) => pct(ratio(l.stats.faceoffsWon, l.stats.faceoffsTaken))),
+        col('faceoffsWon', 'FO W-T', 'Faceoffs won-taken', num((s) => s.faceoffsWon), (l) => `${formatStat(l.stats.faceoffsWon)}-${formatStat(l.stats.faceoffsTaken)}`, (rows) => `${formatStat(sum(rows, (s) => s.faceoffsWon))}-${formatStat(sum(rows, (s) => s.faceoffsTaken))}`),
+        col('faceoffPct', 'FO%', 'Faceoff percentage', (l) => ratio(l.stats.faceoffsWon, l.stats.faceoffsTaken), (l) => pct(ratio(l.stats.faceoffsWon, l.stats.faceoffsTaken)), (rows) => pct(ratio(sum(rows, (s) => s.faceoffsWon), sum(rows, (s) => s.faceoffsTaken)))),
       ],
       rows: lines.filter((l) => l.stats.faceoffsTaken > 0),
       defaultSort: 'faceoffsWon',
@@ -230,9 +247,12 @@ export function boxTables(lines: readonly BoxLine[]): BoxTable[] {
       id: 'goalies',
       title: 'Goalies',
       columns: [
-        col('saves', 'SV', 'Saves', num((s) => s.saves), fmt((s) => s.saves)),
-        col('goalsAgainst', 'GA', 'Goals against', num((s) => s.goalsAgainst), fmt((s) => s.goalsAgainst)),
-        col('savePct', 'SV%', 'Save percentage', (l) => ratio(l.stats.saves, l.stats.saves + l.stats.goalsAgainst), (l) => pct(ratio(l.stats.saves, l.stats.saves + l.stats.goalsAgainst))),
+        col('saves', 'SV', 'Saves', num((s) => s.saves), fmt((s) => s.saves), sumFmt((s) => s.saves)),
+        col('goalsAgainst', 'GA', 'Goals against', num((s) => s.goalsAgainst), fmt((s) => s.goalsAgainst), sumFmt((s) => s.goalsAgainst)),
+        col('savePct', 'SV%', 'Save percentage', (l) => ratio(l.stats.saves, l.stats.saves + l.stats.goalsAgainst), (l) => pct(ratio(l.stats.saves, l.stats.saves + l.stats.goalsAgainst)), (rows) => {
+          const saves = sum(rows, (s) => s.saves);
+          return pct(ratio(saves, saves + sum(rows, (s) => s.goalsAgainst)));
+        }),
       ],
       rows: lines.filter((l) => l.stats.saves + l.stats.goalsAgainst > 0),
       defaultSort: 'saves',
@@ -241,14 +261,19 @@ export function boxTables(lines: readonly BoxLine[]): BoxTable[] {
       id: 'penalties',
       title: 'Penalties',
       columns: [
-        col('penalties', 'PEN', 'Penalties', num((s) => s.penalties), fmt((s) => s.penalties)),
-        col('penaltySeconds', 'PIM', 'Penalty minutes', num((s) => s.penaltySeconds), (l) => clock(l.stats.penaltySeconds)),
+        col('penalties', 'PEN', 'Penalties', num((s) => s.penalties), fmt((s) => s.penalties), sumFmt((s) => s.penalties)),
+        col('penaltySeconds', 'PIM', 'Penalty minutes', num((s) => s.penaltySeconds), (l) => clock(l.stats.penaltySeconds), (rows) => clock(sum(rows, (s) => s.penaltySeconds))),
       ],
       rows: lines.filter((l) => l.stats.penalties > 0 || l.stats.penaltySeconds > 0),
       defaultSort: 'penaltySeconds',
     },
   ];
   return tables.filter((t) => t.rows.length > 0);
+}
+
+/** The Totals row of a table (D12): one text per column, in column order. Sums over every row of the table. */
+export function boxTotals(table: Pick<BoxTable, 'columns' | 'rows'>): string[] {
+  return table.columns.map((c) => (c.total ? c.total(table.rows) : NO_VALUE));
 }
 
 export interface BoxSort {

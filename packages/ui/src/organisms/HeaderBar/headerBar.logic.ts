@@ -65,6 +65,14 @@ export function weatherLabel(weather: HeaderGame['weather']): string | null {
   return parts.join(' · ');
 }
 
+/**
+ * Post-game rank / RPI movement (D13): only a real change shows. `0` (unchanged) and `null` (unknown) both give `null`,
+ * so the header draws no "=" indicator.
+ */
+export function realMovement(change: number | null | undefined): number | null {
+  return typeof change === 'number' && Number.isFinite(change) && change !== 0 ? change : null;
+}
+
 /** Tags above the matchup: the event label ("NCAA Quarterfinal") and "Neutral site". */
 export function eventTags(game: Pick<HeaderGame, 'label' | 'neutralSite'>): string[] {
   const tags: string[] = [];

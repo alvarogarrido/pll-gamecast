@@ -262,6 +262,12 @@ export function playerShortName(player: { firstName: string; lastName: string })
   return initial ? `${initial}. ${last}` : last;
 }
 
+/** `"B. Dowd (#11)"`: short name plus jersey number, for one-line rows. No number, no parentheses. */
+export function playerLabel(player: { firstName: string; lastName: string; jerseyNumber?: number | null }): string {
+  const name = playerShortName(player);
+  return typeof player.jerseyNumber === 'number' && Number.isFinite(player.jerseyNumber) ? `${name} (#${player.jerseyNumber})` : name;
+}
+
 /** Initials for avatar fallbacks: `"BD"`. */
 export function playerInitials(player: { firstName: string; lastName: string }): string {
   return `${player.firstName.trim().charAt(0)}${player.lastName.trim().charAt(0)}`.toUpperCase();

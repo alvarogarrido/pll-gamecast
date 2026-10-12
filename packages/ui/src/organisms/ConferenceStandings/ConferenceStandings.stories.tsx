@@ -40,3 +40,9 @@ export const Mobile: Story = {
     viewport: { options: { phone375: { name: 'Phone 375', styles: { width: '375px', height: '812px' } } } },
   },
 };
+
+/** D11: Conf W, Conf L, W and L are separate columns. At 320px, the smallest supported width. */
+export const Mobile320: Story = {
+  args: { standings: crossConfStandings, game: crossConf },
+  decorators: [(Story) => <div className="w-[320px] max-w-full"><Story /></div>],
+};

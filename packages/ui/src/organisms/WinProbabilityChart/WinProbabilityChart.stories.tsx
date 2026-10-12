@@ -62,3 +62,23 @@ export const Mobile: Story = {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
   decorators: [(Story) => <div className="mx-auto w-[375px] max-w-full"><Story /></div>],
 };
+
+/** D15: a finished game's header says who won ("Duke won") instead of 100.0% / 0.0%. */
+export const FinalResultHeader: Story = { args: of(GAMES.finalBlowout) };
+
+/** D15: a live game that is all but decided still prints 99.9% / 0.1%, never a certainty. */
+export const LiveNearCertain: Story = {
+  args: (() => {
+    const a = of(GAMES.liveQ4);
+    const points = [...a.series.points];
+    const last = points[points.length - 1];
+    if (last) points[points.length - 1] = { ...last, home: 1 };
+    return { ...a, series: { ...a.series, points } };
+  })(),
+};
+
+/** D18: overtime is drawn at least 10% of the x axis wide, so "OT" and the sudden-victory end stay readable (here at 375px). */
+export const OvertimeMobile: Story = {
+  args: of(findOvertimeGameId()),
+  decorators: [(Story) => <div className="mx-auto w-[375px] max-w-full"><Story /></div>],
+};

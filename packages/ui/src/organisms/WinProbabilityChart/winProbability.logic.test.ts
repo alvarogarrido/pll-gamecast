@@ -4,9 +4,15 @@ import {
   buildLinePath,
   chartDomain,
   clampTooltipLeft,
+  axisFraction,
+  axisSeconds,
   clockAtSeconds,
   createScale,
   describeSeries,
+  displayProbability,
+  finalResult,
+  MAX_OT_SHARE,
+  MIN_OT_SHARE,
   layoutBands,
   nearestIndex,
   pickChartColors,
@@ -159,6 +165,9 @@ describe('summary', () => {
     const text = describeSeries([pt(0, 0.5), pt(10, 0.57)], { home: 'Notre Dame', away: 'Duke' }, { live: true });
     expect(text).toBe('Now, Duke 43.0%, Notre Dame 57.0%, Notre Dame favored. The favorite never changed.');
     expect(describeSeries([], { home: 'A', away: 'B' }, { live: false })).toBe('No win probability data yet.');
+    const final = describeSeries([pt(0, 0.5), pt(3600, 0.9995)], { home: 'Cornell', away: 'Penn' }, { live: false, result: { side: 'home', text: 'Cornell won' } });
+    expect(final.startsWith('Final: Cornell won.')).toBe(true);
+    expect(final).not.toContain('99.9%');
   });
 });
 
@@ -176,5 +185,110 @@ describe('pickChartColors (alias of teamPairColors)', () => {
   });
   it('passes through invalid colors', () => {
     expect(pickChartColors({ primary: 'red' }, { primary: '#fff' })).toEqual({ away: 'red', home: '#fff' });
+  });
+});
+
+describe('overtime minimum width (D18)', () => {
+  const regOnly = chartDomain([pt(1000, 0.5)], REG);
+  const ot = chartDomain([pt(3731, 0.9)], REG);
+  const twoOt = chartDomain([pt(3900, 0.9)], REG);
+  const pad = { top: 0, right: 0, bottom: 0, left: 0 };
+
+  it('leaves a regulation game linear', () => {
+    expect(regOnly.axis).toHaveLength(4);
+    expect(axisFraction(regOnly.axis, 1800)).toBeCloseTo(0.5);
+    const s = createScale(400, 100, pad, regOnly);
+    expect(s.x(900)).toBeCloseTo(100);
+  });
+
+  it('gives a single overtime at least 10% of the axis (it is 6.25% by time)', () => {
+    const s = createScale(1000, 100, pad, ot);
+    const band = layoutBands(ot, s).at(-1)!;
+    expect(band.label).toBe('OT');
+    expect(band.x1 - band.x0).toBeGreaterThanOrEqual(1000 * MIN_OT_SHARE - 1e-6);
+    expect(band.x1).toBeCloseTo(1000);
+    // Regulation shrinks to fit, still proportional in time: four equal quarters.
+    const quarters = layoutBands(ot, s).slice(0, 4).map((b) => b.x1 - b.x0);
+    expect(quarters[0]).toBeCloseTo(quarters[3]!);
+    expect(quarters[0]! * 4 + (band.x1 - band.x0)).toBeCloseTo(1000);
+  });
+
+  it('keeps the OT label legible on a phone-sized plot', () => {
+    const s = createScale(340, 100, { top: 0, right: 36, bottom: 0, left: 0 }, ot);
+    expect(layoutBands(ot, s).at(-1)!.showLabel).toBe(true);
+  });
+
+  it('is continuous and monotonic, and invertX undoes x', () => {
+    const s = createScale(1000, 100, pad, ot);
+    let prev = -1;
+    for (const sec of [0, 900, 1800, 3000, 3600, 3700, 3731, 3840]) {
+      const x = s.x(sec);
+      expect(x).toBeGreaterThanOrEqual(prev);
+      prev = x;
+      expect(s.invertX(x)).toBeCloseTo(sec, 5);
+    }
+    expect(s.x(3600)).toBeCloseTo(1000 * (1 - MIN_OT_SHARE));
+    expect(s.x(99999)).toBeCloseTo(1000);
+    expect(s.invertX(-10)).toBe(0);
+    expect(s.invertX(5000)).toBe(3840);
+  });
+
+  it('a sudden-victory end early in OT sits inside the wider band', () => {
+    const s = createScale(1000, 100, pad, ot);
+    const x = s.x(3731); // 131 s into the 240 s overtime
+    expect(x).toBeGreaterThan(s.x(3600) + 40);
+    expect(x).toBeLessThan(1000);
+  });
+
+  it('caps the share of several overtimes together', () => {
+    const many = chartDomain([pt(3600 + 240 * 5 - 1, 0.5)], REG);
+    expect(many.periods.filter((p) => p.period > 4)).toHaveLength(5);
+    const otSegs = many.axis.filter((a) => a.start >= 3600);
+    expect(otSegs.reduce((m, a) => m + (a.to - a.from), 0)).toBeCloseTo(MAX_OT_SHARE);
+    expect(many.axis.at(-1)!.to).toBeCloseTo(1);
+    // Two overtimes: 10% each = 20% together.
+    expect(twoOt.axis.filter((a) => a.start >= 3600).reduce((m, a) => m + (a.to - a.from), 0)).toBeCloseTo(0.2);
+  });
+
+  it('axis helpers clamp to the domain', () => {
+    expect(axisFraction(ot.axis, -5)).toBe(0);
+    expect(axisFraction(ot.axis, 1e9)).toBeCloseTo(1);
+    expect(axisSeconds(ot.axis, 2)).toBe(3840);
+    expect(axisSeconds([], 0.5)).toBe(0);
+  });
+});
+
+describe('displayProbability (D15)', () => {
+  it('caps live values at 99.9% / 0.1%', () => {
+    expect(displayProbability(1)).toBe(0.999);
+    expect(displayProbability(0)).toBe(0.001);
+    expect(displayProbability(0.9996)).toBe(0.999);
+    expect(displayProbability(0.0002)).toBe(0.001);
+  });
+  it('leaves other values alone and passes null through', () => {
+    expect(displayProbability(0.5)).toBe(0.5);
+    expect(displayProbability(0.123)).toBe(0.123);
+    expect(displayProbability(null)).toBeNull();
+  });
+  it('the summary never says 100.0%', () => {
+    const text = describeSeries([pt(0, 0.5), pt(3600, 1)], { home: 'Duke', away: 'Yale' }, { live: true });
+    expect(text).toContain('Yale 0.1%');
+    expect(text).toContain('Duke 99.9%');
+    expect(text).not.toContain('100.0%');
+  });
+});
+
+describe('finalResult (D15)', () => {
+  const g = (away: number | null, home: number | null) => ({
+    away: { team: { school: 'Yale' }, score: away },
+    home: { team: { school: 'Duke' }, score: home },
+  });
+  it('names the winner', () => {
+    expect(finalResult(g(10, 12))).toEqual({ side: 'home', text: 'Duke won' });
+    expect(finalResult(g(13, 12))).toEqual({ side: 'away', text: 'Yale won' });
+  });
+  it('falls back to "Final" for level or missing scores', () => {
+    expect(finalResult(g(12, 12))).toEqual({ side: null, text: 'Final' });
+    expect(finalResult(g(null, 12))).toEqual({ side: null, text: 'Final' });
   });
 });

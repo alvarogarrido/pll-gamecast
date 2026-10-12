@@ -13,6 +13,8 @@ export interface Tally {
   goals: number;
   assists: number;
   points?: number;
+  /** Season tallies only: games played, the denominator of the per-game rates. */
+  gamesPlayed?: number;
   shots: number;
   turnovers?: number;
   saves: number;
@@ -78,6 +80,26 @@ export function selectTopScorer<C extends Candidate>(candidates: readonly C[]): 
     (a, b) =>
       pointsOf(b.tally) - pointsOf(a.tally) ||
       b.tally.goals - a.tally.goals ||
+      a.tally.shots - b.tally.shots ||
+      byIdentity(a, b),
+  );
+}
+
+/** Games a player needs to qualify as a Players to Watch top scorer (D9). */
+export const MIN_GAMES_TO_WATCH = 3;
+
+/**
+ * Players to Watch top scorer (D9): highest points per game among players with at least {@link MIN_GAMES_TO_WATCH}
+ * games played and a point. Tie-break: more goals per game, then more total points, then FEWER shots.
+ */
+export function selectTopScorerPerGame<C extends Candidate>(candidates: readonly C[], minGames = MIN_GAMES_TO_WATCH): C | null {
+  const rate = (n: number, c: C) => n / (c.tally.gamesPlayed ?? 1);
+  return best(
+    candidates.filter((c) => (c.tally.gamesPlayed ?? 0) >= minGames && pointsOf(c.tally) > 0),
+    (a, b) =>
+      rate(pointsOf(b.tally), b) - rate(pointsOf(a.tally), a) ||
+      rate(b.tally.goals, b) - rate(a.tally.goals, a) ||
+      pointsOf(b.tally) - pointsOf(a.tally) ||
       a.tally.shots - b.tally.shots ||
       byIdentity(a, b),
   );
@@ -163,21 +185,21 @@ export function buildTopPerformers(stats: GameStats['data'], game: GameDetail['d
   return [
     {
       category: 'scoring',
-      title: 'Scoring',
+      title: 'Goals',
       emptyLabel: 'No points yet',
       away: pick(selectTopScorer, gameScorer, 'away'),
       home: pick(selectTopScorer, gameScorer, 'home'),
     },
     {
       category: 'goalie',
-      title: 'Goalie',
+      title: 'Saves',
       emptyLabel: 'No saves yet',
       away: pick(selectTopGoalie, gameGoalie, 'away'),
       home: pick(selectTopGoalie, gameGoalie, 'home'),
     },
     {
       category: 'faceoff',
-      title: 'Faceoff',
+      title: 'Faceoff Wins',
       emptyLabel: 'No faceoffs yet',
       away: pick(selectTopFaceoff, gameFaceoff, 'away'),
       home: pick(selectTopFaceoff, gameFaceoff, 'home'),
@@ -200,8 +222,8 @@ const seasonScorer = (c: SeasonCandidate, color: string): Performer => {
   return {
     player: c.player,
     teamColor: color,
-    primary: { value: perGame(t.goals, t.gamesPlayed), label: 'Goals/G' },
-    secondary: [`${perGame(t.shots, t.gamesPlayed)} SH/G`, `${pct(ratio(t.goals, t.shots))} SH%`],
+    primary: { value: perGame(pointsOf(t), t.gamesPlayed), label: 'Pts/G' },
+    secondary: [`${perGame(t.goals, t.gamesPlayed)} G/G`, `${perGame(t.assists, t.gamesPlayed)} A/G`, `${formatStat(t.gamesPlayed)} GP`],
   };
 };
 
@@ -219,7 +241,7 @@ const seasonFaceoff = (c: SeasonCandidate, color: string): Performer => ({
   secondary: [],
 });
 
-/** The three Players to Watch sections from season stats (`preview.rosters`). Everything to 1 decimal. */
+/** The three Players to Watch sections from season stats (`preview.rosters`). Top scorer = points per game (min. 3 GP, D9). Everything to 1 decimal. */
 export function buildPlayersToWatch(preview: GamePreview['data'], game: GameDetail['data']): PerformerSection[] {
   const colors = teamColors(game);
   const rosters: Record<Side, SeasonCandidate[]> = {
@@ -238,9 +260,9 @@ export function buildPlayersToWatch(preview: GamePreview['data'], game: GameDeta
     {
       category: 'scoring',
       title: 'Top Scorer',
-      emptyLabel: 'No season stats yet',
-      away: pick(selectTopScorer, seasonScorer, 'away'),
-      home: pick(selectTopScorer, seasonScorer, 'home'),
+      emptyLabel: `Min. ${MIN_GAMES_TO_WATCH} games played`,
+      away: pick(selectTopScorerPerGame, seasonScorer, 'away'),
+      home: pick(selectTopScorerPerGame, seasonScorer, 'home'),
     },
     {
       category: 'goalie',

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ConferenceStandings } from '@pll/data/api';
-import { isGameTeam, sortStandings, standingsView, type StandingsRowData } from './standings.logic';
+import { isGameTeam, sortStandings, standingsCells, standingsView, type StandingsRowData } from './standings.logic';
 
 const row = (id: string, cw: number, cl: number, w: number, l: number): StandingsRowData =>
   ({ team: { id, school: id }, rank: null, conferenceRecord: { wins: cw, losses: cl }, record: { wins: w, losses: l } }) as StandingsRowData;
@@ -34,5 +34,16 @@ describe('isGameTeam', () => {
   it('flags the two teams', () => {
     expect(isGameTeam(row('a', 0, 0, 0, 0), game)).toBe(true);
     expect(isGameTeam(row('q', 0, 0, 0, 0), game)).toBe(false);
+  });
+});
+
+describe('standingsCells (D11)', () => {
+  it('splits conference and overall records into four number columns', () => {
+    expect(standingsCells(row('x', 3, 1, 8, 2))).toEqual({ confWins: '3', confLosses: '1', wins: '8', losses: '2' });
+    expect(standingsCells(row('x', 0, 0, 0, 0))).toEqual({ confWins: '0', confLosses: '0', wins: '0', losses: '0' });
+  });
+  it('prints an en dash for missing data, never NaN', () => {
+    const missing = { conferenceRecord: null, record: null } as unknown as StandingsRowData;
+    expect(standingsCells(missing)).toEqual({ confWins: '–', confLosses: '–', wins: '–', losses: '–' });
   });
 });

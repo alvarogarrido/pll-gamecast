@@ -5,7 +5,7 @@ import { Tabs, tabPanelProps, type TabItem } from './Tabs';
 const sections: TabItem[] = [
   { value: 'gamecast', label: 'Gamecast' },
   { value: 'stats', label: 'Stats' },
-  { value: 'plays', label: 'Plays' },
+  { value: 'plays', label: 'Play-by-Play' },
   { value: 'highlights', label: 'Highlights' },
 ];
 

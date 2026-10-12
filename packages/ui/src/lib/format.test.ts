@@ -11,6 +11,7 @@ import {
   perGame,
   periodLabel,
   playerInitials,
+  playerLabel,
   playerMeta,
   playerShortName,
   positionLabel,
@@ -167,6 +168,9 @@ describe('teams and players', () => {
     expect(playerShortName({ firstName: 'Brennan', lastName: 'Dowd' })).toBe('B. Dowd');
     expect(playerShortName({ firstName: '', lastName: 'Dowd' })).toBe('Dowd');
     expect(playerInitials({ firstName: 'brennan', lastName: 'Dowd' })).toBe('BD');
+    expect(playerLabel({ firstName: 'Brennan', lastName: 'Dowd', jerseyNumber: 11 })).toBe('B. Dowd (#11)');
+    expect(playerLabel({ firstName: 'Brennan', lastName: 'Dowd', jerseyNumber: 0 })).toBe('B. Dowd (#0)');
+    expect(playerLabel({ firstName: 'Brennan', lastName: 'Dowd' })).toBe('B. Dowd');
   });
   it('labels', () => {
     expect(classYearLabel('Jr')).toBe('Jr');

@@ -26,7 +26,9 @@ export const Pregame: Story = { args: { available: availabilityFor('pre') } };
 export const PregameHidden: Story = { args: { available: availabilityFor('pre'), unavailable: 'hide' } };
 export const NaturalWidth: Story = { args: { fullWidth: false } };
 
+/** The longest label, "Play-by-Play" (D7), must still fit at 320px without scrolling the tablist. */
 export const Mobile320: Story = {
+  args: { value: 'plays', available: availabilityFor('live') },
   decorators: [(Story) => <div style={{ width: 320 }}><Story /></div>],
 };
 

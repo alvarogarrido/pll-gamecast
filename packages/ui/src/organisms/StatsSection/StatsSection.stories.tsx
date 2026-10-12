@@ -43,3 +43,18 @@ export const Mobile: Story = {
     ),
   ],
 };
+
+/** D12: each box score table ends with a Totals row (sums; FO% and SV% recomputed from the sums). */
+export const TotalsRow: Story = { args: { ...of(GAMES.final), defaultView: 'home' } };
+
+/** Totals row on a 375px phone: the Totals label stays pinned while the table scrolls sideways. */
+export const TotalsRowMobile: Story = {
+  args: { ...of(GAMES.final), defaultView: 'away' },
+  decorators: [
+    (Story) => (
+      <div className="mx-auto w-[375px] max-w-full">
+        <Story />
+      </div>
+    ),
+  ],
+};

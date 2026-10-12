@@ -21,6 +21,8 @@ import {
   clockAtSeconds,
   createScale,
   describeSeries,
+  displayProbability,
+  finalResult,
   layoutBands,
   nearestIndex,
   sortPoints,
@@ -54,8 +56,9 @@ export function WinProbabilityChartSkeleton({ className }: { className?: string 
 /**
  * Home win probability over game time, PLL style: one line around 50%, the area between the line and 50% filled in
  * the home color when the home team is favored and the away color when it is not. Quarter gridlines, a dashed 50%
- * line, hover/touch scrubbing with a tooltip, arrow-key scrubbing, and a screen-reader summary. Before kickoff it is a
- * simple split bar instead. The SVG is drawn in real pixels from the measured width, so strokes and text never stretch.
+ * line, hover/touch scrubbing with a tooltip, arrow-key scrubbing, and a screen-reader summary. Live values are capped at
+ * 99.9% / 0.1% (D15); a finished game's header says who won ("Duke won") instead of 100.0% / 0.0%. Overtime is drawn at
+ * least 10% of the axis wide (D18). Before kickoff it is a simple split bar instead. The SVG is drawn in real pixels from the measured width, so strokes and text never stretch.
  */
 export function WinProbabilityChart({ series, game, loading = false, className }: WinProbabilityChartProps) {
   const summaryId = useId();
@@ -133,13 +136,18 @@ export function WinProbabilityChart({ series, game, loading = false, className }
 
   // ---- Live / final: the line chart
   const height = width < 400 ? 168 : 192;
-  const scale = createScale(width, height, PADDING, domain.end);
+  // The whole domain, not just its end: overtime is drawn at a minimum width (D18).
+  const scale = createScale(width, height, PADDING, domain);
   const bands = layoutBands(domain, scale);
   const linePath = buildLinePath(points, scale);
   const areas = buildAreaSegments(points, scale);
   const lastIndex = points.length - 1;
   const last = points[lastIndex]!;
-  const current = last.home;
+  // D15: live values never print as a certainty (99.9% / 0.1%); a finished game shows its result instead.
+  const current = displayProbability(last.home);
+  const final = game.status === 'final';
+  const result = finalResult(game);
+  const winnerTeam = result.side ? game[result.side].team : null;
   const y50 = scale.y(0.5);
 
   const active = scrub === null ? null : points[Math.min(scrub, lastIndex)]!;
@@ -148,11 +156,12 @@ export function WinProbabilityChart({ series, game, loading = false, className }
   const tipLeft = clampTooltipLeft(activeX, TOOLTIP_WIDTH, width);
   const tipOnTop = active ? activeY > y50 : true;
 
-  const summary = describeSeries(points, { home: home.school, away: away.school }, { live });
+  const summary = describeSeries(points, { home: home.school, away: away.school }, { live, result: final ? result : undefined });
   const valueIndex = scrub ?? lastIndex;
   const valuePoint = points[valueIndex]!;
   const valueClock = clockAtSeconds(domain, valuePoint.elapsedSeconds).label;
-  const valueText = `${valueClock}: ${away.school} ${pct(1 - valuePoint.home)}, ${home.school} ${pct(valuePoint.home)}`;
+  const shownHome = displayProbability(valuePoint.home);
+  const valueText = `${valueClock}: ${away.school} ${pct(1 - shownHome)}, ${home.school} ${pct(shownHome)}`;
 
   const scrubFromPointer = (e: PointerEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -173,10 +182,27 @@ export function WinProbabilityChart({ series, game, loading = false, className }
     <Card as="section" aria-label={title} className={cn('flex flex-col gap-3', className)}>
       <SectionHeader title={title} action={live ? <StatusPill status="live" /> : undefined} />
 
-      <div className="flex items-center justify-between gap-2">
-        <TeamPercent team={away} value={1 - current} side="away" color={colors.away} />
-        <TeamPercent team={home} value={current} side="home" color={colors.home} />
-      </div>
+      {final ? (
+        // D15: the result, not "100.0% / 0.0%". The chart below still shows how the game unfolded.
+        <div data-result={result.side ?? 'none'} className="flex items-center justify-center gap-2">
+          {winnerTeam && (
+            <TeamLogo
+              src={winnerTeam.logoUrl}
+              name={`${winnerTeam.school} ${winnerTeam.mascot}`}
+              abbreviation={winnerTeam.abbreviation}
+              color={result.side ? colors[result.side] : undefined}
+              size="sm"
+              decorative
+            />
+          )}
+          <p className="text-headline text-text-primary">{result.text}</p>
+        </div>
+      ) : (
+        <div className="flex items-center justify-between gap-2">
+          <TeamPercent team={away} value={1 - current} side="away" color={colors.away} />
+          <TeamPercent team={home} value={current} side="home" color={colors.home} />
+        </div>
+      )}
 
       <p id={summaryId} className="sr-only">
         {summary} Use the left and right arrow keys to move through the game, Home and End to jump to the start or the latest point.
@@ -288,8 +314,8 @@ export function WinProbabilityChart({ series, game, loading = false, className }
             >
               <p className="font-display text-clock text-text-secondary">{clockAtSeconds(domain, active.elapsedSeconds).label}</p>
               {[
-                { team: away, value: 1 - active.home, color: colors.away },
-                { team: home, value: active.home, color: colors.home },
+                { team: away, value: 1 - displayProbability(active.home), color: colors.away },
+                { team: home, value: displayProbability(active.home), color: colors.home },
               ].map(({ team, value, color }) => (
                 <div key={team.id} className="mt-1 flex items-center gap-2 text-footnote">
                   <TeamLogo src={team.logoUrl} name={team.school} abbreviation={team.abbreviation} color={color} size="xs" decorative />

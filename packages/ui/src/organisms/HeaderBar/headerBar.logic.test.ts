@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { eventTags, headerPhase, preStatus, venueLabel, weatherLabel, type HeaderGame } from './headerBar.logic';
+import { eventTags, headerPhase, preStatus, realMovement, venueLabel, weatherLabel, type HeaderGame } from './headerBar.logic';
 
 const at = (iso: string) => Date.parse(iso);
 const START = '2027-03-13T22:00:00Z'; // 5:00 PM ET
@@ -50,5 +50,18 @@ describe('venueLabel, eventTags', () => {
   it('lists label and neutral site', () => {
     expect(eventTags({ label: 'NCAA Quarterfinal', neutralSite: true })).toEqual(['NCAA Quarterfinal', 'Neutral site']);
     expect(eventTags({ label: null, neutralSite: false })).toEqual([]);
+  });
+});
+
+describe('realMovement (D13)', () => {
+  it('keeps real movement, up or down', () => {
+    expect(realMovement(2)).toBe(2);
+    expect(realMovement(-3)).toBe(-3);
+  });
+  it('hides unchanged and unknown', () => {
+    expect(realMovement(0)).toBeNull();
+    expect(realMovement(null)).toBeNull();
+    expect(realMovement(undefined)).toBeNull();
+    expect(realMovement(Number.NaN)).toBeNull();
   });
 });

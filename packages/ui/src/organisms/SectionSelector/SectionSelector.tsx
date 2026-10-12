@@ -24,7 +24,7 @@ export interface SectionSelectorProps {
 const SECTIONS: readonly { value: GamecastSection; label: string }[] = [
   { value: 'gamecast', label: 'Gamecast' },
   { value: 'stats', label: 'Stats' },
-  { value: 'plays', label: 'Plays' },
+  { value: 'plays', label: 'Play-by-Play' },
   { value: 'highlights', label: 'Highlights' },
 ];
 
@@ -42,13 +42,14 @@ export const sectionPanelProps = (idBase: string, section: GamecastSection) => t
 // them from here without forking the atom.
 const filterNavLook = [
   '[&[role=tablist]]:bg-transparent [&[role=tablist]]:p-0',
-  '[&>button]:border-2 [&>button]:border-transparent [&>button]:px-2 [&>button]:normal-case [&>button]:font-normal',
-  'sm:[&>button]:text-footnote @md:[&>button]:px-4',
+  '[&>button]:border-2 [&>button]:border-transparent [&>button]:px-1 [&>button]:normal-case [&>button]:font-normal',
+  // Under 320px of container (a 320px phone) the longest label, "Play-by-Play" (D7), only fits at 12px with tighter padding.
+  '[&>button]:text-caption @xs:[&>button]:px-2 @xs:[&>button]:text-footnote sm:[&>button]:text-footnote @md:[&>button]:px-4',
   '[&>button[aria-selected=true]]:border-text-primary [&>button[aria-selected=true]]:bg-transparent',
 ].join(' ');
 
 /**
- * Gamecast / Stats / Plays / Highlights switch under the header: the `Tabs` atom (accessible tablist, arrow keys, Home / End)
+ * Gamecast / Stats / Play-by-Play / Highlights switch under the header: the `Tabs` atom (accessible tablist, arrow keys, Home / End)
  * in Figma's outlined-pill look. Controlled: the page owns `value` (it lives in `?tab=`).
  */
 export function SectionSelector({ value, onChange, available, unavailable = 'disable', idBase, fullWidth = true, className }: SectionSelectorProps) {

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { GameStats, PlayerGameStats, PlayerRef, TeamGameStats } from '@pll/data/api';
 import {
   boxTables,
+  boxTotals,
   hasGameStats,
   nextSort,
   overviewRows,
@@ -115,6 +116,28 @@ describe('box tables', () => {
   it('faceoff table only lists players who took a faceoff', () => {
     const faceoffsTable = boxTables([...lines, { player: ref('z', 'Zed'), stats: stat('z', { faceoffsTaken: 0, goals: 1 }) }])[1]!;
     expect(faceoffsTable.rows).toHaveLength(1);
+  });
+
+  it('totals row sums counts and recomputes percentages from the sums (D12)', () => {
+    const extra: BoxLine[] = [
+      { player: ref('f2', 'Fox'), stats: stat('f2', { faceoffsWon: 1, faceoffsTaken: 2 }) },
+      { player: ref('g2', 'Hale'), stats: stat('g2', { saves: 1, goalsAgainst: 1, penalties: 2, penaltySeconds: 90 }) },
+    ];
+    const [offense, faceoffs, goalies, penalties] = boxTables([...lines, ...extra]);
+    // G A P SH SOG GB TO CT
+    expect(boxTotals(offense!)).toEqual(['3', '2', '5', '7', '0', '5', '0', '0']);
+    // 3-8 + 1-2 = 4-10 => 40.0% (an average of 37.5% and 50.0% would be 43.8%)
+    expect(boxTotals(faceoffs!)).toEqual(['4-10', '40.0%']);
+    // saves 7 + 1 = 8, goals against 3 + 1 = 4 => 66.7% (an average of 70% and 50% would be 60%)
+    expect(boxTotals(goalies!)).toEqual(['8', '4', '66.7%']);
+    // penalties 1 + 2, penalty time 60 + 90 s
+    expect(boxTotals(penalties!)).toEqual(['3', '2:30']);
+  });
+
+  it('totals row has one entry per column and never NaN', () => {
+    for (const t of boxTables(lines)) expect(boxTotals(t)).toHaveLength(t.columns.length);
+    const noneTaken = boxTotals({ columns: boxTables(lines)[1]!.columns, rows: [] });
+    expect(noneTaken).toEqual(['0-0', '–']);
   });
 
   it('nextSort starts descending, flips on repeat, names ascending', () => {

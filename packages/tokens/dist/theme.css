@@ -36,6 +36,10 @@
   --text-score--line-height: var(--pll-text-score-line-height);
   --text-score--font-weight: var(--pll-text-score-font-weight);
   --text-score--letter-spacing: var(--pll-text-score-letter-spacing);
+  --text-score-sm: var(--pll-text-score-sm-font-size);
+  --text-score-sm--line-height: var(--pll-text-score-sm-line-height);
+  --text-score-sm--font-weight: var(--pll-text-score-sm-font-weight);
+  --text-score-sm--letter-spacing: var(--pll-text-score-sm-letter-spacing);
   --text-clock: var(--pll-text-clock-font-size);
   --text-clock--line-height: var(--pll-text-clock-line-height);
   --text-clock--font-weight: var(--pll-text-clock-font-weight);
@@ -108,6 +112,7 @@
 @layer utilities {
   :where(.text-score-hero) { font-family: var(--pll-text-score-hero-font-family); }
   :where(.text-score) { font-family: var(--pll-text-score-font-family); }
+  :where(.text-score-sm) { font-family: var(--pll-text-score-sm-font-family); }
   :where(.text-clock) { font-family: var(--pll-text-clock-font-family); }
   :where(.text-clock) { font-variant-numeric: tabular-nums; }
 }

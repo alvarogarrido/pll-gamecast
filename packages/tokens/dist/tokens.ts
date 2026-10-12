@@ -89,6 +89,13 @@ export const tokens = {
       "fontWeight": 800,
       "letterSpacing": "0px"
     },
+    "scoreSm": {
+      "fontFamily": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
+      "fontSize": "24px",
+      "lineHeight": "24px",
+      "fontWeight": 800,
+      "letterSpacing": "0px"
+    },
     "clock": {
       "fontFamily": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
       "fontSize": "13px",
@@ -241,6 +248,11 @@ export const cssVars = {
   "text.score.lineHeight": "--pll-text-score-line-height",
   "text.score.fontWeight": "--pll-text-score-font-weight",
   "text.score.letterSpacing": "--pll-text-score-letter-spacing",
+  "text.scoreSm.fontFamily": "--pll-text-score-sm-font-family",
+  "text.scoreSm.fontSize": "--pll-text-score-sm-font-size",
+  "text.scoreSm.lineHeight": "--pll-text-score-sm-line-height",
+  "text.scoreSm.fontWeight": "--pll-text-score-sm-font-weight",
+  "text.scoreSm.letterSpacing": "--pll-text-score-sm-letter-spacing",
   "text.clock.fontFamily": "--pll-text-clock-font-family",
   "text.clock.fontSize": "--pll-text-clock-font-size",
   "text.clock.lineHeight": "--pll-text-clock-line-height",
@@ -916,6 +928,61 @@ export const tokenList: readonly TokenEntry[] = [
   {
     "path": "text.score.letterSpacing",
     "cssVar": "--pll-text-score-letter-spacing",
+    "type": "dimension",
+    "value": "0px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.scoreSm.fontFamily",
+    "cssVar": "--pll-text-score-sm-font-family",
+    "type": "fontFamily",
+    "value": "'Barlow Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif",
+    "ref": "font.family.display",
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.scoreSm.fontSize",
+    "cssVar": "--pll-text-score-sm-font-size",
+    "type": "dimension",
+    "value": "24px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": "text-score-sm"
+  },
+  {
+    "path": "text.scoreSm.lineHeight",
+    "cssVar": "--pll-text-score-sm-line-height",
+    "type": "dimension",
+    "value": "24px",
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.scoreSm.fontWeight",
+    "cssVar": "--pll-text-score-sm-font-weight",
+    "type": "fontWeight",
+    "value": 800,
+    "ref": null,
+    "alpha": null,
+    "runtimeVar": null,
+    "description": null,
+    "utility": null
+  },
+  {
+    "path": "text.scoreSm.letterSpacing",
+    "cssVar": "--pll-text-score-sm-letter-spacing",
     "type": "dimension",
     "value": "0px",
     "ref": null,

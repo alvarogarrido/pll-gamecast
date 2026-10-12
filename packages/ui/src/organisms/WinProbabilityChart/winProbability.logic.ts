@@ -22,13 +22,83 @@ export interface PeriodBand {
   end: number;
 }
 
+/**
+ * One stretch of the x axis: domain seconds `start..end` are drawn over the axis fractions `from..to` (0..1).
+ * Regulation is linear in time; overtime is stretched to a minimum width (D18), so the axis is piecewise linear.
+ */
+export interface AxisSegment {
+  start: number;
+  end: number;
+  from: number;
+  to: number;
+}
+
 export interface ChartDomain {
   /** Last second on the x axis: the end of regulation, or of the last overtime reached. */
   end: number;
   periods: PeriodBand[];
+  /** Piecewise-linear mapping of seconds onto the axis. Pass the whole domain to {@link createScale} to use it. */
+  axis: AxisSegment[];
 }
 
-/** X domain 0..regulationSeconds, extended by one overtime band for every started overtime. */
+/** Overtime never gets less than this share of the x axis (D18), so its label and a sudden-victory end stay legible. */
+export const MIN_OT_SHARE = 0.1;
+/** Upper bound for the share of all overtimes together, so a marathon game cannot squeeze regulation. */
+export const MAX_OT_SHARE = 0.4;
+
+/**
+ * Axis layout for a set of periods. Regulation keeps a time-proportional width; each overtime gets
+ * `max(its natural share, MIN_OT_SHARE)` of the axis, all overtimes together capped at `MAX_OT_SHARE`.
+ */
+export function buildAxis(periods: readonly PeriodBand[], regulationSeconds: number): AxisSegment[] {
+  const regulation = periods.filter((p) => p.period <= REGULATION_PERIODS);
+  const overtimes = periods.filter((p) => p.period > REGULATION_PERIODS);
+  const total = periods.length > 0 ? periods[periods.length - 1]!.end : 0;
+  const natural = total > 0 ? (overtimes.length > 0 ? overtimes.reduce((m, p) => m + (p.end - p.start), 0) / total : 0) : 0;
+  const perOt = overtimes.length > 0 ? Math.max(natural / overtimes.length, MIN_OT_SHARE) : 0;
+  const otShare = Math.min(MAX_OT_SHARE, perOt * overtimes.length);
+  const regShare = 1 - otShare;
+  const segments: AxisSegment[] = [];
+  let cursor = 0;
+  for (const p of regulation) {
+    const width = regulationSeconds > 0 ? ((p.end - p.start) / regulationSeconds) * regShare : 0;
+    segments.push({ start: p.start, end: p.end, from: cursor, to: cursor + width });
+    cursor += width;
+  }
+  for (const p of overtimes) {
+    const width = otShare / overtimes.length;
+    segments.push({ start: p.start, end: p.end, from: cursor, to: cursor + width });
+    cursor += width;
+  }
+  return segments;
+}
+
+/** Seconds to an axis fraction (0..1), clamped to the domain. */
+export function axisFraction(axis: readonly AxisSegment[], seconds: number): number {
+  const first = axis[0];
+  const last = axis[axis.length - 1];
+  if (!first || !last) return 0;
+  if (seconds <= first.start) return first.from;
+  if (seconds >= last.end) return last.to;
+  const seg = axis.find((a) => seconds <= a.end) ?? last;
+  return seg.end > seg.start ? seg.from + ((seconds - seg.start) / (seg.end - seg.start)) * (seg.to - seg.from) : seg.from;
+}
+
+/** Axis fraction (0..1) back to seconds, clamped to the domain. */
+export function axisSeconds(axis: readonly AxisSegment[], fraction: number): number {
+  const first = axis[0];
+  const last = axis[axis.length - 1];
+  if (!first || !last) return 0;
+  if (fraction <= first.from) return first.start;
+  if (fraction >= last.to) return last.end;
+  const seg = axis.find((a) => fraction <= a.to) ?? last;
+  return seg.to > seg.from ? seg.start + ((fraction - seg.from) / (seg.to - seg.from)) * (seg.end - seg.start) : seg.start;
+}
+
+/**
+ * X domain 0..regulationSeconds, extended by one overtime band for every started overtime. The overtime bands are drawn
+ * wider than their time (D18, see {@link buildAxis}); pass the whole domain to `createScale` to get that mapping.
+ */
 export function chartDomain(points: readonly SeriesPoint[], regulationSeconds: number, otSeconds = OT_SECONDS): ChartDomain {
   const quarter = regulationSeconds / REGULATION_PERIODS;
   const periods: PeriodBand[] = [];
@@ -46,7 +116,7 @@ export function chartDomain(points: readonly SeriesPoint[], regulationSeconds: n
       end: regulationSeconds + (i + 1) * otSeconds,
     });
   }
-  return { end: periods[periods.length - 1]!.end, periods };
+  return { end: periods[periods.length - 1]!.end, periods, axis: buildAxis(periods, regulationSeconds) };
 }
 
 // ---------------------------------------------------------------------------
@@ -70,7 +140,13 @@ export interface Scale {
   invertX: (px: number) => number;
 }
 
-export function createScale(width: number, height: number, padding: Padding, domainEnd: number): Scale {
+/**
+ * Pixel scale for a plot box. `domain` is either the last second (a plain linear x axis) or the whole {@link ChartDomain},
+ * whose piecewise axis gives overtime its minimum width (D18).
+ */
+export function createScale(width: number, height: number, padding: Padding, domain: number | ChartDomain): Scale {
+  const domainEnd = typeof domain === 'number' ? domain : domain.end;
+  const axis = typeof domain === 'number' ? null : domain.axis;
   const left = padding.left;
   const right = Math.max(left + 1, width - padding.right);
   const top = padding.top;
@@ -81,9 +157,12 @@ export function createScale(width: number, height: number, padding: Padding, dom
   const clampP = (p: number) => Math.min(1, Math.max(0, p));
   return {
     plot: { left, right, top, bottom, width: plotW, height: plotH },
-    x: (s) => left + (Math.min(end, Math.max(0, s)) / end) * plotW,
+    x: (s) => left + (axis ? axisFraction(axis, s) : Math.min(end, Math.max(0, s)) / end) * plotW,
     y: (p) => bottom - clampP(p) * plotH,
-    invertX: (px) => Math.min(end, Math.max(0, ((px - left) / plotW) * end)),
+    invertX: (px) => {
+      const fraction = Math.min(1, Math.max(0, (px - left) / plotW));
+      return axis ? axisSeconds(axis, fraction) : fraction * end;
+    },
   };
 }
 
@@ -264,17 +343,54 @@ export function summarizeSeries(points: readonly SeriesPoint[]): SeriesSummary {
   };
 }
 
+/** Displayed probabilities never reach a certainty before the game is over (D15): 99.9% at most, 0.1% at least. */
+export const MAX_DISPLAY_PROBABILITY = 0.999;
+export const MIN_DISPLAY_PROBABILITY = 0.001;
+
+/** A win probability as it is displayed while a game is live: capped to 0.1%..99.9% (D15). `null` stays `null`. */
+export function displayProbability(p: number): number;
+export function displayProbability(p: number | null): number | null;
+export function displayProbability(p: number | null): number | null {
+  if (p === null || !Number.isFinite(p)) return null;
+  return Math.min(MAX_DISPLAY_PROBABILITY, Math.max(MIN_DISPLAY_PROBABILITY, p));
+}
+
+export interface FinalResult {
+  /** The winning side, or `null` when the final score is level or unknown. */
+  side: 'away' | 'home' | null;
+  /** `"Duke won"`, or `"Final"` without a winner. */
+  text: string;
+}
+
+/** The headline of a finished game's win-probability card (D15): the result instead of 100.0% / 0.0%. */
+export function finalResult(game: {
+  away: { team: { school: string }; score: number | null };
+  home: { team: { school: string }; score: number | null };
+}): FinalResult {
+  const a = game.away.score;
+  const h = game.home.score;
+  if (a === null || h === null || a === h) return { side: null, text: 'Final' };
+  const side = h > a ? 'home' : 'away';
+  return { side, text: `${game[side].team.school} won` };
+}
+
 /** One sentence per fact, for the screen-reader summary of the chart. */
 export function describeSeries(
   points: readonly SeriesPoint[],
   names: { home: string; away: string },
-  { live }: { live: boolean },
+  { live, result }: { live: boolean; result?: FinalResult },
 ): string {
   const s = summarizeSeries(points);
   if (s.current === null) return 'No win probability data yet.';
   const lead = s.current >= 0.5 ? names.home : names.away;
+  const now = displayProbability(s.current);
+  // D15: a finished game is described by its result, not by a near-certain probability.
+  const opening =
+    !live && result?.side
+      ? `Final: ${result.text}.`
+      : `${live ? 'Now' : 'At the end'}, ${names.away} ${pct(1 - now)}, ${names.home} ${pct(now)}, ${lead} favored.`;
   const parts = [
-    `${live ? 'Now' : 'At the end'}, ${names.away} ${pct(1 - s.current)}, ${names.home} ${pct(s.current)}, ${lead} favored.`,
+    opening,
     s.leadChanges === 0 ? 'The favorite never changed.' : `The favorite changed ${s.leadChanges} ${s.leadChanges === 1 ? 'time' : 'times'}.`,
   ];
   return parts.join(' ');

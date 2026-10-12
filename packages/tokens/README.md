@@ -46,7 +46,7 @@ Token names map 1:1 (camelCase becomes kebab-case): `accent.goldSubtle` is `bg-a
 ### Type
 
 Each `text.<style>` carries `fontFamily`, `fontSize`, `lineHeight`, `fontWeight`, `letterSpacing`. The style utility (`text-footnote`) sets size, line
-height, weight and letter spacing. The display styles (`scoreHero`, `score`, `clock`) also set the Barlow Condensed family, and `clock` sets
+height, weight and letter spacing. The display styles (`scoreHero`, `score`, `scoreSm`, `clock`) also set the Barlow Condensed family, and `clock` sets
 `tabular-nums`, through zero-specificity rules in `theme.css`, so `text-score` alone is enough and an explicit `font-*` utility still wins.
 `subhead` and `footnote` have a regular (400) default and a `fontWeightStrong` (600) variant: add `font-semibold`. `title3` is for section headers;
 add `uppercase`.
