@@ -261,3 +261,9 @@ Same rule as tokens: code leads. When a component changes, update the matching c
 ### Build log (phase 2)
 
 Figma MCP calls: **33** = 1 `whoami` + 20 `use_figma` (1 inspect, 1 re-inspect, 2 Atoms, 5 Molecules, 8 Organisms, 3 fix/count passes; 4 of them failed on a script error and were retried, the failed runs left no partial nodes) + 12 `get_screenshot`. Counts: Atoms 15 entries (13 sets, 2 components, 88 variants), Molecules 13 sets (64 variants), Organisms 23 entries (12 sets, 11 components, 40 variants): 51 component entries (192 variants inside the sets + 13 single components).
+
+## Coordinator fixes after phase 2 (2026-10-13, 01:50)
+- Added the text styles **`score/display`** (Barlow Condensed ExtraBold 84/84) and **`clock/lg`** (Bold 34/34), matching the code tokens `score.display` and `clock.lg`. They are applied to the HeaderBar `desktop-band` scores and clock in set `30:712`. The pregame dashes use `score/hero` (48) bound to `text/tertiary`, as in code.
+- Removed a stray late capture (`29:2`, 1297px) from the Screens page root.
+- Known gap: the **Pregame / Desktop** screen (`23:2`) is 1297px wide, not 1440. Re-capture it with the steps in "Screens".
+- Organism content is illustrative: some stat numbers (e.g. linescores) don't match the fixture games exactly. Use the deployed Storybook for real data.

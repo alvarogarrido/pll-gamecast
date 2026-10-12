@@ -81,3 +81,8 @@ Alvaro decided D7–D9. The coordinator decided D10–D18 from the PRD and Figma
 | D22 | **Desktop Header Bar (≥1024px) = Direction A "Broadcast band"** (proposal artifact https://claude.ai/artifact/CSeySuZS9eQSqdnZp28TGr): huge Barlow scores beside the teams, a team-color wash at each end, and a compact strip below (linescore, where to watch, venue, weather, attendance; pregame: win-probability split). Mobile and the minimized bar are unchanged. |
 
 D22 implementation notes (2026-10-13): the band applies when the Header Bar's own container is >= 1024px (`@5xl`), not the viewport; on the product page that means a viewport of about 1072px and up (page padding), or 1440px+ with the ad gutters (content width 1040px). Two type tokens were added for it: **score.display** (84/84 Barlow 800, the two scores) and **clock.lg** (34/34 Barlow 700 tabular, kickoff time and live clock). The pregame en dash uses `score.hero` (48) instead of the proposal's 56px, and Barlow Condensed 700 is now loaded next to 600 and 800.
+
+## Overnight judgment calls (2026-10-13, Alvaro asleep; review and reverse freely)
+- Figma: added the `score/display` and `clock/lg` text styles so the desktop band uses real styles instead of size overrides.
+- Figma: kept the 1297px Pregame desktop capture (a re-capture costs ~20 Figma calls). Flagged in docs/figma-library.md for a later re-capture.
+- Figma phase 2 finished well before the usage limit, so the 95% pause guard and the 06:02 restart were cancelled.
