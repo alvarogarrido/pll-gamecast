@@ -3,7 +3,6 @@
   "framework": null,
   "buildCommand": "npm run build:site",
   "outputDirectory": "site",
-  "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [{ "source": "/", "destination": "/lab/", "permanent": false }],
   "headers": [

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Serves ./site the way vercel.json configures Vercel (clean URLs, trailing slashes, / -> /lab/, no-cache headers),
+ * Serves ./site the way vercel.json configures Vercel (trailing slashes, / -> /lab/, no-cache headers),
  * for local verification of the production build.  Usage: npm run preview:site [-- --port=4173]
  */
 import { createReadStream, existsSync, statSync } from 'node:fs';
@@ -89,13 +89,6 @@ const server = createServer((req, res) => {
     log(200);
     return send(res, 200, headers(target), target);
   }
-  // cleanUrls: /foo -> foo.html
-  const html = `${target.replace(/\/$/, '')}.html`;
-  if (isFile(html)) {
-    log(200);
-    return send(res, 200, headers(html), html);
-  }
-
   const notFound = join(site, '404.html');
   log(404);
   if (isFile(notFound)) return send(res, 404, headers(notFound), notFound);
