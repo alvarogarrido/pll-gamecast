@@ -50,7 +50,8 @@ export const TEAM_SEEDS: TeamSeed[] = [
   { id: 'denver', school: 'Denver', mascot: 'Pioneers', abbreviation: 'DEN', conferenceId: 'big-east', primary: '#BA0C2F', secondary: '#A89968', espnId: 2172, headCoach: 'Matt Brown', venue: { name: 'Peter Barton Lacrosse Stadium', city: 'Denver', state: 'CO' }, indoor: false, timeZone: 'MT', marchHighF: 53, strength: -1.0 },
 ];
 
-export const logoUrl = (espnId: number) => `https://a.espncdn.com/i/teamlogos/ncaa/500/${espnId}.png`;
+/** ESPN publishes a dark-background variant of every logo; the Gamecast is dark-only (design decision D1). */
+export const logoUrl = (espnId: number) => `https://a.espncdn.com/i/teamlogos/ncaa/500-dark/${espnId}.png`;
 
 /** Neutral site for the NCAA quarterfinal. */
 export const NCAA_VENUE = { name: 'Gillette Stadium', city: 'Foxborough', state: 'MA' };

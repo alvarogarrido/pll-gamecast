@@ -18,7 +18,7 @@ describe('database', () => {
   it('contains the 16 real programs with ESPN logos and four conferences', () => {
     expect(db.teams).toHaveLength(16);
     expect(db.conferences.map((c) => c.shortName).sort()).toEqual(['ACC', 'Big East', 'Big Ten', 'Ivy']);
-    for (const t of db.teams) expect(t.logoUrl).toMatch(/^https:\/\/a\.espncdn\.com\/i\/teamlogos\/ncaa\/500\/\d+\.png$/);
+    for (const t of db.teams) expect(t.logoUrl).toMatch(/^https:\/\/a\.espncdn\.com\/i\/teamlogos\/ncaa\/500-dark\/\d+\.png$/);
     expect(db.teams.filter((t) => t.nationalRank === null).length).toBeGreaterThanOrEqual(2);
   });
 
