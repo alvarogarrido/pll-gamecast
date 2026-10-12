@@ -1,0 +1,7 @@
+{
+  "layout": {
+    "$type": "dimension",
+    "gutter": { "$value": "16px", "$description": "Page side gutter on mobile" },
+    "pageMax": { "$value": "1200px", "$description": "Max content width on desktop" }
+  }
+}

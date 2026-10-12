@@ -1,0 +1,972 @@
+[
+  {
+    "id": "vid-444d09b8-preview",
+    "gameId": "444d09b8-e627-4656-ac21-0fb05031ddc2",
+    "kind": "preview",
+    "title": "Princeton at Georgetown: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 128,
+    "publishedAt": "2027-02-05T23:00:00Z"
+  },
+  {
+    "id": "vid-444d09b8-highlight",
+    "gameId": "444d09b8-e627-4656-ac21-0fb05031ddc2",
+    "kind": "highlight",
+    "title": "Highlights: Princeton 10, Georgetown 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 155,
+    "publishedAt": "2027-02-06T20:15:00Z"
+  },
+  {
+    "id": "vid-d2ca2c02-preview",
+    "gameId": "d2ca2c02-e4c4-4d70-8ae9-4949704a3624",
+    "kind": "preview",
+    "title": "Penn State at Michigan: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 85,
+    "publishedAt": "2027-02-05T23:00:00Z"
+  },
+  {
+    "id": "vid-d2ca2c02-highlight",
+    "gameId": "d2ca2c02-e4c4-4d70-8ae9-4949704a3624",
+    "kind": "highlight",
+    "title": "Highlights: Penn State 12, Michigan 11",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 132,
+    "publishedAt": "2027-02-06T20:15:00Z"
+  },
+  {
+    "id": "vid-b21bedcf-preview",
+    "gameId": "b21bedcf-d605-4953-a9f8-75fcf24a62b4",
+    "kind": "preview",
+    "title": "Notre Dame at Penn: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 158,
+    "publishedAt": "2027-02-06T01:00:00Z"
+  },
+  {
+    "id": "vid-b21bedcf-highlight",
+    "gameId": "b21bedcf-d605-4953-a9f8-75fcf24a62b4",
+    "kind": "highlight",
+    "title": "Highlights: Notre Dame 16, Penn 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 165,
+    "publishedAt": "2027-02-06T22:15:00Z"
+  },
+  {
+    "id": "vid-06e9054a-preview",
+    "gameId": "06e9054a-26b8-444e-b15d-e74ead8df68a",
+    "kind": "preview",
+    "title": "Maryland at Syracuse: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 112,
+    "publishedAt": "2027-02-06T02:00:00Z"
+  },
+  {
+    "id": "vid-06e9054a-highlight",
+    "gameId": "06e9054a-26b8-444e-b15d-e74ead8df68a",
+    "kind": "highlight",
+    "title": "Highlights: Maryland 14, Syracuse 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 144,
+    "publishedAt": "2027-02-06T23:15:00Z"
+  },
+  {
+    "id": "vid-661a255a-preview",
+    "gameId": "661a255a-8958-4958-b01e-fd4a33d86248",
+    "kind": "preview",
+    "title": "Virginia at Cornell: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 134,
+    "publishedAt": "2027-02-06T02:00:00Z"
+  },
+  {
+    "id": "vid-661a255a-highlight",
+    "gameId": "661a255a-8958-4958-b01e-fd4a33d86248",
+    "kind": "highlight",
+    "title": "Highlights: Cornell 15, Virginia 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 212,
+    "publishedAt": "2027-02-06T23:15:00Z"
+  },
+  {
+    "id": "vid-934abe77-preview",
+    "gameId": "934abe77-45e7-4af8-be09-49df5f85be50",
+    "kind": "preview",
+    "title": "Denver at Johns Hopkins: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 113,
+    "publishedAt": "2027-02-07T02:00:00Z"
+  },
+  {
+    "id": "vid-934abe77-highlight",
+    "gameId": "934abe77-45e7-4af8-be09-49df5f85be50",
+    "kind": "highlight",
+    "title": "Highlights: Johns Hopkins 13, Denver 11",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 189,
+    "publishedAt": "2027-02-07T23:15:00Z"
+  },
+  {
+    "id": "vid-855b5378-preview",
+    "gameId": "855b5378-f835-415b-977d-ee0eb4371bd6",
+    "kind": "preview",
+    "title": "Penn at North Carolina: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 104,
+    "publishedAt": "2027-02-12T22:00:00Z"
+  },
+  {
+    "id": "vid-855b5378-highlight",
+    "gameId": "855b5378-f835-415b-977d-ee0eb4371bd6",
+    "kind": "highlight",
+    "title": "Highlights: Penn 11, North Carolina 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 175,
+    "publishedAt": "2027-02-13T19:15:00Z"
+  },
+  {
+    "id": "vid-b3f397d0-preview",
+    "gameId": "b3f397d0-8ef0-487a-b12c-19a6382e4041",
+    "kind": "preview",
+    "title": "Georgetown at Ohio State: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 105,
+    "publishedAt": "2027-02-12T22:00:00Z"
+  },
+  {
+    "id": "vid-b3f397d0-highlight",
+    "gameId": "b3f397d0-8ef0-487a-b12c-19a6382e4041",
+    "kind": "highlight",
+    "title": "Highlights: Georgetown 15, Ohio State 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 128,
+    "publishedAt": "2027-02-13T19:15:00Z"
+  },
+  {
+    "id": "vid-5a2bfc9f-preview",
+    "gameId": "5a2bfc9f-ae27-4ec1-9a6e-ecaaa6df4cb5",
+    "kind": "preview",
+    "title": "Maryland at Cornell: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 90,
+    "publishedAt": "2027-02-12T23:00:00Z"
+  },
+  {
+    "id": "vid-5a2bfc9f-highlight",
+    "gameId": "5a2bfc9f-ae27-4ec1-9a6e-ecaaa6df4cb5",
+    "kind": "highlight",
+    "title": "Highlights: Maryland 11, Cornell 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 250,
+    "publishedAt": "2027-02-13T20:15:00Z"
+  },
+  {
+    "id": "vid-60ecd6a9-preview",
+    "gameId": "60ecd6a9-6b42-461e-9a77-f4a0cb43d71c",
+    "kind": "preview",
+    "title": "Duke at Syracuse: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 112,
+    "publishedAt": "2027-02-12T23:00:00Z"
+  },
+  {
+    "id": "vid-60ecd6a9-highlight",
+    "gameId": "60ecd6a9-6b42-461e-9a77-f4a0cb43d71c",
+    "kind": "highlight",
+    "title": "Highlights: Duke 11, Syracuse 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 243,
+    "publishedAt": "2027-02-13T20:15:00Z"
+  },
+  {
+    "id": "vid-cfa7eb70-preview",
+    "gameId": "cfa7eb70-d986-47d5-983b-010d6bdd9a08",
+    "kind": "preview",
+    "title": "Virginia at Michigan: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 105,
+    "publishedAt": "2027-02-13T00:00:00Z"
+  },
+  {
+    "id": "vid-cfa7eb70-highlight",
+    "gameId": "cfa7eb70-d986-47d5-983b-010d6bdd9a08",
+    "kind": "highlight",
+    "title": "Highlights: Michigan 14, Virginia 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 207,
+    "publishedAt": "2027-02-13T21:15:00Z"
+  },
+  {
+    "id": "vid-766f1dc3-preview",
+    "gameId": "766f1dc3-5d3b-4b5f-80b3-d685caf7d9d6",
+    "kind": "preview",
+    "title": "Princeton at Notre Dame: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 149,
+    "publishedAt": "2027-02-13T01:00:00Z"
+  },
+  {
+    "id": "vid-766f1dc3-highlight",
+    "gameId": "766f1dc3-5d3b-4b5f-80b3-d685caf7d9d6",
+    "kind": "highlight",
+    "title": "Highlights: Notre Dame 11, Princeton 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 233,
+    "publishedAt": "2027-02-13T22:15:00Z"
+  },
+  {
+    "id": "vid-c5688481-preview",
+    "gameId": "c5688481-1819-4f23-a390-129b9a1e77da",
+    "kind": "preview",
+    "title": "Penn State at Yale: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 144,
+    "publishedAt": "2027-02-13T22:00:00Z"
+  },
+  {
+    "id": "vid-c5688481-highlight",
+    "gameId": "c5688481-1819-4f23-a390-129b9a1e77da",
+    "kind": "highlight",
+    "title": "Highlights: Yale 11, Penn State 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 183,
+    "publishedAt": "2027-02-14T19:15:00Z"
+  },
+  {
+    "id": "vid-8d07bac4-preview",
+    "gameId": "8d07bac4-b313-4fd4-ab59-cb4ac3753693",
+    "kind": "preview",
+    "title": "Johns Hopkins at Notre Dame: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 94,
+    "publishedAt": "2027-02-19T23:00:00Z"
+  },
+  {
+    "id": "vid-8d07bac4-highlight",
+    "gameId": "8d07bac4-b313-4fd4-ab59-cb4ac3753693",
+    "kind": "highlight",
+    "title": "Highlights: Johns Hopkins 10, Notre Dame 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 206,
+    "publishedAt": "2027-02-20T20:15:00Z"
+  },
+  {
+    "id": "vid-8fd2b1dc-preview",
+    "gameId": "8fd2b1dc-a7cc-4c09-b9fe-ad2ec687fd0c",
+    "kind": "preview",
+    "title": "Duke at Penn: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 125,
+    "publishedAt": "2027-02-19T23:00:00Z"
+  },
+  {
+    "id": "vid-8fd2b1dc-highlight",
+    "gameId": "8fd2b1dc-a7cc-4c09-b9fe-ad2ec687fd0c",
+    "kind": "highlight",
+    "title": "Highlights: Duke 13, Penn 8",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 148,
+    "publishedAt": "2027-02-20T20:15:00Z"
+  },
+  {
+    "id": "vid-0e6a4d7f-preview",
+    "gameId": "0e6a4d7f-fa3d-4bef-9753-5c6efb206640",
+    "kind": "preview",
+    "title": "Syracuse at Virginia: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 94,
+    "publishedAt": "2027-02-20T00:00:00Z"
+  },
+  {
+    "id": "vid-0e6a4d7f-highlight",
+    "gameId": "0e6a4d7f-fa3d-4bef-9753-5c6efb206640",
+    "kind": "highlight",
+    "title": "Highlights: Virginia 15, Syracuse 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 148,
+    "publishedAt": "2027-02-20T21:15:00Z"
+  },
+  {
+    "id": "vid-6b43d021-preview",
+    "gameId": "6b43d021-fa12-4cea-905d-e0704635e2a3",
+    "kind": "preview",
+    "title": "Cornell at Princeton: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 143,
+    "publishedAt": "2027-02-20T01:00:00Z"
+  },
+  {
+    "id": "vid-6b43d021-highlight",
+    "gameId": "6b43d021-fa12-4cea-905d-e0704635e2a3",
+    "kind": "highlight",
+    "title": "Highlights: Cornell 13, Princeton 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 224,
+    "publishedAt": "2027-02-20T22:15:00Z"
+  },
+  {
+    "id": "vid-41fb8269-preview",
+    "gameId": "41fb8269-9914-4552-ac24-9691e771c590",
+    "kind": "preview",
+    "title": "Ohio State at North Carolina: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 134,
+    "publishedAt": "2027-02-20T05:00:00Z"
+  },
+  {
+    "id": "vid-41fb8269-highlight",
+    "gameId": "41fb8269-9914-4552-ac24-9691e771c590",
+    "kind": "highlight",
+    "title": "Highlights: Ohio State 13, North Carolina 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 167,
+    "publishedAt": "2027-02-21T02:15:00Z"
+  },
+  {
+    "id": "vid-6e0e0967-preview",
+    "gameId": "6e0e0967-ccb1-4109-b748-1daef69059f1",
+    "kind": "preview",
+    "title": "Georgetown at Maryland: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 105,
+    "publishedAt": "2027-02-20T05:00:00Z"
+  },
+  {
+    "id": "vid-6e0e0967-highlight",
+    "gameId": "6e0e0967-ccb1-4109-b748-1daef69059f1",
+    "kind": "highlight",
+    "title": "Highlights: Maryland 12, Georgetown 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 157,
+    "publishedAt": "2027-02-21T02:15:00Z"
+  },
+  {
+    "id": "vid-ee5f4e88-preview",
+    "gameId": "ee5f4e88-0c5d-42b3-a919-424d2f406bd4",
+    "kind": "preview",
+    "title": "Yale at Denver: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 138,
+    "publishedAt": "2027-02-20T23:00:00Z"
+  },
+  {
+    "id": "vid-ee5f4e88-highlight",
+    "gameId": "ee5f4e88-0c5d-42b3-a919-424d2f406bd4",
+    "kind": "highlight",
+    "title": "Highlights: Yale 13, Denver 12",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 173,
+    "publishedAt": "2027-02-21T20:15:00Z"
+  },
+  {
+    "id": "vid-56c85432-preview",
+    "gameId": "56c85432-31bc-4cd4-a1bc-06fac47a058a",
+    "kind": "preview",
+    "title": "Denver at Georgetown: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 158,
+    "publishedAt": "2027-02-26T22:00:00Z"
+  },
+  {
+    "id": "vid-56c85432-highlight",
+    "gameId": "56c85432-31bc-4cd4-a1bc-06fac47a058a",
+    "kind": "highlight",
+    "title": "Highlights: Georgetown 10, Denver 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 149,
+    "publishedAt": "2027-02-27T19:15:00Z"
+  },
+  {
+    "id": "vid-1d5360b7-preview",
+    "gameId": "1d5360b7-2f1a-473c-a0fc-6eabe25bb6f2",
+    "kind": "preview",
+    "title": "Michigan at Princeton: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 112,
+    "publishedAt": "2027-02-26T23:00:00Z"
+  },
+  {
+    "id": "vid-1d5360b7-highlight",
+    "gameId": "1d5360b7-2f1a-473c-a0fc-6eabe25bb6f2",
+    "kind": "highlight",
+    "title": "Highlights: Princeton 18, Michigan 12",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 236,
+    "publishedAt": "2027-02-27T20:15:00Z"
+  },
+  {
+    "id": "vid-2816b70f-preview",
+    "gameId": "2816b70f-6cfa-47bf-8143-f60fd1ad3832",
+    "kind": "preview",
+    "title": "Yale at Duke: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 110,
+    "publishedAt": "2027-02-26T23:00:00Z"
+  },
+  {
+    "id": "vid-2816b70f-highlight",
+    "gameId": "2816b70f-6cfa-47bf-8143-f60fd1ad3832",
+    "kind": "highlight",
+    "title": "Highlights: Duke 13, Yale 12",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 197,
+    "publishedAt": "2027-02-27T20:15:00Z"
+  },
+  {
+    "id": "vid-9c7b18eb-preview",
+    "gameId": "9c7b18eb-29ff-4e10-90b3-c50607fd039f",
+    "kind": "preview",
+    "title": "Syracuse at Penn: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 136,
+    "publishedAt": "2027-02-27T01:00:00Z"
+  },
+  {
+    "id": "vid-9c7b18eb-highlight",
+    "gameId": "9c7b18eb-29ff-4e10-90b3-c50607fd039f",
+    "kind": "highlight",
+    "title": "Highlights: Syracuse 10, Penn 8",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 226,
+    "publishedAt": "2027-02-27T22:15:00Z"
+  },
+  {
+    "id": "vid-efc62ce3-preview",
+    "gameId": "efc62ce3-1bc8-4fee-8e2b-01f145a7bbd9",
+    "kind": "preview",
+    "title": "Virginia at Notre Dame: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 159,
+    "publishedAt": "2027-02-27T01:00:00Z"
+  },
+  {
+    "id": "vid-efc62ce3-highlight",
+    "gameId": "efc62ce3-1bc8-4fee-8e2b-01f145a7bbd9",
+    "kind": "highlight",
+    "title": "Highlights: Notre Dame 11, Virginia 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 173,
+    "publishedAt": "2027-02-27T22:15:00Z"
+  },
+  {
+    "id": "vid-71dcc32c-preview",
+    "gameId": "71dcc32c-e528-4018-99ce-e822031491fe",
+    "kind": "preview",
+    "title": "Cornell at Johns Hopkins: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 145,
+    "publishedAt": "2027-02-27T03:00:00Z"
+  },
+  {
+    "id": "vid-71dcc32c-highlight",
+    "gameId": "71dcc32c-e528-4018-99ce-e822031491fe",
+    "kind": "highlight",
+    "title": "Highlights: Cornell 11, Johns Hopkins 8",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 239,
+    "publishedAt": "2027-02-28T00:15:00Z"
+  },
+  {
+    "id": "vid-8f0aa04f-preview",
+    "gameId": "8f0aa04f-8ee0-45fc-a1eb-91d3fa810783",
+    "kind": "preview",
+    "title": "North Carolina at Penn State: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 107,
+    "publishedAt": "2027-02-27T03:00:00Z"
+  },
+  {
+    "id": "vid-8f0aa04f-highlight",
+    "gameId": "8f0aa04f-8ee0-45fc-a1eb-91d3fa810783",
+    "kind": "highlight",
+    "title": "Highlights: Penn State 12, North Carolina 10",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 179,
+    "publishedAt": "2027-02-28T00:15:00Z"
+  },
+  {
+    "id": "vid-42462bf5-preview",
+    "gameId": "42462bf5-81ae-49cc-b80d-2178cdb9f4da",
+    "kind": "preview",
+    "title": "Maryland at Ohio State: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 158,
+    "publishedAt": "2027-02-27T05:00:00Z"
+  },
+  {
+    "id": "vid-42462bf5-highlight",
+    "gameId": "42462bf5-81ae-49cc-b80d-2178cdb9f4da",
+    "kind": "highlight",
+    "title": "Highlights: Maryland 12, Ohio State 11",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 208,
+    "publishedAt": "2027-02-28T02:15:00Z"
+  },
+  {
+    "id": "vid-d3438eab-preview",
+    "gameId": "d3438eab-5db5-46cf-b58d-57be3369a8a7",
+    "kind": "preview",
+    "title": "Penn State at Notre Dame: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 103,
+    "publishedAt": "2027-03-05T22:00:00Z"
+  },
+  {
+    "id": "vid-d3438eab-highlight",
+    "gameId": "d3438eab-5db5-46cf-b58d-57be3369a8a7",
+    "kind": "highlight",
+    "title": "Highlights: Notre Dame 18, Penn State 15",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 210,
+    "publishedAt": "2027-03-06T19:15:00Z"
+  },
+  {
+    "id": "vid-d3438eab-postgame",
+    "gameId": "d3438eab-5db5-46cf-b58d-57be3369a8a7",
+    "kind": "postgame",
+    "title": "Postgame reaction: Notre Dame and Penn State",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 269,
+    "publishedAt": "2027-03-06T19:40:00Z"
+  },
+  {
+    "id": "vid-2a3c361a-preview",
+    "gameId": "2a3c361a-2c8b-4622-9925-77c5701d3492",
+    "kind": "preview",
+    "title": "Ohio State at Syracuse: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 114,
+    "publishedAt": "2027-03-05T23:00:00Z"
+  },
+  {
+    "id": "vid-2a3c361a-highlight",
+    "gameId": "2a3c361a-2c8b-4622-9925-77c5701d3492",
+    "kind": "highlight",
+    "title": "Highlights: Syracuse 13, Ohio State 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 177,
+    "publishedAt": "2027-03-06T20:15:00Z"
+  },
+  {
+    "id": "vid-2a3c361a-postgame",
+    "gameId": "2a3c361a-2c8b-4622-9925-77c5701d3492",
+    "kind": "postgame",
+    "title": "Postgame reaction: Syracuse and Ohio State",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 196,
+    "publishedAt": "2027-03-06T20:40:00Z"
+  },
+  {
+    "id": "vid-2126087a-preview",
+    "gameId": "2126087a-6d2e-4a4a-960b-792b8fa1c9cc",
+    "kind": "preview",
+    "title": "Michigan at Johns Hopkins: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 151,
+    "publishedAt": "2027-03-06T00:00:00Z"
+  },
+  {
+    "id": "vid-2126087a-highlight",
+    "gameId": "2126087a-6d2e-4a4a-960b-792b8fa1c9cc",
+    "kind": "highlight",
+    "title": "Highlights: Johns Hopkins 9, Michigan 8",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 156,
+    "publishedAt": "2027-03-06T21:15:00Z"
+  },
+  {
+    "id": "vid-2126087a-postgame",
+    "gameId": "2126087a-6d2e-4a4a-960b-792b8fa1c9cc",
+    "kind": "postgame",
+    "title": "Postgame reaction: Johns Hopkins and Michigan",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 166,
+    "publishedAt": "2027-03-06T21:40:00Z"
+  },
+  {
+    "id": "vid-ffb6d959-preview",
+    "gameId": "ffb6d959-55b0-4a54-b0f0-1db9752e19ce",
+    "kind": "preview",
+    "title": "Maryland at Yale: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 134,
+    "publishedAt": "2027-03-06T00:00:00Z"
+  },
+  {
+    "id": "vid-ffb6d959-highlight",
+    "gameId": "ffb6d959-55b0-4a54-b0f0-1db9752e19ce",
+    "kind": "highlight",
+    "title": "Highlights: Maryland 13, Yale 12",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 202,
+    "publishedAt": "2027-03-06T21:15:00Z"
+  },
+  {
+    "id": "vid-ffb6d959-postgame",
+    "gameId": "ffb6d959-55b0-4a54-b0f0-1db9752e19ce",
+    "kind": "postgame",
+    "title": "Postgame reaction: Yale and Maryland",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 228,
+    "publishedAt": "2027-03-06T21:40:00Z"
+  },
+  {
+    "id": "vid-401e6e4e-preview",
+    "gameId": "401e6e4e-90c1-4de9-81f1-f884042e944f",
+    "kind": "preview",
+    "title": "Princeton at Duke: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 128,
+    "publishedAt": "2027-03-06T01:00:00Z"
+  },
+  {
+    "id": "vid-401e6e4e-highlight",
+    "gameId": "401e6e4e-90c1-4de9-81f1-f884042e944f",
+    "kind": "highlight",
+    "title": "Highlights: Duke 14, Princeton 11",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 165,
+    "publishedAt": "2027-03-06T22:15:00Z"
+  },
+  {
+    "id": "vid-401e6e4e-postgame",
+    "gameId": "401e6e4e-90c1-4de9-81f1-f884042e944f",
+    "kind": "postgame",
+    "title": "Postgame reaction: Duke and Princeton",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 211,
+    "publishedAt": "2027-03-06T22:40:00Z"
+  },
+  {
+    "id": "vid-7d788bcd-preview",
+    "gameId": "7d788bcd-5429-44bb-8591-5b63b71de2a9",
+    "kind": "preview",
+    "title": "Cornell at Georgetown: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 143,
+    "publishedAt": "2027-03-06T03:00:00Z"
+  },
+  {
+    "id": "vid-7d788bcd-highlight",
+    "gameId": "7d788bcd-5429-44bb-8591-5b63b71de2a9",
+    "kind": "highlight",
+    "title": "Highlights: Cornell 14, Georgetown 9",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 241,
+    "publishedAt": "2027-03-07T00:15:00Z"
+  },
+  {
+    "id": "vid-7d788bcd-postgame",
+    "gameId": "7d788bcd-5429-44bb-8591-5b63b71de2a9",
+    "kind": "postgame",
+    "title": "Postgame reaction: Georgetown and Cornell",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 263,
+    "publishedAt": "2027-03-07T00:40:00Z"
+  },
+  {
+    "id": "vid-bae47712-preview",
+    "gameId": "bae47712-0377-4508-9c0c-bad9134d5165",
+    "kind": "preview",
+    "title": "North Carolina at Virginia: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 133,
+    "publishedAt": "2027-03-06T05:00:00Z"
+  },
+  {
+    "id": "vid-bae47712-highlight",
+    "gameId": "bae47712-0377-4508-9c0c-bad9134d5165",
+    "kind": "highlight",
+    "title": "Highlights: North Carolina 12, Virginia 11",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 246,
+    "publishedAt": "2027-03-07T02:15:00Z"
+  },
+  {
+    "id": "vid-bae47712-postgame",
+    "gameId": "bae47712-0377-4508-9c0c-bad9134d5165",
+    "kind": "postgame",
+    "title": "Postgame reaction: Virginia and North Carolina",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 257,
+    "publishedAt": "2027-03-07T02:40:00Z"
+  },
+  {
+    "id": "vid-b3810271-preview",
+    "gameId": "b3810271-f7c0-4e2f-9e2f-877ddc84172d",
+    "kind": "preview",
+    "title": "Penn at Denver: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 157,
+    "publishedAt": "2027-03-07T02:00:00Z"
+  },
+  {
+    "id": "vid-b3810271-highlight",
+    "gameId": "b3810271-f7c0-4e2f-9e2f-877ddc84172d",
+    "kind": "highlight",
+    "title": "Highlights: Penn 15, Denver 12",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 243,
+    "publishedAt": "2027-03-07T23:15:00Z"
+  },
+  {
+    "id": "vid-b3810271-postgame",
+    "gameId": "b3810271-f7c0-4e2f-9e2f-877ddc84172d",
+    "kind": "postgame",
+    "title": "Postgame reaction: Denver and Penn",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 188,
+    "publishedAt": "2027-03-07T23:40:00Z"
+  },
+  {
+    "id": "vid-531c71d4-preview",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "kind": "preview",
+    "title": "Penn at Cornell: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 117,
+    "publishedAt": "2027-03-12T22:00:00Z"
+  },
+  {
+    "id": "vid-531c71d4-highlight",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "kind": "highlight",
+    "title": "Highlights: Cornell 11, Penn 8",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 211,
+    "publishedAt": "2027-03-13T19:15:00Z"
+  },
+  {
+    "id": "vid-531c71d4-postgame",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "kind": "postgame",
+    "title": "Postgame reaction: Cornell and Penn",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 292,
+    "publishedAt": "2027-03-13T19:40:00Z"
+  },
+  {
+    "id": "vid-e7f7c7dd-preview",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "kind": "preview",
+    "title": "Michigan at Ohio State: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 106,
+    "publishedAt": "2027-03-12T23:00:00Z"
+  },
+  {
+    "id": "vid-e7f7c7dd-highlight",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "kind": "highlight",
+    "title": "Highlights: Michigan 13, Ohio State 12",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 166,
+    "publishedAt": "2027-03-13T20:15:00Z"
+  },
+  {
+    "id": "vid-e7f7c7dd-postgame",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "kind": "postgame",
+    "title": "Postgame reaction: Ohio State and Michigan",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 250,
+    "publishedAt": "2027-03-13T20:22:00Z"
+  },
+  {
+    "id": "vid-b892f6a8-preview",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "kind": "preview",
+    "title": "Georgetown at Virginia: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 137,
+    "publishedAt": "2027-03-12T23:30:00Z"
+  },
+  {
+    "id": "vid-b892f6a8-highlight",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "kind": "highlight",
+    "title": "Highlights: Virginia 17, Georgetown 8",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 130,
+    "publishedAt": "2027-03-13T20:22:00Z"
+  },
+  {
+    "id": "vid-b892f6a8-postgame",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "kind": "postgame",
+    "title": "Postgame reaction: Virginia and Georgetown",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 153,
+    "publishedAt": "2027-03-13T20:22:00Z"
+  },
+  {
+    "id": "vid-da8f8b81-preview",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "kind": "preview",
+    "title": "Duke at Notre Dame: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 102,
+    "publishedAt": "2027-03-13T00:15:00Z"
+  },
+  {
+    "id": "vid-da8f8b81-highlight",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "kind": "highlight",
+    "title": "Live clips: Duke at Notre Dame",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 182,
+    "publishedAt": "2027-03-13T20:18:00Z"
+  },
+  {
+    "id": "vid-a20de66f-preview",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "kind": "preview",
+    "title": "Maryland at Johns Hopkins: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 108,
+    "publishedAt": "2027-03-13T01:40:00Z"
+  },
+  {
+    "id": "vid-a20de66f-highlight",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "kind": "highlight",
+    "title": "Live clips: Maryland at Johns Hopkins",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 210,
+    "publishedAt": "2027-03-13T20:18:00Z"
+  },
+  {
+    "id": "vid-5a80179e-preview",
+    "gameId": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "kind": "preview",
+    "title": "North Carolina at Syracuse: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 128,
+    "publishedAt": "2027-03-13T03:00:00Z"
+  },
+  {
+    "id": "vid-5490a6eb-preview",
+    "gameId": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "kind": "preview",
+    "title": "Yale at Princeton: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 91,
+    "publishedAt": "2027-03-13T04:00:00Z"
+  },
+  {
+    "id": "vid-014cfca4-preview",
+    "gameId": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "kind": "preview",
+    "title": "Penn State at Denver: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 116,
+    "publishedAt": "2027-03-13T06:00:00Z"
+  },
+  {
+    "id": "vid-ab6e3fd1-preview",
+    "gameId": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "kind": "preview",
+    "title": "Penn State at Duke: Game Preview",
+    "thumbnailUrl": "/media/placeholder-thumb.svg",
+    "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    "durationSeconds": 158,
+    "publishedAt": "2027-03-13T20:22:00Z"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "name": "pll-gamecast",
+  "private": true,
+  "description": "Inside Lacrosse NCAA Gamecast redesign: atomic component library, production-shaped prototype, and a detached Scenario Lab.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @pll/web",
+    "build": "npm run build -w @pll/web",
+    "storybook": "npm run storybook -w @pll/ui",
+    "build-storybook": "npm run build-storybook -w @pll/ui",
+    "tokens": "npm run build -w @pll/tokens",
+    "data:build": "npm run build -w @pll/data",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  }
+}

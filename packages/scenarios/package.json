@@ -1,0 +1,11 @@
+{
+  "name": "@pll/scenarios",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SCENARIO LAB TOOLING — not product code. Scenario definitions consumed only by apps/lab.",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc -p tsconfig.json", "test": "vitest run" },
+  "dependencies": { "@pll/data": "*" },
+  "devDependencies": { "typescript": "~6.0.3", "vitest": "^5.0.4" }
+}

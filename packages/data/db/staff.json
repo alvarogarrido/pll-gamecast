@@ -1,0 +1,26 @@
+[
+  {
+    "id": "staff-hale",
+    "name": "Marcus Hale",
+    "photoUrl": null,
+    "title": "Senior Writer"
+  },
+  {
+    "id": "staff-lindqvist",
+    "name": "Maya Lindqvist",
+    "photoUrl": null,
+    "title": "Lacrosse Analyst"
+  },
+  {
+    "id": "staff-marchetti",
+    "name": "Theo Marchetti",
+    "photoUrl": null,
+    "title": "Managing Editor"
+  },
+  {
+    "id": "staff-delgado",
+    "name": "Rosa Delgado",
+    "photoUrl": null,
+    "title": "Staff Writer"
+  }
+]

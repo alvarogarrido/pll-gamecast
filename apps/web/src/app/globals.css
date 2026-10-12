@@ -1,0 +1,13 @@
+/* Tailwind v4 + design tokens + base styles come from the UI package. */
+@import "@pll/ui/styles.css";
+
+/* Tailwind does not scan node_modules (symlinked workspace packages): source the UI classes explicitly. */
+@source "../../../../packages/ui/src";
+
+@layer base {
+  body {
+    /* --font-roboto is set by next/font in layout.tsx; falls back to the token stack. */
+    font-family: var(--font-roboto), var(--font-sans);
+    min-height: 100dvh;
+  }
+}

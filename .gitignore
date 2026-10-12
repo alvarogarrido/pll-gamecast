@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+dist/
+storybook-static/
+.vercel/
+.env*.local
+.DS_Store
+*.tsbuildinfo
+# generated static API (rebuilt from packages/data)
+apps/web/public/api/

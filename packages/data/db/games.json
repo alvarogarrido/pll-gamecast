@@ -1,0 +1,2551 @@
+[
+  {
+    "id": "444d09b8-e627-4656-ac21-0fb05031ddc2",
+    "season": 2027,
+    "week": 1,
+    "startTime": "2027-02-06T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 5920,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "georgetown",
+      "rankBefore": null,
+      "rpiBefore": 64,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": null,
+      "rpiAfter": 55,
+      "seed": null
+    },
+    "away": {
+      "teamId": "princeton",
+      "rankBefore": 8,
+      "rpiBefore": 15,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 5,
+      "rpiAfter": 8,
+      "seed": null
+    },
+    "venue": {
+      "name": "Cooper Field",
+      "city": "Washington",
+      "state": "DC"
+    },
+    "weather": {
+      "temperatureF": 52,
+      "condition": "wind",
+      "precipitationChance": 0.09
+    },
+    "broadcasts": [
+      {
+        "network": "FS1",
+        "url": null
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "Georgetown hosts No. 8 Princeton, a chance for a home upset over a ranked opponent. It is a non-conference test that feeds the RPI race, where Georgetown sits at No. 64 and Princeton at No. 15. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.292,
+    "previewArticleId": "art-444d09b8-preview",
+    "recapArticleId": "art-444d09b8-recap"
+  },
+  {
+    "id": "d2ca2c02-e4c4-4d70-8ae9-4949704a3624",
+    "season": 2027,
+    "week": 1,
+    "startTime": "2027-02-06T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 3720,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "michigan",
+      "rankBefore": 15,
+      "rpiBefore": 33,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 15,
+      "rpiAfter": 33,
+      "seed": null
+    },
+    "away": {
+      "teamId": "penn-state",
+      "rankBefore": 10,
+      "rpiBefore": 18,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 6,
+      "rpiAfter": 9,
+      "seed": null
+    },
+    "venue": {
+      "name": "Michigan Lacrosse Stadium",
+      "city": "Ann Arbor",
+      "state": "MI"
+    },
+    "weather": {
+      "temperatureF": 37,
+      "condition": "rain",
+      "precipitationChance": 0.62
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 10 Penn State visits No. 15 Michigan in a matchup of ranked teams. The Big Ten standings are in play, with Penn State coming in at 0-0 and Michigan at 0-0. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.451,
+    "previewArticleId": "art-d2ca2c02-preview",
+    "recapArticleId": "art-d2ca2c02-recap"
+  },
+  {
+    "id": "b21bedcf-d605-4953-a9f8-75fcf24a62b4",
+    "season": 2027,
+    "week": 1,
+    "startTime": "2027-02-06T19:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 3600,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "penn",
+      "rankBefore": null,
+      "rpiBefore": 47,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": null,
+      "rpiAfter": 64,
+      "seed": null
+    },
+    "away": {
+      "teamId": "notre-dame",
+      "rankBefore": 1,
+      "rpiBefore": 1,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 1,
+      "rpiAfter": 1,
+      "seed": null
+    },
+    "venue": {
+      "name": "Franklin Field",
+      "city": "Philadelphia",
+      "state": "PA"
+    },
+    "weather": {
+      "temperatureF": 47,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.04
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN+",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "Penn hosts No. 1 Notre Dame, a chance for a home upset over a ranked opponent. It is a non-conference test that feeds the RPI race, where Penn sits at No. 47 and Notre Dame at No. 1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.235,
+    "previewArticleId": "art-b21bedcf-preview",
+    "recapArticleId": "art-b21bedcf-recap"
+  },
+  {
+    "id": "06e9054a-26b8-444e-b15d-e74ead8df68a",
+    "season": 2027,
+    "week": 1,
+    "startTime": "2027-02-06T20:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 10780,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "syracuse",
+      "rankBefore": 5,
+      "rpiBefore": 8,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 13,
+      "rpiAfter": 27,
+      "seed": null
+    },
+    "away": {
+      "teamId": "maryland",
+      "rankBefore": 3,
+      "rpiBefore": 4,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 3,
+      "rpiAfter": 4,
+      "seed": null
+    },
+    "venue": {
+      "name": "JMA Wireless Dome",
+      "city": "Syracuse",
+      "state": "NY"
+    },
+    "weather": null,
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 5 Syracuse hosts No. 3 Maryland with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Syracuse sits at No. 8 and Maryland at No. 4. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.491,
+    "previewArticleId": "art-06e9054a-preview",
+    "recapArticleId": "art-06e9054a-recap"
+  },
+  {
+    "id": "661a255a-8958-4958-b01e-fd4a33d86248",
+    "season": 2027,
+    "week": 1,
+    "startTime": "2027-02-06T20:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4400,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "cornell",
+      "rankBefore": 2,
+      "rpiBefore": 2,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 2,
+      "rpiAfter": 2,
+      "seed": null
+    },
+    "away": {
+      "teamId": "virginia",
+      "rankBefore": 7,
+      "rpiBefore": 12,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 17,
+      "rpiAfter": 38,
+      "seed": null
+    },
+    "venue": {
+      "name": "Schoellkopf Field",
+      "city": "Ithaca",
+      "state": "NY"
+    },
+    "weather": {
+      "temperatureF": 35,
+      "condition": "snow",
+      "precipitationChance": 0.89
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 7 Virginia visits No. 2 Cornell in a matchup of ranked teams. It is a non-conference test that feeds the RPI race, where Cornell sits at No. 2 and Virginia at No. 12. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.646,
+    "previewArticleId": "art-661a255a-preview",
+    "recapArticleId": "art-661a255a-recap"
+  },
+  {
+    "id": "934abe77-45e7-4af8-be09-49df5f85be50",
+    "season": 2027,
+    "week": 1,
+    "startTime": "2027-02-07T20:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 2780,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "johns-hopkins",
+      "rankBefore": 6,
+      "rpiBefore": 9,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 4,
+      "rpiAfter": 5,
+      "seed": null
+    },
+    "away": {
+      "teamId": "denver",
+      "rankBefore": null,
+      "rpiBefore": 55,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": null,
+      "rpiAfter": 47,
+      "seed": null
+    },
+    "venue": {
+      "name": "Homewood Field",
+      "city": "Baltimore",
+      "state": "MD"
+    },
+    "weather": {
+      "temperatureF": 41,
+      "condition": "clear",
+      "precipitationChance": 0.05
+    },
+    "broadcasts": [
+      {
+        "network": "B1G+",
+        "url": "https://www.bigtennetwork.com"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 6 Johns Hopkins hosts Denver, which is looking for a signature win to climb into the polls. It is a non-conference test that feeds the RPI race, where Johns Hopkins sits at No. 9 and Denver at No. 55. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.776,
+    "previewArticleId": "art-934abe77-preview",
+    "recapArticleId": "art-934abe77-recap"
+  },
+  {
+    "id": "855b5378-f835-415b-977d-ee0eb4371bd6",
+    "season": 2027,
+    "week": 2,
+    "startTime": "2027-02-13T16:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 3770,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "north-carolina",
+      "rankBefore": 10,
+      "rpiBefore": 18,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 15,
+      "rpiAfter": 33,
+      "seed": null
+    },
+    "away": {
+      "teamId": "penn",
+      "rankBefore": null,
+      "rpiBefore": 64,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": 17,
+      "rpiAfter": 38,
+      "seed": null
+    },
+    "venue": {
+      "name": "Fetzer Field",
+      "city": "Chapel Hill",
+      "state": "NC"
+    },
+    "weather": {
+      "temperatureF": 63,
+      "condition": "cloudy",
+      "precipitationChance": 0.25
+    },
+    "broadcasts": [
+      {
+        "network": "ACC Network",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 10 North Carolina hosts Penn, which is looking for a signature win to climb into the polls. It is a non-conference test that feeds the RPI race, where North Carolina sits at No. 18 and Penn at No. 64. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.681,
+    "previewArticleId": "art-855b5378-preview",
+    "recapArticleId": "art-855b5378-recap"
+  },
+  {
+    "id": "b3f397d0-8ef0-487a-b12c-19a6382e4041",
+    "season": 2027,
+    "week": 2,
+    "startTime": "2027-02-13T16:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 7230,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "ohio-state",
+      "rankBefore": 11,
+      "rpiBefore": 22,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": null,
+      "rpiAfter": 64,
+      "seed": null
+    },
+    "away": {
+      "teamId": "georgetown",
+      "rankBefore": null,
+      "rpiBefore": 55,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": 11,
+      "rpiAfter": 22,
+      "seed": null
+    },
+    "venue": {
+      "name": "Ohio Stadium",
+      "city": "Columbus",
+      "state": "OH"
+    },
+    "weather": {
+      "temperatureF": 42,
+      "condition": "clear",
+      "precipitationChance": 0.06
+    },
+    "broadcasts": [
+      {
+        "network": "Big Ten Network",
+        "url": "https://www.bigtennetwork.com"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 11 Ohio State hosts Georgetown, which is looking for a signature win to climb into the polls. It is a non-conference test that feeds the RPI race, where Ohio State sits at No. 22 and Georgetown at No. 55. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.651,
+    "previewArticleId": "art-b3f397d0-preview",
+    "recapArticleId": "art-b3f397d0-recap"
+  },
+  {
+    "id": "5a2bfc9f-ae27-4ec1-9a6e-ecaaa6df4cb5",
+    "season": 2027,
+    "week": 2,
+    "startTime": "2027-02-13T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 7350,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "cornell",
+      "rankBefore": 2,
+      "rpiBefore": 2,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 5,
+      "rpiAfter": 8,
+      "seed": null
+    },
+    "away": {
+      "teamId": "maryland",
+      "rankBefore": 3,
+      "rpiBefore": 4,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 2,
+      "rpiAfter": 2,
+      "seed": null
+    },
+    "venue": {
+      "name": "Schoellkopf Field",
+      "city": "Ithaca",
+      "state": "NY"
+    },
+    "weather": {
+      "temperatureF": 37,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.06
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 3 Maryland visits No. 2 Cornell in a matchup of ranked teams. It is a non-conference test that feeds the RPI race, where Cornell sits at No. 2 and Maryland at No. 4. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.563,
+    "previewArticleId": "art-5a2bfc9f-preview",
+    "recapArticleId": "art-5a2bfc9f-recap"
+  },
+  {
+    "id": "60ecd6a9-6b42-461e-9a77-f4a0cb43d71c",
+    "season": 2027,
+    "week": 2,
+    "startTime": "2027-02-13T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 10620,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "syracuse",
+      "rankBefore": 13,
+      "rpiBefore": 27,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": 13,
+      "rpiAfter": 27,
+      "seed": null
+    },
+    "away": {
+      "teamId": "duke",
+      "rankBefore": 7,
+      "rpiBefore": 12,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 3,
+      "rpiAfter": 4,
+      "seed": null
+    },
+    "venue": {
+      "name": "JMA Wireless Dome",
+      "city": "Syracuse",
+      "state": "NY"
+    },
+    "weather": null,
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 13 Syracuse hosts No. 7 Duke with both programs eyeing a top-five finish. The ACC standings are in play, with Duke coming in at 0-0 and Syracuse at 0-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.496,
+    "previewArticleId": "art-60ecd6a9-preview",
+    "recapArticleId": "art-60ecd6a9-recap"
+  },
+  {
+    "id": "cfa7eb70-d986-47d5-983b-010d6bdd9a08",
+    "season": 2027,
+    "week": 2,
+    "startTime": "2027-02-13T18:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 7350,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "michigan",
+      "rankBefore": 15,
+      "rpiBefore": 33,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": 10,
+      "rpiAfter": 18,
+      "seed": null
+    },
+    "away": {
+      "teamId": "virginia",
+      "rankBefore": 17,
+      "rpiBefore": 38,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": null,
+      "rpiAfter": 47,
+      "seed": null
+    },
+    "venue": {
+      "name": "Michigan Lacrosse Stadium",
+      "city": "Ann Arbor",
+      "state": "MI"
+    },
+    "weather": {
+      "temperatureF": 41,
+      "condition": "clear",
+      "precipitationChance": 0.01
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 15 Michigan hosts No. 17 Virginia with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Michigan sits at No. 33 and Virginia at No. 38. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.434,
+    "previewArticleId": "art-cfa7eb70-preview",
+    "recapArticleId": "art-cfa7eb70-recap"
+  },
+  {
+    "id": "766f1dc3-5d3b-4b5f-80b3-d685caf7d9d6",
+    "season": 2027,
+    "week": 2,
+    "startTime": "2027-02-13T19:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 3640,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "notre-dame",
+      "rankBefore": 1,
+      "rpiBefore": 1,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 1,
+      "rpiAfter": 1,
+      "seed": null
+    },
+    "away": {
+      "teamId": "princeton",
+      "rankBefore": 5,
+      "rpiBefore": 8,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 7,
+      "rpiAfter": 12,
+      "seed": null
+    },
+    "venue": {
+      "name": "Arlotta Stadium",
+      "city": "Notre Dame",
+      "state": "IN"
+    },
+    "weather": {
+      "temperatureF": 29,
+      "condition": "snow",
+      "precipitationChance": 0.9
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 1 Notre Dame hosts No. 5 Princeton with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Notre Dame sits at No. 1 and Princeton at No. 8. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.704,
+    "previewArticleId": "art-766f1dc3-preview",
+    "recapArticleId": "art-766f1dc3-recap"
+  },
+  {
+    "id": "c5688481-1819-4f23-a390-129b9a1e77da",
+    "season": 2027,
+    "week": 2,
+    "startTime": "2027-02-14T16:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4730,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "yale",
+      "rankBefore": 8,
+      "rpiBefore": 15,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 0
+      },
+      "rankAfter": 6,
+      "rpiAfter": 9,
+      "seed": null
+    },
+    "away": {
+      "teamId": "penn-state",
+      "rankBefore": 6,
+      "rpiBefore": 9,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 8,
+      "rpiAfter": 15,
+      "seed": null
+    },
+    "venue": {
+      "name": "Reese Stadium",
+      "city": "New Haven",
+      "state": "CT"
+    },
+    "weather": {
+      "temperatureF": 47,
+      "condition": "clear",
+      "precipitationChance": 0.01
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 8 Yale hosts No. 6 Penn State with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Yale sits at No. 15 and Penn State at No. 9. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.499,
+    "previewArticleId": "art-c5688481-preview",
+    "recapArticleId": "art-c5688481-recap"
+  },
+  {
+    "id": "8d07bac4-b313-4fd4-ab59-cb4ac3753693",
+    "season": 2027,
+    "week": 3,
+    "startTime": "2027-02-20T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 7370,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "notre-dame",
+      "rankBefore": 1,
+      "rpiBefore": 1,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0
+      },
+      "rankAfter": 3,
+      "rpiAfter": 4,
+      "seed": null
+    },
+    "away": {
+      "teamId": "johns-hopkins",
+      "rankBefore": 4,
+      "rpiBefore": 5,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 5,
+      "rpiAfter": 8,
+      "seed": null
+    },
+    "venue": {
+      "name": "Arlotta Stadium",
+      "city": "Notre Dame",
+      "state": "IN"
+    },
+    "weather": {
+      "temperatureF": 44,
+      "condition": "cloudy",
+      "precipitationChance": 0.19
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 1 Notre Dame hosts No. 4 Johns Hopkins with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Notre Dame sits at No. 1 and Johns Hopkins at No. 5. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.67,
+    "previewArticleId": "art-8d07bac4-preview",
+    "recapArticleId": "art-8d07bac4-recap"
+  },
+  {
+    "id": "8fd2b1dc-a7cc-4c09-b9fe-ad2ec687fd0c",
+    "season": 2027,
+    "week": 3,
+    "startTime": "2027-02-20T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 5400,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "penn",
+      "rankBefore": 17,
+      "rpiBefore": 38,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1
+      },
+      "rankAfter": null,
+      "rpiAfter": 55,
+      "seed": null
+    },
+    "away": {
+      "teamId": "duke",
+      "rankBefore": 3,
+      "rpiBefore": 4,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 2,
+      "rpiAfter": 2,
+      "seed": null
+    },
+    "venue": {
+      "name": "Franklin Field",
+      "city": "Philadelphia",
+      "state": "PA"
+    },
+    "weather": {
+      "temperatureF": 40,
+      "condition": "clear",
+      "precipitationChance": 0.06
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 3 Duke visits No. 17 Penn in a matchup of ranked teams. It is a non-conference test that feeds the RPI race, where Penn sits at No. 38 and Duke at No. 4. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.251,
+    "previewArticleId": "art-8fd2b1dc-preview",
+    "recapArticleId": "art-8fd2b1dc-recap"
+  },
+  {
+    "id": "0e6a4d7f-fa3d-4bef-9753-5c6efb206640",
+    "season": 2027,
+    "week": 3,
+    "startTime": "2027-02-20T18:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4880,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "virginia",
+      "rankBefore": null,
+      "rpiBefore": 47,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 2
+      },
+      "rankAfter": 10,
+      "rpiAfter": 18,
+      "seed": null
+    },
+    "away": {
+      "teamId": "syracuse",
+      "rankBefore": 13,
+      "rpiBefore": 27,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 2
+      },
+      "rankAfter": 17,
+      "rpiAfter": 38,
+      "seed": null
+    },
+    "venue": {
+      "name": "Klöckner Stadium",
+      "city": "Charlottesville",
+      "state": "VA"
+    },
+    "weather": {
+      "temperatureF": 61,
+      "condition": "rain",
+      "precipitationChance": 0.88
+    },
+    "broadcasts": [
+      {
+        "network": "ACC Network",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "Virginia hosts No. 13 Syracuse, a chance for a home upset over a ranked opponent. The ACC standings are in play, with Syracuse coming in at 0-2 and Virginia at 0-2. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.482,
+    "previewArticleId": "art-0e6a4d7f-preview",
+    "recapArticleId": "art-0e6a4d7f-recap"
+  },
+  {
+    "id": "6b43d021-fa12-4cea-905d-e0704635e2a3",
+    "season": 2027,
+    "week": 3,
+    "startTime": "2027-02-20T19:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 5890,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "princeton",
+      "rankBefore": 7,
+      "rpiBefore": 12,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1
+      },
+      "rankAfter": 11,
+      "rpiAfter": 22,
+      "seed": null
+    },
+    "away": {
+      "teamId": "cornell",
+      "rankBefore": 5,
+      "rpiBefore": 8,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1
+      },
+      "rankAfter": 4,
+      "rpiAfter": 5,
+      "seed": null
+    },
+    "venue": {
+      "name": "Class of 1952 Stadium",
+      "city": "Princeton",
+      "state": "NJ"
+    },
+    "weather": {
+      "temperatureF": 39,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.03
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 7 Princeton hosts No. 5 Cornell with both programs eyeing a top-five finish. The Ivy standings are in play, with Cornell coming in at 1-1 and Princeton at 1-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.404,
+    "previewArticleId": "art-6b43d021-preview",
+    "recapArticleId": "art-6b43d021-recap"
+  },
+  {
+    "id": "41fb8269-9914-4552-ac24-9691e771c590",
+    "season": 2027,
+    "week": 3,
+    "startTime": "2027-02-20T23:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 6870,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "north-carolina",
+      "rankBefore": 15,
+      "rpiBefore": 33,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": null,
+      "rpiAfter": 47,
+      "seed": null
+    },
+    "away": {
+      "teamId": "ohio-state",
+      "rankBefore": null,
+      "rpiBefore": 64,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": 13,
+      "rpiAfter": 27,
+      "seed": null
+    },
+    "venue": {
+      "name": "Fetzer Field",
+      "city": "Chapel Hill",
+      "state": "NC"
+    },
+    "weather": {
+      "temperatureF": 61,
+      "condition": "clear",
+      "precipitationChance": 0.02
+    },
+    "broadcasts": [
+      {
+        "network": "ACC Network",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 15 North Carolina hosts Ohio State, which is looking for a signature win to climb into the polls. It is a non-conference test that feeds the RPI race, where North Carolina sits at No. 33 and Ohio State at No. 64. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.625,
+    "previewArticleId": "art-41fb8269-preview",
+    "recapArticleId": "art-41fb8269-recap"
+  },
+  {
+    "id": "6e0e0967-ccb1-4109-b748-1daef69059f1",
+    "season": 2027,
+    "week": 3,
+    "startTime": "2027-02-20T23:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 8630,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "maryland",
+      "rankBefore": 2,
+      "rpiBefore": 2,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0
+      },
+      "rankAfter": 1,
+      "rpiAfter": 1,
+      "seed": null
+    },
+    "away": {
+      "teamId": "georgetown",
+      "rankBefore": 11,
+      "rpiBefore": 22,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1
+      },
+      "rankAfter": 15,
+      "rpiAfter": 33,
+      "seed": null
+    },
+    "venue": {
+      "name": "SECU Stadium",
+      "city": "College Park",
+      "state": "MD"
+    },
+    "weather": {
+      "temperatureF": 34,
+      "condition": "snow",
+      "precipitationChance": 0.75
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 11 Georgetown visits No. 2 Maryland in a matchup of ranked teams. It is a non-conference test that feeds the RPI race, where Maryland sits at No. 2 and Georgetown at No. 22. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.844,
+    "previewArticleId": "art-6e0e0967-preview",
+    "recapArticleId": "art-6e0e0967-recap"
+  },
+  {
+    "id": "ee5f4e88-0c5d-42b3-a919-424d2f406bd4",
+    "season": 2027,
+    "week": 3,
+    "startTime": "2027-02-21T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 2510,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "denver",
+      "rankBefore": null,
+      "rpiBefore": 55,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 1
+      },
+      "rankAfter": null,
+      "rpiAfter": 64,
+      "seed": null
+    },
+    "away": {
+      "teamId": "yale",
+      "rankBefore": 6,
+      "rpiBefore": 9,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 0
+      },
+      "rankAfter": 6,
+      "rpiAfter": 9,
+      "seed": null
+    },
+    "venue": {
+      "name": "Peter Barton Lacrosse Stadium",
+      "city": "Denver",
+      "state": "CO"
+    },
+    "weather": {
+      "temperatureF": 41,
+      "condition": "rain",
+      "precipitationChance": 0.67
+    },
+    "broadcasts": [
+      {
+        "network": "Peacock",
+        "url": null
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "Denver hosts No. 6 Yale, a chance for a home upset over a ranked opponent. It is a non-conference test that feeds the RPI race, where Denver sits at No. 55 and Yale at No. 9. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.371,
+    "previewArticleId": "art-ee5f4e88-preview",
+    "recapArticleId": "art-ee5f4e88-recap"
+  },
+  {
+    "id": "56c85432-31bc-4cd4-a1bc-06fac47a058a",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T16:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 3530,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "georgetown",
+      "rankBefore": 15,
+      "rpiBefore": 33,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 2
+      },
+      "rankAfter": 15,
+      "rpiAfter": 33,
+      "seed": null
+    },
+    "away": {
+      "teamId": "denver",
+      "rankBefore": null,
+      "rpiBefore": 64,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": 64,
+      "seed": null
+    },
+    "venue": {
+      "name": "Cooper Field",
+      "city": "Washington",
+      "state": "DC"
+    },
+    "weather": {
+      "temperatureF": 48,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.07
+    },
+    "broadcasts": [
+      {
+        "network": "Peacock",
+        "url": null
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 15 Georgetown hosts Denver, which is looking for a signature win to climb into the polls. The Big East standings are in play, with Denver coming in at 0-2 and Georgetown at 1-2. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.532,
+    "previewArticleId": "art-56c85432-preview",
+    "recapArticleId": "art-56c85432-recap"
+  },
+  {
+    "id": "1d5360b7-2f1a-473c-a0fc-6eabe25bb6f2",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4430,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "princeton",
+      "rankBefore": 11,
+      "rpiBefore": 22,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 2
+      },
+      "rankAfter": 8,
+      "rpiAfter": 15,
+      "seed": null
+    },
+    "away": {
+      "teamId": "michigan",
+      "rankBefore": 8,
+      "rpiBefore": 15,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1
+      },
+      "rankAfter": 13,
+      "rpiAfter": 27,
+      "seed": null
+    },
+    "venue": {
+      "name": "Class of 1952 Stadium",
+      "city": "Princeton",
+      "state": "NJ"
+    },
+    "weather": {
+      "temperatureF": 39,
+      "condition": "rain",
+      "precipitationChance": 0.58
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 8 Michigan visits No. 11 Princeton in a matchup of ranked teams. It is a non-conference test that feeds the RPI race, where Princeton sits at No. 22 and Michigan at No. 15. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.623,
+    "previewArticleId": "art-1d5360b7-preview",
+    "recapArticleId": "art-1d5360b7-recap"
+  },
+  {
+    "id": "2816b70f-6cfa-47bf-8143-f60fd1ad3832",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4060,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "duke",
+      "rankBefore": 2,
+      "rpiBefore": 2,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0
+      },
+      "rankAfter": 2,
+      "rpiAfter": 2,
+      "seed": null
+    },
+    "away": {
+      "teamId": "yale",
+      "rankBefore": 6,
+      "rpiBefore": 9,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0
+      },
+      "rankAfter": 7,
+      "rpiAfter": 12,
+      "seed": null
+    },
+    "venue": {
+      "name": "Koskinen Stadium",
+      "city": "Durham",
+      "state": "NC"
+    },
+    "weather": {
+      "temperatureF": 54,
+      "condition": "rain",
+      "precipitationChance": 0.84
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 2 Duke hosts No. 6 Yale with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Duke sits at No. 2 and Yale at No. 9. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.705,
+    "previewArticleId": "art-2816b70f-preview",
+    "recapArticleId": "art-2816b70f-recap"
+  },
+  {
+    "id": "9c7b18eb-29ff-4e10-90b3-c50607fd039f",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T19:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 6300,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "penn",
+      "rankBefore": null,
+      "rpiBefore": 55,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": 55,
+      "seed": null
+    },
+    "away": {
+      "teamId": "syracuse",
+      "rankBefore": 17,
+      "rpiBefore": 38,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 3
+      },
+      "rankAfter": 11,
+      "rpiAfter": 22,
+      "seed": null
+    },
+    "venue": {
+      "name": "Franklin Field",
+      "city": "Philadelphia",
+      "state": "PA"
+    },
+    "weather": {
+      "temperatureF": 36,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN+",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "Penn hosts No. 17 Syracuse, a chance for a home upset over a ranked opponent. It is a non-conference test that feeds the RPI race, where Penn sits at No. 55 and Syracuse at No. 38. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.312,
+    "previewArticleId": "art-9c7b18eb-preview",
+    "recapArticleId": "art-9c7b18eb-recap"
+  },
+  {
+    "id": "efc62ce3-1bc8-4fee-8e2b-01f145a7bbd9",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T19:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4510,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "notre-dame",
+      "rankBefore": 3,
+      "rpiBefore": 4,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1
+      },
+      "rankAfter": 3,
+      "rpiAfter": 4,
+      "seed": null
+    },
+    "away": {
+      "teamId": "virginia",
+      "rankBefore": 10,
+      "rpiBefore": 18,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 2
+      },
+      "rankAfter": 10,
+      "rpiAfter": 18,
+      "seed": null
+    },
+    "venue": {
+      "name": "Arlotta Stadium",
+      "city": "Notre Dame",
+      "state": "IN"
+    },
+    "weather": {
+      "temperatureF": 31,
+      "condition": "cloudy",
+      "precipitationChance": 0.24
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 3 Notre Dame hosts No. 10 Virginia with both programs eyeing a top-five finish. The ACC standings are in play, with Virginia coming in at 1-2 and Notre Dame at 2-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.716,
+    "previewArticleId": "art-efc62ce3-preview",
+    "recapArticleId": "art-efc62ce3-recap"
+  },
+  {
+    "id": "71dcc32c-e528-4018-99ce-e822031491fe",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T21:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 6910,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "johns-hopkins",
+      "rankBefore": 5,
+      "rpiBefore": 8,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 0
+      },
+      "rankAfter": 5,
+      "rpiAfter": 8,
+      "seed": null
+    },
+    "away": {
+      "teamId": "cornell",
+      "rankBefore": 4,
+      "rpiBefore": 5,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1
+      },
+      "rankAfter": 4,
+      "rpiAfter": 5,
+      "seed": null
+    },
+    "venue": {
+      "name": "Homewood Field",
+      "city": "Baltimore",
+      "state": "MD"
+    },
+    "weather": {
+      "temperatureF": 48,
+      "condition": "rain",
+      "precipitationChance": 0.73
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 5 Johns Hopkins hosts No. 4 Cornell with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Johns Hopkins sits at No. 8 and Cornell at No. 5. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.443,
+    "previewArticleId": "art-71dcc32c-preview",
+    "recapArticleId": "art-71dcc32c-recap"
+  },
+  {
+    "id": "8f0aa04f-8ee0-45fc-a1eb-91d3fa810783",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T21:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 2840,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "penn-state",
+      "rankBefore": 7,
+      "rpiBefore": 12,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1
+      },
+      "rankAfter": 6,
+      "rpiAfter": 9,
+      "seed": null
+    },
+    "away": {
+      "teamId": "north-carolina",
+      "rankBefore": null,
+      "rpiBefore": 47,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": 47,
+      "seed": null
+    },
+    "venue": {
+      "name": "Panzer Stadium",
+      "city": "University Park",
+      "state": "PA"
+    },
+    "weather": {
+      "temperatureF": 33,
+      "condition": "rain",
+      "precipitationChance": 0.83
+    },
+    "broadcasts": [
+      {
+        "network": "B1G+",
+        "url": "https://www.bigtennetwork.com"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 7 Penn State hosts North Carolina, which is looking for a signature win to climb into the polls. It is a non-conference test that feeds the RPI race, where Penn State sits at No. 12 and North Carolina at No. 47. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.635,
+    "previewArticleId": "art-8f0aa04f-preview",
+    "recapArticleId": "art-8f0aa04f-recap"
+  },
+  {
+    "id": "42462bf5-81ae-49cc-b80d-2178cdb9f4da",
+    "season": 2027,
+    "week": 4,
+    "startTime": "2027-02-27T23:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 7990,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "ohio-state",
+      "rankBefore": 13,
+      "rpiBefore": 27,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 1
+      },
+      "rankAfter": 17,
+      "rpiAfter": 38,
+      "seed": null
+    },
+    "away": {
+      "teamId": "maryland",
+      "rankBefore": 1,
+      "rpiBefore": 1,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 0
+      },
+      "rankAfter": 1,
+      "rpiAfter": 1,
+      "seed": null
+    },
+    "venue": {
+      "name": "Ohio Stadium",
+      "city": "Columbus",
+      "state": "OH"
+    },
+    "weather": {
+      "temperatureF": 38,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.1
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 13 Ohio State hosts No. 1 Maryland with both programs eyeing a top-five finish. The Big Ten standings are in play, with Maryland coming in at 3-0 and Ohio State at 1-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.252,
+    "previewArticleId": "art-42462bf5-preview",
+    "recapArticleId": "art-42462bf5-recap"
+  },
+  {
+    "id": "d3438eab-5db5-46cf-b58d-57be3369a8a7",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-06T16:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 7710,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "notre-dame",
+      "rankBefore": 3,
+      "rpiBefore": 4,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 1
+      },
+      "rankAfter": 4,
+      "rpiAfter": 5,
+      "seed": null
+    },
+    "away": {
+      "teamId": "penn-state",
+      "rankBefore": 6,
+      "rpiBefore": 9,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1
+      },
+      "rankAfter": 6,
+      "rpiAfter": 9,
+      "seed": null
+    },
+    "venue": {
+      "name": "Arlotta Stadium",
+      "city": "Notre Dame",
+      "state": "IN"
+    },
+    "weather": {
+      "temperatureF": 53,
+      "condition": "clear",
+      "precipitationChance": 0.06
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 6 Penn State visits No. 3 Notre Dame in a matchup of ranked teams. It is a non-conference test that feeds the RPI race, where Notre Dame sits at No. 4 and Penn State at No. 9. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.726,
+    "previewArticleId": "art-d3438eab-preview",
+    "recapArticleId": "art-d3438eab-recap"
+  },
+  {
+    "id": "2a3c361a-2c8b-4622-9925-77c5701d3492",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-06T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 7360,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "syracuse",
+      "rankBefore": 11,
+      "rpiBefore": 22,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 3
+      },
+      "rankAfter": 8,
+      "rpiAfter": 15,
+      "seed": null
+    },
+    "away": {
+      "teamId": "ohio-state",
+      "rankBefore": 17,
+      "rpiBefore": 38,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": 55,
+      "seed": null
+    },
+    "venue": {
+      "name": "JMA Wireless Dome",
+      "city": "Syracuse",
+      "state": "NY"
+    },
+    "weather": null,
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 11 Syracuse hosts No. 17 Ohio State with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Syracuse sits at No. 22 and Ohio State at No. 38. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.705,
+    "previewArticleId": "art-2a3c361a-preview",
+    "recapArticleId": "art-2a3c361a-recap"
+  },
+  {
+    "id": "2126087a-6d2e-4a4a-960b-792b8fa1c9cc",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-06T18:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 5620,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "johns-hopkins",
+      "rankBefore": 5,
+      "rpiBefore": 8,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1
+      },
+      "rankAfter": 5,
+      "rpiAfter": 8,
+      "seed": null
+    },
+    "away": {
+      "teamId": "michigan",
+      "rankBefore": 13,
+      "rpiBefore": 27,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 2
+      },
+      "rankAfter": 15,
+      "rpiAfter": 33,
+      "seed": null
+    },
+    "venue": {
+      "name": "Homewood Field",
+      "city": "Baltimore",
+      "state": "MD"
+    },
+    "weather": {
+      "temperatureF": 51,
+      "condition": "cloudy",
+      "precipitationChance": 0.3
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 13 Michigan visits No. 5 Johns Hopkins in a matchup of ranked teams. The Big Ten standings are in play, with Michigan coming in at 1-2 and Johns Hopkins at 2-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.703,
+    "previewArticleId": "art-2126087a-preview",
+    "recapArticleId": "art-2126087a-recap"
+  },
+  {
+    "id": "ffb6d959-55b0-4a54-b0f0-1db9752e19ce",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-06T18:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 6900,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "yale",
+      "rankBefore": 7,
+      "rpiBefore": 12,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 1
+      },
+      "rankAfter": 7,
+      "rpiAfter": 12,
+      "seed": null
+    },
+    "away": {
+      "teamId": "maryland",
+      "rankBefore": 1,
+      "rpiBefore": 1,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 0
+      },
+      "rankAfter": 1,
+      "rpiAfter": 1,
+      "seed": null
+    },
+    "venue": {
+      "name": "Reese Stadium",
+      "city": "New Haven",
+      "state": "CT"
+    },
+    "weather": {
+      "temperatureF": 47,
+      "condition": "clear",
+      "precipitationChance": 0.02
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 1 Maryland visits No. 7 Yale in a matchup of ranked teams. It is a non-conference test that feeds the RPI race, where Yale sits at No. 12 and Maryland at No. 1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.339,
+    "previewArticleId": "art-ffb6d959-preview",
+    "recapArticleId": "art-ffb6d959-recap"
+  },
+  {
+    "id": "401e6e4e-90c1-4de9-81f1-f884042e944f",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-06T19:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 5260,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "duke",
+      "rankBefore": 2,
+      "rpiBefore": 2,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 0
+      },
+      "rankAfter": 2,
+      "rpiAfter": 2,
+      "seed": null
+    },
+    "away": {
+      "teamId": "princeton",
+      "rankBefore": 8,
+      "rpiBefore": 15,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2
+      },
+      "rankAfter": 10,
+      "rpiAfter": 18,
+      "seed": null
+    },
+    "venue": {
+      "name": "Koskinen Stadium",
+      "city": "Durham",
+      "state": "NC"
+    },
+    "weather": {
+      "temperatureF": 58,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.07
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 2 Duke hosts No. 8 Princeton with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Duke sits at No. 2 and Princeton at No. 15. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.647,
+    "previewArticleId": "art-401e6e4e-preview",
+    "recapArticleId": "art-401e6e4e-recap"
+  },
+  {
+    "id": "7d788bcd-5429-44bb-8591-5b63b71de2a9",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-06T21:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4670,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "georgetown",
+      "rankBefore": 15,
+      "rpiBefore": 33,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": 47,
+      "seed": null
+    },
+    "away": {
+      "teamId": "cornell",
+      "rankBefore": 4,
+      "rpiBefore": 5,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 1
+      },
+      "rankAfter": 3,
+      "rpiAfter": 4,
+      "seed": null
+    },
+    "venue": {
+      "name": "Cooper Field",
+      "city": "Washington",
+      "state": "DC"
+    },
+    "weather": {
+      "temperatureF": 61,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.1
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 15 Georgetown hosts No. 4 Cornell with both programs eyeing a top-five finish. It is a non-conference test that feeds the RPI race, where Georgetown sits at No. 33 and Cornell at No. 5. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.179,
+    "previewArticleId": "art-7d788bcd-preview",
+    "recapArticleId": "art-7d788bcd-recap"
+  },
+  {
+    "id": "bae47712-0377-4508-9c0c-bad9134d5165",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-06T23:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4150,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "virginia",
+      "rankBefore": 10,
+      "rpiBefore": 18,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 3
+      },
+      "rankAfter": 11,
+      "rpiAfter": 22,
+      "seed": null
+    },
+    "away": {
+      "teamId": "north-carolina",
+      "rankBefore": null,
+      "rpiBefore": 47,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 3
+      },
+      "rankAfter": 13,
+      "rpiAfter": 27,
+      "seed": null
+    },
+    "venue": {
+      "name": "Klöckner Stadium",
+      "city": "Charlottesville",
+      "state": "VA"
+    },
+    "weather": {
+      "temperatureF": 61,
+      "condition": "wind",
+      "precipitationChance": 0.04
+    },
+    "broadcasts": [
+      {
+        "network": "ACC Network",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 10 Virginia hosts North Carolina, which is looking for a signature win to climb into the polls. The ACC standings are in play, with North Carolina coming in at 0-3 and Virginia at 1-3. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.656,
+    "previewArticleId": "art-bae47712-preview",
+    "recapArticleId": "art-bae47712-recap"
+  },
+  {
+    "id": "b3810271-f7c0-4e2f-9e2f-877ddc84172d",
+    "season": 2027,
+    "week": 5,
+    "startTime": "2027-03-07T20:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 2330,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "denver",
+      "rankBefore": null,
+      "rpiBefore": 64,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 3
+      },
+      "rankAfter": null,
+      "rpiAfter": 64,
+      "seed": null
+    },
+    "away": {
+      "teamId": "penn",
+      "rankBefore": null,
+      "rpiBefore": 55,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 3
+      },
+      "rankAfter": 17,
+      "rpiAfter": 38,
+      "seed": null
+    },
+    "venue": {
+      "name": "Peter Barton Lacrosse Stadium",
+      "city": "Denver",
+      "state": "CO"
+    },
+    "weather": {
+      "temperatureF": 50,
+      "condition": "wind",
+      "precipitationChance": 0.01
+    },
+    "broadcasts": [
+      {
+        "network": "FS1",
+        "url": null
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "Penn and Denver meet with both teams trying to climb toward the national rankings. It is a non-conference test that feeds the RPI race, where Denver sits at No. 64 and Penn at No. 55. A win would give either side a boost heading into the heart of the schedule.",
+    "pregameWinProbabilityHome": 0.562,
+    "previewArticleId": "art-b3810271-preview",
+    "recapArticleId": "art-b3810271-recap"
+  },
+  {
+    "id": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-13T16:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 5950,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "cornell",
+      "rankBefore": 3,
+      "rpiBefore": 4,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 1
+      },
+      "rankAfter": 2,
+      "rpiAfter": 2,
+      "seed": null
+    },
+    "away": {
+      "teamId": "penn",
+      "rankBefore": 17,
+      "rpiBefore": 38,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 3
+      },
+      "rankAfter": 17,
+      "rpiAfter": 38,
+      "seed": null
+    },
+    "venue": {
+      "name": "Schoellkopf Field",
+      "city": "Ithaca",
+      "state": "NY"
+    },
+    "weather": {
+      "temperatureF": 44,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.04
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 3 Cornell hosts No. 17 Penn with both programs eyeing a top-five finish. The Ivy standings are in play, with Penn coming in at 2-3 and Cornell at 4-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.868,
+    "previewArticleId": "art-531c71d4-preview",
+    "recapArticleId": "art-531c71d4-recap"
+  },
+  {
+    "id": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-13T17:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 6910,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "ohio-state",
+      "rankBefore": null,
+      "rpiBefore": 55,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 3
+      },
+      "rankAfter": null,
+      "rpiAfter": 47,
+      "seed": null
+    },
+    "away": {
+      "teamId": "michigan",
+      "rankBefore": 15,
+      "rpiBefore": 33,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 3
+      },
+      "rankAfter": 13,
+      "rpiAfter": 27,
+      "seed": null
+    },
+    "venue": {
+      "name": "Ohio Stadium",
+      "city": "Columbus",
+      "state": "OH"
+    },
+    "weather": {
+      "temperatureF": 48,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.05
+    },
+    "broadcasts": [
+      {
+        "network": "B1G+",
+        "url": "https://www.bigtennetwork.com"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "Ohio State hosts No. 15 Michigan, a chance for a home upset over a ranked opponent. The Big Ten standings are in play, with Michigan coming in at 1-3 and Ohio State at 1-3. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.482,
+    "previewArticleId": "art-e7f7c7dd-preview",
+    "recapArticleId": "art-e7f7c7dd-recap"
+  },
+  {
+    "id": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-13T17:30:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 5880,
+    "status": "final",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "virginia",
+      "rankBefore": 11,
+      "rpiBefore": 22,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 4
+      },
+      "rankAfter": 11,
+      "rpiAfter": 22,
+      "seed": null
+    },
+    "away": {
+      "teamId": "georgetown",
+      "rankBefore": null,
+      "rpiBefore": 47,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 3
+      },
+      "rankAfter": null,
+      "rpiAfter": 55,
+      "seed": null
+    },
+    "venue": {
+      "name": "Klöckner Stadium",
+      "city": "Charlottesville",
+      "state": "VA"
+    },
+    "weather": {
+      "temperatureF": 52,
+      "condition": "clear",
+      "precipitationChance": 0.05
+    },
+    "broadcasts": [
+      {
+        "network": "ACC Network",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 11 Virginia hosts Georgetown, which is looking for a signature win to climb into the polls. It is a non-conference test that feeds the RPI race, where Virginia sits at No. 22 and Georgetown at No. 47. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.773,
+    "previewArticleId": "art-b892f6a8-preview",
+    "recapArticleId": "art-b892f6a8-recap"
+  },
+  {
+    "id": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-13T18:15:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4690,
+    "status": "live",
+    "snapshotElapsedSeconds": 3457,
+    "home": {
+      "teamId": "notre-dame",
+      "rankBefore": 4,
+      "rpiBefore": 5,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 1
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "away": {
+      "teamId": "duke",
+      "rankBefore": 2,
+      "rpiBefore": 2,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 0
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "venue": {
+      "name": "Arlotta Stadium",
+      "city": "Notre Dame",
+      "state": "IN"
+    },
+    "weather": {
+      "temperatureF": 40,
+      "condition": "rain",
+      "precipitationChance": 0.81
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 2 Duke visits No. 4 Notre Dame in a matchup of ranked teams. The ACC standings are in play, with Duke coming in at 4-0 and Notre Dame at 4-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.591,
+    "previewArticleId": "art-da8f8b81-preview",
+    "recapArticleId": null
+  },
+  {
+    "id": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-13T19:40:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": 4870,
+    "status": "live",
+    "snapshotElapsedSeconds": 1371,
+    "home": {
+      "teamId": "johns-hopkins",
+      "rankBefore": 5,
+      "rpiBefore": 8,
+      "recordBefore": {
+        "wins": 3,
+        "losses": 1
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "away": {
+      "teamId": "maryland",
+      "rankBefore": 1,
+      "rpiBefore": 1,
+      "recordBefore": {
+        "wins": 5,
+        "losses": 0
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "venue": {
+      "name": "Homewood Field",
+      "city": "Baltimore",
+      "state": "MD"
+    },
+    "weather": {
+      "temperatureF": 55,
+      "condition": "partly_cloudy",
+      "precipitationChance": 0.06
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 1 Maryland visits No. 5 Johns Hopkins in a matchup of ranked teams. The Big Ten standings are in play, with Maryland coming in at 5-0 and Johns Hopkins at 3-1. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.444,
+    "previewArticleId": "art-a20de66f-preview",
+    "recapArticleId": null
+  },
+  {
+    "id": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-13T21:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": null,
+    "status": "scheduled",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "syracuse",
+      "rankBefore": 8,
+      "rpiBefore": 15,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 3
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "away": {
+      "teamId": "north-carolina",
+      "rankBefore": 13,
+      "rpiBefore": 27,
+      "recordBefore": {
+        "wins": 1,
+        "losses": 3
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "venue": {
+      "name": "JMA Wireless Dome",
+      "city": "Syracuse",
+      "state": "NY"
+    },
+    "weather": null,
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 13 North Carolina visits No. 8 Syracuse in a matchup of ranked teams. The ACC standings are in play, with North Carolina coming in at 1-3 and Syracuse at 2-3. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.688,
+    "previewArticleId": "art-5a80179e-preview",
+    "recapArticleId": null
+  },
+  {
+    "id": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-13T22:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": null,
+    "status": "scheduled",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "princeton",
+      "rankBefore": 10,
+      "rpiBefore": 18,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 3
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "away": {
+      "teamId": "yale",
+      "rankBefore": 7,
+      "rpiBefore": 12,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "venue": {
+      "name": "Class of 1952 Stadium",
+      "city": "Princeton",
+      "state": "NJ"
+    },
+    "weather": {
+      "temperatureF": 53,
+      "condition": "wind",
+      "precipitationChance": 0.09
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": true,
+    "stakes": "No. 7 Yale visits No. 10 Princeton in a matchup of ranked teams. The Ivy standings are in play, with Yale coming in at 2-2 and Princeton at 2-3. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.609,
+    "previewArticleId": "art-5490a6eb-preview",
+    "recapArticleId": null
+  },
+  {
+    "id": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "season": 2027,
+    "week": 6,
+    "startTime": "2027-03-14T00:00:00Z",
+    "gameType": "regular",
+    "label": null,
+    "neutralSite": false,
+    "attendance": null,
+    "status": "scheduled",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "denver",
+      "rankBefore": null,
+      "rpiBefore": 64,
+      "recordBefore": {
+        "wins": 0,
+        "losses": 4
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "away": {
+      "teamId": "penn-state",
+      "rankBefore": 6,
+      "rpiBefore": 9,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": null
+    },
+    "venue": {
+      "name": "Peter Barton Lacrosse Stadium",
+      "city": "Denver",
+      "state": "CO"
+    },
+    "weather": {
+      "temperatureF": 58,
+      "condition": "cloudy",
+      "precipitationChance": 0.15
+    },
+    "broadcasts": [
+      {
+        "network": "FS1",
+        "url": null
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "Denver hosts No. 6 Penn State, a chance for a home upset over a ranked opponent. It is a non-conference test that feeds the RPI race, where Denver sits at No. 64 and Penn State at No. 9. The winner is likely to move up in next week’s poll.",
+    "pregameWinProbabilityHome": 0.32,
+    "previewArticleId": "art-014cfca4-preview",
+    "recapArticleId": null
+  },
+  {
+    "id": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "season": 2027,
+    "week": 15,
+    "startTime": "2027-05-15T18:00:00Z",
+    "gameType": "ncaa_tournament",
+    "label": "NCAA Quarterfinal",
+    "neutralSite": true,
+    "attendance": null,
+    "status": "scheduled",
+    "snapshotElapsedSeconds": null,
+    "home": {
+      "teamId": "duke",
+      "rankBefore": 2,
+      "rpiBefore": 2,
+      "recordBefore": {
+        "wins": 4,
+        "losses": 0
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": 2
+    },
+    "away": {
+      "teamId": "penn-state",
+      "rankBefore": 6,
+      "rpiBefore": 9,
+      "recordBefore": {
+        "wins": 2,
+        "losses": 2
+      },
+      "rankAfter": null,
+      "rpiAfter": null,
+      "seed": 7
+    },
+    "venue": {
+      "name": "Gillette Stadium",
+      "city": "Foxborough",
+      "state": "MA"
+    },
+    "weather": {
+      "temperatureF": 73,
+      "condition": "wind",
+      "precipitationChance": 0.01
+    },
+    "broadcasts": [
+      {
+        "network": "ESPN2",
+        "url": "https://www.espn.com/watch"
+      }
+    ],
+    "isConferenceGame": false,
+    "stakes": "No. 2 seed Duke meets No. 7 seed Penn State at Gillette Stadium for a spot in the NCAA semifinals. The winner advances to Championship Weekend; the loser's season ends here.",
+    "pregameWinProbabilityHome": 0.666,
+    "previewArticleId": "art-ab6e3fd1-preview",
+    "recapArticleId": null
+  }
+]

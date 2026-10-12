@@ -1,0 +1,386 @@
+[
+  {
+    "id": "notre-dame",
+    "slug": "notre-dame",
+    "school": "Notre Dame",
+    "mascot": "Fighting Irish",
+    "abbreviation": "ND",
+    "conferenceId": "acc",
+    "colors": {
+      "primary": "#0C2340",
+      "secondary": "#C99700"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/87.png",
+    "record": {
+      "wins": 4,
+      "losses": 1
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 0
+    },
+    "nationalRank": 4,
+    "rpi": 5,
+    "headCoach": "Kevin Corrigan"
+  },
+  {
+    "id": "duke",
+    "slug": "duke",
+    "school": "Duke",
+    "mascot": "Blue Devils",
+    "abbreviation": "DUKE",
+    "conferenceId": "acc",
+    "colors": {
+      "primary": "#003087",
+      "secondary": "#FFFFFF"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/150.png",
+    "record": {
+      "wins": 4,
+      "losses": 0
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 0
+    },
+    "nationalRank": 2,
+    "rpi": 2,
+    "headCoach": "John Danowski"
+  },
+  {
+    "id": "syracuse",
+    "slug": "syracuse",
+    "school": "Syracuse",
+    "mascot": "Orange",
+    "abbreviation": "CUSE",
+    "conferenceId": "acc",
+    "colors": {
+      "primary": "#D44500",
+      "secondary": "#000E54"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/183.png",
+    "record": {
+      "wins": 2,
+      "losses": 3
+    },
+    "conferenceRecord": {
+      "wins": 0,
+      "losses": 2
+    },
+    "nationalRank": 8,
+    "rpi": 15,
+    "headCoach": "Gary Gait"
+  },
+  {
+    "id": "virginia",
+    "slug": "virginia",
+    "school": "Virginia",
+    "mascot": "Cavaliers",
+    "abbreviation": "UVA",
+    "conferenceId": "acc",
+    "colors": {
+      "primary": "#232D4B",
+      "secondary": "#F84C1E"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png",
+    "record": {
+      "wins": 2,
+      "losses": 4
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 2
+    },
+    "nationalRank": 11,
+    "rpi": 22,
+    "headCoach": "Lars Tiffany"
+  },
+  {
+    "id": "north-carolina",
+    "slug": "north-carolina",
+    "school": "North Carolina",
+    "mascot": "Tar Heels",
+    "abbreviation": "UNC",
+    "conferenceId": "acc",
+    "colors": {
+      "primary": "#7BAFD4",
+      "secondary": "#13294B"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/153.png",
+    "record": {
+      "wins": 1,
+      "losses": 3
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 0
+    },
+    "nationalRank": 13,
+    "rpi": 27,
+    "headCoach": "Joe Breschi"
+  },
+  {
+    "id": "maryland",
+    "slug": "maryland",
+    "school": "Maryland",
+    "mascot": "Terrapins",
+    "abbreviation": "UMD",
+    "conferenceId": "big-ten",
+    "colors": {
+      "primary": "#E03A3E",
+      "secondary": "#FFD520"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/120.png",
+    "record": {
+      "wins": 5,
+      "losses": 0
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 0
+    },
+    "nationalRank": 1,
+    "rpi": 1,
+    "headCoach": "John Tillman"
+  },
+  {
+    "id": "johns-hopkins",
+    "slug": "johns-hopkins",
+    "school": "Johns Hopkins",
+    "mascot": "Blue Jays",
+    "abbreviation": "JHU",
+    "conferenceId": "big-ten",
+    "colors": {
+      "primary": "#002D72",
+      "secondary": "#68ACE5"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/118.png",
+    "record": {
+      "wins": 3,
+      "losses": 1
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 0
+    },
+    "nationalRank": 5,
+    "rpi": 8,
+    "headCoach": "Peter Milliman"
+  },
+  {
+    "id": "penn-state",
+    "slug": "penn-state",
+    "school": "Penn State",
+    "mascot": "Nittany Lions",
+    "abbreviation": "PSU",
+    "conferenceId": "big-ten",
+    "colors": {
+      "primary": "#041E42",
+      "secondary": "#96BEE6"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
+    "record": {
+      "wins": 2,
+      "losses": 2
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 0
+    },
+    "nationalRank": 6,
+    "rpi": 9,
+    "headCoach": "Jeff Tambroni"
+  },
+  {
+    "id": "michigan",
+    "slug": "michigan",
+    "school": "Michigan",
+    "mascot": "Wolverines",
+    "abbreviation": "MICH",
+    "conferenceId": "big-ten",
+    "colors": {
+      "primary": "#00274C",
+      "secondary": "#FFCB05"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/130.png",
+    "record": {
+      "wins": 2,
+      "losses": 3
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 2
+    },
+    "nationalRank": 15,
+    "rpi": 33,
+    "headCoach": "Kevin Conry"
+  },
+  {
+    "id": "ohio-state",
+    "slug": "ohio-state",
+    "school": "Ohio State",
+    "mascot": "Buckeyes",
+    "abbreviation": "OSU",
+    "conferenceId": "big-ten",
+    "colors": {
+      "primary": "#BB0000",
+      "secondary": "#666666"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+    "record": {
+      "wins": 1,
+      "losses": 4
+    },
+    "conferenceRecord": {
+      "wins": 0,
+      "losses": 2
+    },
+    "nationalRank": null,
+    "rpi": 55,
+    "headCoach": "Nick Myers"
+  },
+  {
+    "id": "princeton",
+    "slug": "princeton",
+    "school": "Princeton",
+    "mascot": "Tigers",
+    "abbreviation": "PRIN",
+    "conferenceId": "ivy",
+    "colors": {
+      "primary": "#FF8F00",
+      "secondary": "#000000"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/163.png",
+    "record": {
+      "wins": 2,
+      "losses": 3
+    },
+    "conferenceRecord": {
+      "wins": 0,
+      "losses": 1
+    },
+    "nationalRank": 10,
+    "rpi": 18,
+    "headCoach": "Matt Madalon"
+  },
+  {
+    "id": "cornell",
+    "slug": "cornell",
+    "school": "Cornell",
+    "mascot": "Big Red",
+    "abbreviation": "COR",
+    "conferenceId": "ivy",
+    "colors": {
+      "primary": "#B31B1B",
+      "secondary": "#FFFFFF"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/172.png",
+    "record": {
+      "wins": 5,
+      "losses": 1
+    },
+    "conferenceRecord": {
+      "wins": 2,
+      "losses": 0
+    },
+    "nationalRank": 3,
+    "rpi": 4,
+    "headCoach": "Connor Buczek"
+  },
+  {
+    "id": "penn",
+    "slug": "penn",
+    "school": "Penn",
+    "mascot": "Quakers",
+    "abbreviation": "PENN",
+    "conferenceId": "ivy",
+    "colors": {
+      "primary": "#011F5B",
+      "secondary": "#990000"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/219.png",
+    "record": {
+      "wins": 2,
+      "losses": 4
+    },
+    "conferenceRecord": {
+      "wins": 0,
+      "losses": 1
+    },
+    "nationalRank": 17,
+    "rpi": 38,
+    "headCoach": "Mike Murphy"
+  },
+  {
+    "id": "yale",
+    "slug": "yale",
+    "school": "Yale",
+    "mascot": "Bulldogs",
+    "abbreviation": "YALE",
+    "conferenceId": "ivy",
+    "colors": {
+      "primary": "#00356B",
+      "secondary": "#286DC0"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/43.png",
+    "record": {
+      "wins": 2,
+      "losses": 2
+    },
+    "conferenceRecord": {
+      "wins": 0,
+      "losses": 0
+    },
+    "nationalRank": 7,
+    "rpi": 12,
+    "headCoach": "Andy Shay"
+  },
+  {
+    "id": "georgetown",
+    "slug": "georgetown",
+    "school": "Georgetown",
+    "mascot": "Hoyas",
+    "abbreviation": "GTWN",
+    "conferenceId": "big-east",
+    "colors": {
+      "primary": "#041E42",
+      "secondary": "#8D817B"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/46.png",
+    "record": {
+      "wins": 2,
+      "losses": 4
+    },
+    "conferenceRecord": {
+      "wins": 1,
+      "losses": 0
+    },
+    "nationalRank": null,
+    "rpi": 47,
+    "headCoach": "Kevin Warne"
+  },
+  {
+    "id": "denver",
+    "slug": "denver",
+    "school": "Denver",
+    "mascot": "Pioneers",
+    "abbreviation": "DEN",
+    "conferenceId": "big-east",
+    "colors": {
+      "primary": "#BA0C2F",
+      "secondary": "#A89968"
+    },
+    "logoUrl": "https://a.espncdn.com/i/teamlogos/ncaa/500/2172.png",
+    "record": {
+      "wins": 0,
+      "losses": 4
+    },
+    "conferenceRecord": {
+      "wins": 0,
+      "losses": 1
+    },
+    "nationalRank": null,
+    "rpi": 64,
+    "headCoach": "Matt Brown"
+  }
+]

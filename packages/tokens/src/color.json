@@ -1,0 +1,45 @@
+{
+  "color": {
+    "$description": "PROVISIONAL values taken from the PLL web gamecast. Replaced by the Figma audit.",
+    "surface": {
+      "$type": "color",
+      "page": { "$value": "#121212", "$description": "App background" },
+      "nav": { "$value": "#0A0A0A", "$description": "Top navigation / other-games bar" },
+      "card": { "$value": "#1A1A1A", "$description": "Default card" },
+      "scoreboard": { "$value": "#111111", "$description": "Header scoreboard" },
+      "row": {
+        "raised": { "$value": "#313131", "$description": "Inner row, highest emphasis" },
+        "default": { "$value": "#2C2C2C", "$description": "Inner row" },
+        "sunken": { "$value": "#1F1F1F", "$description": "Inner row, lowest emphasis" }
+      },
+      "track": { "$value": "#262626", "$description": "Segmented control track, progress track" },
+      "tabActive": { "$value": "#595959", "$description": "Active segment pill" }
+    },
+    "border": {
+      "$type": "color",
+      "default": { "$value": "#3A3E40" },
+      "subtle": { "$value": "rgba(255, 255, 255, 0.08)" },
+      "divider": { "$value": "rgba(255, 255, 255, 0.12)" }
+    },
+    "text": {
+      "$type": "color",
+      "primary": { "$value": "#FFFFFF" },
+      "secondary": { "$value": "#B4B4B9" },
+      "tertiary": { "$value": "#98989D" },
+      "onBrand": { "$value": "#121212", "$description": "Text on the brand yellow (not in the PLL audit; added for contrast)" }
+    },
+    "brand": {
+      "$type": "color",
+      "primary": { "$value": "#FFCB06", "$description": "PLL yellow" }
+    },
+    "link": { "$type": "color", "$value": "#3BA9F6" },
+    "live": { "$type": "color", "$value": "#00C364", "$description": "Live indicator" },
+    "positive": { "$type": "color", "$value": "{color.live}" },
+    "negative": { "$type": "color", "$value": "#FF8080" },
+    "pick": {
+      "$type": "color",
+      "correct": { "$value": "#00CB83" },
+      "wrong": { "$value": "#FA5050" }
+    }
+  }
+}

@@ -1,0 +1,542 @@
+[
+  {
+    "id": "ins-531c71d4-1",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "J. Thackeray owns the draw",
+    "body": "J. Thackeray enters winning 45% of faceoffs for Cornell this season (37-for-83).",
+    "teamId": "cornell",
+    "playerId": "cornell-32"
+  },
+  {
+    "id": "ins-531c71d4-2",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "P. Ingram between the pipes",
+    "body": "P. Ingram brings a .616 save percentage into the game for Cornell.",
+    "teamId": "cornell",
+    "playerId": "cornell-29"
+  },
+  {
+    "id": "ins-531c71d4-3",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Cornell at 12 or more",
+    "body": "Cornell has scored 12 or more goals in 3 of its 5 games this season.",
+    "teamId": "cornell",
+    "playerId": null
+  },
+  {
+    "id": "ins-531c71d4-4",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "K. Dunne owns the draw",
+    "body": "K. Dunne enters winning 51% of faceoffs for Penn this season (45-for-88).",
+    "teamId": "penn",
+    "playerId": "penn-32"
+  },
+  {
+    "id": "ins-531c71d4-5",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "J. Cardone between the pipes",
+    "body": "J. Cardone brings a .519 save percentage into the game for Penn.",
+    "teamId": "penn",
+    "playerId": "penn-29"
+  },
+  {
+    "id": "ins-531c71d4-6",
+    "gameId": "531c71d4-db8a-4f11-9d1b-db4eea1dea85",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Penn at 12 or more",
+    "body": "Penn has scored 12 or more goals in 1 of its 5 games this season.",
+    "teamId": "penn",
+    "playerId": null
+  },
+  {
+    "id": "ins-e7f7c7dd-1",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "J. Sullivan owns the draw",
+    "body": "J. Sullivan enters winning 51% of faceoffs for Ohio State this season (38-for-74).",
+    "teamId": "ohio-state",
+    "playerId": "ohio-state-32"
+  },
+  {
+    "id": "ins-e7f7c7dd-2",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "D. Emery between the pipes",
+    "body": "D. Emery brings a .604 save percentage into the game for Ohio State.",
+    "teamId": "ohio-state",
+    "playerId": "ohio-state-29"
+  },
+  {
+    "id": "ins-e7f7c7dd-3",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Ohio State at 12 or more",
+    "body": "Ohio State has scored 12 or more goals in 1 of its 4 games this season.",
+    "teamId": "ohio-state",
+    "playerId": null
+  },
+  {
+    "id": "ins-e7f7c7dd-4",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "C. Nolan owns the draw",
+    "body": "C. Nolan enters winning 44% of faceoffs for Michigan this season (31-for-70).",
+    "teamId": "michigan",
+    "playerId": "michigan-32"
+  },
+  {
+    "id": "ins-e7f7c7dd-5",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "I. Cardone between the pipes",
+    "body": "I. Cardone brings a .520 save percentage into the game for Michigan.",
+    "teamId": "michigan",
+    "playerId": "michigan-29"
+  },
+  {
+    "id": "ins-e7f7c7dd-6",
+    "gameId": "e7f7c7dd-6164-48fe-af7e-75b543926859",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Michigan at 12 or more",
+    "body": "Michigan has scored 12 or more goals in 2 of its 4 games this season.",
+    "teamId": "michigan",
+    "playerId": null
+  },
+  {
+    "id": "ins-b892f6a8-1",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "B. Hanley owns the draw",
+    "body": "B. Hanley enters winning 60% of faceoffs for Virginia this season (59-for-98).",
+    "teamId": "virginia",
+    "playerId": "virginia-32"
+  },
+  {
+    "id": "ins-b892f6a8-2",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "L. Dempsey between the pipes",
+    "body": "L. Dempsey brings a .469 save percentage into the game for Virginia.",
+    "teamId": "virginia",
+    "playerId": "virginia-29"
+  },
+  {
+    "id": "ins-b892f6a8-3",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Virginia at 12 or more",
+    "body": "Virginia has scored 12 or more goals in 1 of its 5 games this season.",
+    "teamId": "virginia",
+    "playerId": null
+  },
+  {
+    "id": "ins-b892f6a8-4",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "J. Ferris owns the draw",
+    "body": "J. Ferris enters winning 51% of faceoffs for Georgetown this season (42-for-82).",
+    "teamId": "georgetown",
+    "playerId": "georgetown-32"
+  },
+  {
+    "id": "ins-b892f6a8-5",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "D. Meadows between the pipes",
+    "body": "D. Meadows brings a .568 save percentage into the game for Georgetown.",
+    "teamId": "georgetown",
+    "playerId": "georgetown-29"
+  },
+  {
+    "id": "ins-b892f6a8-6",
+    "gameId": "b892f6a8-93a4-43b5-a31c-10612db2f2c7",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Georgetown at 12 or more",
+    "body": "Georgetown has scored 12 or more goals in 1 of its 5 games this season.",
+    "teamId": "georgetown",
+    "playerId": null
+  },
+  {
+    "id": "ins-da8f8b81-1",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "J. Maloney owns the draw",
+    "body": "J. Maloney enters winning 55% of faceoffs for Notre Dame this season (51-for-92).",
+    "teamId": "notre-dame",
+    "playerId": "notre-dame-32"
+  },
+  {
+    "id": "ins-da8f8b81-2",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "G. Linden between the pipes",
+    "body": "G. Linden brings a .542 save percentage into the game for Notre Dame.",
+    "teamId": "notre-dame",
+    "playerId": "notre-dame-29"
+  },
+  {
+    "id": "ins-da8f8b81-3",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Notre Dame at 12 or more",
+    "body": "Notre Dame has scored 12 or more goals in 2 of its 5 games this season.",
+    "teamId": "notre-dame",
+    "playerId": null
+  },
+  {
+    "id": "ins-da8f8b81-4",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "H. Coburn owns the draw",
+    "body": "H. Coburn enters winning 58% of faceoffs for Duke this season (44-for-76).",
+    "teamId": "duke",
+    "playerId": "duke-32"
+  },
+  {
+    "id": "ins-da8f8b81-5",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "L. Cardone between the pipes",
+    "body": "L. Cardone brings a .614 save percentage into the game for Duke.",
+    "teamId": "duke",
+    "playerId": "duke-29"
+  },
+  {
+    "id": "ins-da8f8b81-6",
+    "gameId": "da8f8b81-2201-47b1-b0a3-94aa63f19948",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Duke at 12 or more",
+    "body": "Duke has scored 12 or more goals in 3 of its 4 games this season.",
+    "teamId": "duke",
+    "playerId": null
+  },
+  {
+    "id": "ins-a20de66f-1",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "P. Lombardi owns the draw",
+    "body": "P. Lombardi enters winning 52% of faceoffs for Johns Hopkins this season (33-for-63).",
+    "teamId": "johns-hopkins",
+    "playerId": "johns-hopkins-32"
+  },
+  {
+    "id": "ins-a20de66f-2",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "S. McCoy between the pipes",
+    "body": "S. McCoy brings a .551 save percentage into the game for Johns Hopkins.",
+    "teamId": "johns-hopkins",
+    "playerId": "johns-hopkins-29"
+  },
+  {
+    "id": "ins-a20de66f-3",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Johns Hopkins at 12 or more",
+    "body": "Johns Hopkins has scored 12 or more goals in 1 of its 4 games this season.",
+    "teamId": "johns-hopkins",
+    "playerId": null
+  },
+  {
+    "id": "ins-a20de66f-4",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "D. Sullivan owns the draw",
+    "body": "D. Sullivan enters winning 52% of faceoffs for Maryland this season (47-for-90).",
+    "teamId": "maryland",
+    "playerId": "maryland-32"
+  },
+  {
+    "id": "ins-a20de66f-5",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "P. Brandt between the pipes",
+    "body": "P. Brandt brings a .531 save percentage into the game for Maryland.",
+    "teamId": "maryland",
+    "playerId": "maryland-29"
+  },
+  {
+    "id": "ins-a20de66f-6",
+    "gameId": "a20de66f-92a8-4d43-a72d-f3efa4f3d0d1",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Maryland at 12 or more",
+    "body": "Maryland has scored 12 or more goals in 4 of its 5 games this season.",
+    "teamId": "maryland",
+    "playerId": null
+  },
+  {
+    "id": "ins-5a80179e-1",
+    "gameId": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "H. Abbott owns the draw",
+    "body": "H. Abbott enters winning 45% of faceoffs for Syracuse this season (40-for-89).",
+    "teamId": "syracuse",
+    "playerId": "syracuse-32"
+  },
+  {
+    "id": "ins-5a80179e-2",
+    "gameId": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "K. Donnelly between the pipes",
+    "body": "K. Donnelly brings a .565 save percentage into the game for Syracuse.",
+    "teamId": "syracuse",
+    "playerId": "syracuse-29"
+  },
+  {
+    "id": "ins-5a80179e-3",
+    "gameId": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Syracuse at 12 or more",
+    "body": "Syracuse has scored 12 or more goals in 1 of its 5 games this season.",
+    "teamId": "syracuse",
+    "playerId": null
+  },
+  {
+    "id": "ins-5a80179e-4",
+    "gameId": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "A. Abbott owns the draw",
+    "body": "A. Abbott enters winning 52% of faceoffs for North Carolina this season (39-for-75).",
+    "teamId": "north-carolina",
+    "playerId": "north-carolina-32"
+  },
+  {
+    "id": "ins-5a80179e-5",
+    "gameId": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "N. Clancy between the pipes",
+    "body": "N. Clancy brings a .561 save percentage into the game for North Carolina.",
+    "teamId": "north-carolina",
+    "playerId": "north-carolina-29"
+  },
+  {
+    "id": "ins-5a80179e-6",
+    "gameId": "5a80179e-949b-4eea-a9f9-300233d1a3cb",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "North Carolina at 12 or more",
+    "body": "North Carolina has scored 12 or more goals in 1 of its 4 games this season.",
+    "teamId": "north-carolina",
+    "playerId": null
+  },
+  {
+    "id": "ins-5490a6eb-1",
+    "gameId": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "P. Jennings owns the draw",
+    "body": "P. Jennings enters winning 45% of faceoffs for Princeton this season (43-for-95).",
+    "teamId": "princeton",
+    "playerId": "princeton-32"
+  },
+  {
+    "id": "ins-5490a6eb-2",
+    "gameId": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "N. Slater between the pipes",
+    "body": "N. Slater brings a .576 save percentage into the game for Princeton.",
+    "teamId": "princeton",
+    "playerId": "princeton-29"
+  },
+  {
+    "id": "ins-5490a6eb-3",
+    "gameId": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Princeton at 12 or more",
+    "body": "Princeton has scored 12 or more goals in 1 of its 5 games this season.",
+    "teamId": "princeton",
+    "playerId": null
+  },
+  {
+    "id": "ins-5490a6eb-4",
+    "gameId": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "L. O'Brien owns the draw",
+    "body": "L. O'Brien enters winning 49% of faceoffs for Yale this season (39-for-79).",
+    "teamId": "yale",
+    "playerId": "yale-32"
+  },
+  {
+    "id": "ins-5490a6eb-5",
+    "gameId": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "P. Kilbride between the pipes",
+    "body": "P. Kilbride brings a .515 save percentage into the game for Yale.",
+    "teamId": "yale",
+    "playerId": "yale-29"
+  },
+  {
+    "id": "ins-5490a6eb-6",
+    "gameId": "5490a6eb-2cf6-4841-94ff-f7d2384c0d7e",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Yale at 12 or more",
+    "body": "Yale has scored 12 or more goals in 3 of its 4 games this season.",
+    "teamId": "yale",
+    "playerId": null
+  },
+  {
+    "id": "ins-014cfca4-1",
+    "gameId": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "C. Maloney owns the draw",
+    "body": "C. Maloney enters winning 50% of faceoffs for Denver this season (38-for-76).",
+    "teamId": "denver",
+    "playerId": "denver-32"
+  },
+  {
+    "id": "ins-014cfca4-2",
+    "gameId": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "L. Ellison between the pipes",
+    "body": "L. Ellison brings a .545 save percentage into the game for Denver.",
+    "teamId": "denver",
+    "playerId": "denver-29"
+  },
+  {
+    "id": "ins-014cfca4-3",
+    "gameId": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Denver at 12 or more",
+    "body": "Denver has scored 12 or more goals in 2 of its 4 games this season.",
+    "teamId": "denver",
+    "playerId": null
+  },
+  {
+    "id": "ins-014cfca4-4",
+    "gameId": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "G. Pearce owns the draw",
+    "body": "G. Pearce enters winning 53% of faceoffs for Penn State this season (40-for-75).",
+    "teamId": "penn-state",
+    "playerId": "penn-state-32"
+  },
+  {
+    "id": "ins-014cfca4-5",
+    "gameId": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "T. Cassidy between the pipes",
+    "body": "T. Cassidy brings a .490 save percentage into the game for Penn State.",
+    "teamId": "penn-state",
+    "playerId": "penn-state-29"
+  },
+  {
+    "id": "ins-014cfca4-6",
+    "gameId": "014cfca4-3600-47c6-af22-f3f0d71b838f",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Penn State at 12 or more",
+    "body": "Penn State has scored 12 or more goals in 3 of its 4 games this season.",
+    "teamId": "penn-state",
+    "playerId": null
+  },
+  {
+    "id": "ins-ab6e3fd1-1",
+    "gameId": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "elapsedSeconds": 180,
+    "kind": "note",
+    "title": "H. Coburn owns the draw",
+    "body": "H. Coburn enters winning 58% of faceoffs for Duke this season (44-for-76).",
+    "teamId": "duke",
+    "playerId": "duke-32"
+  },
+  {
+    "id": "ins-ab6e3fd1-2",
+    "gameId": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "elapsedSeconds": 1500,
+    "kind": "milestone",
+    "title": "L. Cardone between the pipes",
+    "body": "L. Cardone brings a .614 save percentage into the game for Duke.",
+    "teamId": "duke",
+    "playerId": "duke-29"
+  },
+  {
+    "id": "ins-ab6e3fd1-3",
+    "gameId": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "elapsedSeconds": 2400,
+    "kind": "record",
+    "title": "Duke at 12 or more",
+    "body": "Duke has scored 12 or more goals in 3 of its 4 games this season.",
+    "teamId": "duke",
+    "playerId": null
+  },
+  {
+    "id": "ins-ab6e3fd1-4",
+    "gameId": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "elapsedSeconds": 240,
+    "kind": "note",
+    "title": "G. Pearce owns the draw",
+    "body": "G. Pearce enters winning 53% of faceoffs for Penn State this season (40-for-75).",
+    "teamId": "penn-state",
+    "playerId": "penn-state-32"
+  },
+  {
+    "id": "ins-ab6e3fd1-5",
+    "gameId": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "elapsedSeconds": 1620,
+    "kind": "milestone",
+    "title": "T. Cassidy between the pipes",
+    "body": "T. Cassidy brings a .490 save percentage into the game for Penn State.",
+    "teamId": "penn-state",
+    "playerId": "penn-state-29"
+  },
+  {
+    "id": "ins-ab6e3fd1-6",
+    "gameId": "ab6e3fd1-15ec-4dae-9b79-15ca4aa32201",
+    "elapsedSeconds": 2580,
+    "kind": "record",
+    "title": "Penn State at 12 or more",
+    "body": "Penn State has scored 12 or more goals in 3 of its 4 games this season.",
+    "teamId": "penn-state",
+    "playerId": null
+  }
+]

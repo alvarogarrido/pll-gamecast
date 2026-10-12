@@ -1,0 +1,33 @@
+{
+  "name": "@pll/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Gamecast prototype (Next.js App Router, static export). Product code only — no scenario/lab code.",
+  "scripts": {
+    "predev": "npm run build -w @pll/data",
+    "dev": "next dev",
+    "prebuild": "npm run build -w @pll/data",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@pll/data": "*",
+    "@pll/ui": "*",
+    "@tanstack/react-query": "^5.104.2",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^10.12.0",
+    "eslint-config-next": "^16.4.0",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3"
+  }
+}

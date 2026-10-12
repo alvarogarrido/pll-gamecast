@@ -1,0 +1,38 @@
+[
+  {
+    "playerId": "notre-dame-11",
+    "status": "out",
+    "description": "Lower body",
+    "updatedAt": "2027-03-09T15:00:00Z"
+  },
+  {
+    "playerId": "maryland-18",
+    "status": "doubtful",
+    "description": "Upper body",
+    "updatedAt": "2027-03-10T14:30:00Z"
+  },
+  {
+    "playerId": "cornell-8",
+    "status": "questionable",
+    "description": "Ankle",
+    "updatedAt": "2027-03-11T16:00:00Z"
+  },
+  {
+    "playerId": "duke-10",
+    "status": "day_to_day",
+    "description": "Undisclosed",
+    "updatedAt": "2027-03-11T18:15:00Z"
+  },
+  {
+    "playerId": "penn-state-8",
+    "status": "out",
+    "description": "Shoulder",
+    "updatedAt": "2027-03-08T13:00:00Z"
+  },
+  {
+    "playerId": "denver-18",
+    "status": "questionable",
+    "description": "Hamstring",
+    "updatedAt": "2027-03-12T17:00:00Z"
+  }
+]

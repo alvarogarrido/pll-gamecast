@@ -1,0 +1,22 @@
+[
+  {
+    "id": "acc",
+    "name": "Atlantic Coast Conference",
+    "shortName": "ACC"
+  },
+  {
+    "id": "big-ten",
+    "name": "Big Ten Conference",
+    "shortName": "Big Ten"
+  },
+  {
+    "id": "ivy",
+    "name": "Ivy League",
+    "shortName": "Ivy"
+  },
+  {
+    "id": "big-east",
+    "name": "Big East Conference",
+    "shortName": "Big East"
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "font": {
+    "family": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "Roboto, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+      }
+    }
+  },
+  "text": {
+    "$description": "Type scale. Each style: size / weight / leading / optional tracking. Provisional (PLL gamecast).",
+    "score": {
+      "size": { "$type": "dimension", "$value": "30px" },
+      "weight": { "$type": "fontWeight", "$value": 700 },
+      "leading": { "$type": "dimension", "$value": "36px" }
+    },
+    "h2": {
+      "size": { "$type": "dimension", "$value": "20px" },
+      "weight": { "$type": "fontWeight", "$value": 700 },
+      "leading": { "$type": "dimension", "$value": "28px" },
+      "tracking": { "$type": "dimension", "$value": "0.15px" }
+    },
+    "teamName": {
+      "size": { "$type": "dimension", "$value": "20px" },
+      "weight": { "$type": "fontWeight", "$value": 800 },
+      "leading": { "$type": "dimension", "$value": "24px" }
+    },
+    "body": {
+      "size": { "$type": "dimension", "$value": "16px" },
+      "weight": { "$type": "fontWeight", "$value": 400 },
+      "leading": { "$type": "dimension", "$value": "24px" }
+    },
+    "statLabel": {
+      "size": { "$type": "dimension", "$value": "17px" },
+      "weight": { "$type": "fontWeight", "$value": 500 },
+      "leading": { "$type": "dimension", "$value": "24px" }
+    },
+    "chip": {
+      "size": { "$type": "dimension", "$value": "13px" },
+      "weight": { "$type": "fontWeight", "$value": 500 },
+      "leading": { "$type": "dimension", "$value": "16px" }
+    },
+    "nav": {
+      "$description": "Always rendered uppercase (apply the `uppercase` utility).",
+      "size": { "$type": "dimension", "$value": "14px" },
+      "weight": { "$type": "fontWeight", "$value": 500 },
+      "leading": { "$type": "dimension", "$value": "20px" },
+      "tracking": { "$type": "dimension", "$value": "0.68px" }
+    }
+  }
+}

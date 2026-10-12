@@ -1,0 +1,10 @@
+{
+  "name": "@pll/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Design tokens (DTCG JSON) -> CSS variables + Tailwind v4 @theme + TS.",
+  "exports": { "./tokens.css": "./dist/tokens.css", "./theme.css": "./dist/theme.css", ".": "./dist/tokens.ts" },
+  "scripts": { "build": "node build.mjs" },
+  "devDependencies": { "style-dictionary": "^5.6.1" }
+}
