@@ -47,9 +47,36 @@ Rules that define the project:
 - Write complete class strings (variant maps), never build class names by concatenation, so Tailwind can see them. Join with `cn()`.
 - Accessibility is part of done: semantic elements, visible focus (global `:focus-visible` ring), roles and keyboard support
   (see `Tabs`), `motion-safe:` for animation, decorative elements `aria-hidden`.
-- Every component has a `*.stories.tsx` covering all variants, titled `Atoms/…`, `Molecules/…` or `Organisms/…`.
+- Every component has a `*.stories.tsx` covering all variants, titled `Atoms/…`, `Molecules/…` or `Organisms/…` (see the folder and stories rules below).
   Controlled components keep their state inside the story.
 - Mobile-first: design for 375px, then add `sm:` / `lg:`. Desktop gamecast body is 2 columns (40% / 60%) from `lg`.
+
+### Folders, props and stories (read before adding a component)
+
+- **One folder per component**: `src/<atoms|molecules|organisms>/<Name>/<Name>.tsx` + `<Name>.stories.tsx` + `index.ts` (`export * from './<Name>'`).
+  Add the export (component and its prop types) to the layer barrel (`src/atoms/index.ts`, `molecules/index.ts`, `organisms/index.ts`); `src/index.ts`
+  re-exports the layers. Import other components through their folder (`'../../atoms/Chip'`), never from the package root.
+- **Props philosophy.**
+  - Atoms take **primitives** (`string`, `number`, `boolean`, `ReactNode`); molecules and organisms may take the API ref types from `@pll/data/api`
+    (`TeamRef`, `PlayerRef`, `GameSummary`...).
+  - Prefer a few well-named props over a `variant` explosion: `size`, `tone`, `layout`, `side` (`'away' | 'home'`) and a `className` escape hatch. Spread
+    native element props on the root where it makes sense (`ComponentPropsWithoutRef<'div'>`).
+  - Away is always left, home always right. Components that mirror take `side`.
+  - Components never format inline: call `lib/format.ts` (`pct`, `clock`, `statusLine`, `record`, `playerShortName`, `formatStat`...). Missing data renders `NO_VALUE` (an en dash),
+    never `NaN%` or blank. Time helpers take `nowMs` (server time) and an optional `timeZone` (default `America/New_York`); `lib/format.ts` never reads the device clock.
+  - Team color: wrap in `TeamScope` or pass `style={teamColorVars(primary, secondary)}` from `lib/team-style.ts`, then use `bg-team-primary` / `border-team-primary`.
+- **Reuse the shared building blocks** instead of re-making them: atoms `LiveDot`, `PlayerAvatar`, `StatValue`, `NetworkBadge`, `TrendIndicator`
+  (plus `Card`, `Chip`, `StatusPill`, `TeamLogo`, `RankBadge`, `Skeleton`, `Tabs`); molecules `SectionHeader`, `ComparisonRow`, `ComparisonBar`, `TeamIdentity`,
+  `PlayerIdentity`, `GameStatusLabel`, `TeamScope`, `Disclosure`, `DataTable*`, `EmptyState`. Icons and network logos come from `@pll/icons` (`<Icon name>`, `NetworkLogo`).
+  Need a variation? Add a prop to the shared component rather than forking it.
+- **Stories use real data.** Import `fixtures` and `GAMES` from `src/fixtures` (Storybook only, **never** import it from a component or the barrels):
+  `fixtures.game(GAMES.liveQ4)`, `fixtures.stats(...)`, `fixtures.plays(...)`, `fixtures.at(id, elapsedSeconds)`. Cover every state (default, live, final,
+  scheduled, missing/empty data, mirrored sides, sizes) and at least one story built from fixtures. Fixtures have no player photos and remote logos can fail offline: that is
+  the fallback path, not a bug.
+- **Token-only styling is enforced by review.** Utilities must resolve to tokens and the approved spacing scale (`gap-2.5` = 10px; no `p-1.5`, `p-7`...). No raw hex or
+  arbitrary values (`bg-[#...]`, `w-[37px]`). If one is unavoidable (e.g. an inline `width: 43%` for a proportional bar), keep it in `style` and comment why.
+  Hex colors in stories are fine as demo data.
+- Tests: pure logic lives in `src/lib/*.ts` with a sibling `*.test.ts` (vitest, `npm run test -w @pll/ui`). Components are verified in Storybook.
 
 ## Tokens (`packages/tokens`)
 

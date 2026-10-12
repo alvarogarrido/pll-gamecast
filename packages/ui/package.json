@@ -11,10 +11,18 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o storybook-static",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
   },
-  "peerDependencies": { "react": "^19", "react-dom": "^19" },
-  "dependencies": { "clsx": "^2.1.1", "@pll/tokens": "*", "@pll/icons": "*" },
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "@pll/tokens": "*",
+    "@pll/icons": "*"
+  },
   "devDependencies": {
     "@pll/data": "*",
     "@storybook/addon-a11y": "^10.6.1",
@@ -29,6 +37,7 @@
     "storybook": "^10.6.1",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
-    "vite": "^8.3.4"
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4"
   }
 }

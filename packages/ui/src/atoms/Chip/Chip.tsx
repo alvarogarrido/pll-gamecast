@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { cn } from '../lib/cn';
+import { cn } from '../../lib/cn';
 
 export type ChipTone = 'neutral' | 'outline' | 'accent' | 'gold' | 'live' | 'positive' | 'negative' | 'link';
 export type ChipSize = 'sm' | 'md';

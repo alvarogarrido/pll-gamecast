@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
-import { cn } from '../lib/cn';
+import { cn } from '../../lib/cn';
 
 export type CardTone = 'card' | 'raised' | 'track';
 export type CardPadding = 'none' | 'sm' | 'md' | 'lg';

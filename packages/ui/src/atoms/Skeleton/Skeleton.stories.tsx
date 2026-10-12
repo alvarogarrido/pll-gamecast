@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Card } from './Card';
+import { Card } from '../Card/Card';
 import { Skeleton } from './Skeleton';
 
 const meta = {

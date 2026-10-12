@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type CSSProperties } from 'react';
-import { cn } from '../lib/cn';
+import { cn } from '../../lib/cn';
 
 export type TeamLogoSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
